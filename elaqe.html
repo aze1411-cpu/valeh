@@ -65,6 +65,9 @@ section{padding-block:96px;position:relative}
 .nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
 .foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--neon)}
 .ateaser{display:grid;gap:32px;align-items:center}
+.tick{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.tick li{display:flex;gap:10px;font-weight:500}
+.tick li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-weight:700;font-size:13px}
 .ateaser .photo{aspect-ratio:4/5;max-width:380px;width:100%}
 @media(min-width:960px){.ateaser{grid-template-columns:.7fr 1.3fr}}
 .top .btn{min-height:42px;padding:0 18px;font-size:14px}

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Valeh Nexus X — Haqqımda</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Valeh Nexus X: Bakıda kiçik bizneslər üçün WordPress saytları hazırlayıram.">
+<meta name="description" content="Valeh Nexus X: Bakıda kiçik bizneslər üçün satış yönümlü WordPress saytları. Ödənişdən əvvəl canlı demo, hissə-hissə ödəniş, hər şey sizin adınıza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
@@ -65,6 +65,9 @@ section{padding-block:96px;position:relative}
 .nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
 .foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--neon)}
 .ateaser{display:grid;gap:32px;align-items:center}
+.tick{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.tick li{display:flex;gap:10px;font-weight:500}
+.tick li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-weight:700;font-size:13px}
 .ateaser .photo{aspect-ratio:4/5;max-width:380px;width:100%}
 @media(min-width:960px){.ateaser{grid-template-columns:.7fr 1.3fr}}
 .top .btn{min-height:42px;padding:0 18px;font-size:14px}
@@ -370,18 +373,51 @@ section{padding-block:96px;position:relative}
 .ok li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-weight:700;font-size:12px;margin-top:1px}
 .foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--neon)}
 </style><style>
-.ahero{display:grid;gap:40px;align-items:center}
-.ahero .photo{aspect-ratio:4/5;max-width:460px;width:100%;order:2}
-.ahero .atxt{order:1}
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:8px}
-.facts div{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:var(--panel)}
-.facts b{display:block;font:700 34px/1 var(--fd)}
-.facts span{color:var(--muted);font-size:14px}
-.prin{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.gal3{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.gal3 .photo{aspect-ratio:4/3}
-@media(max-width:959px){.ahero .photo{max-width:340px}}
-@media(min-width:960px){.ahero{grid-template-columns:.9fr 1.1fr}.ahero .photo{order:0}}
+.ah{position:relative;overflow:hidden;padding-block:56px 72px}
+.ah::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 420px at 78% 30%,rgba(0,200,255,.16),transparent 70%),radial-gradient(500px 320px at 0% 100%,rgba(47,123,255,.14),transparent 70%);pointer-events:none}
+.ahg{display:grid;gap:48px;align-items:center;position:relative}
+.aht{display:grid;gap:20px;min-width:0}
+.aht h1{font-size:clamp(38px,6vw,72px)}
+.aht .lead{font-size:19px}
+.aht .row{display:flex;flex-wrap:wrap;gap:12px}
+.btn.wa{background:#25d366;color:#04210f;border:0;box-shadow:0 10px 30px rgba(37,211,102,.3)}
+.btn.wa:hover{box-shadow:0 14px 40px rgba(37,211,102,.45)}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px}
+.kpi div{border:1px solid var(--line);border-radius:16px;padding:14px 12px;background:rgba(12,22,40,.7);display:grid;gap:2px;min-width:0}
+.kpi b{font:700 clamp(24px,3vw,34px)/1 var(--fd);font-variant-numeric:tabular-nums}
+.kpi span{color:var(--muted);font-size:12.5px;line-height:1.3}
+.pf{position:relative;justify-self:center;width:min(100%,430px);aspect-ratio:4/5}
+.pf .ring{position:absolute;inset:-3px;border-radius:30px;background:conic-gradient(from var(--a),var(--neon),var(--neon-2) 20%,transparent 40%,transparent 60%,var(--neon-2) 80%,var(--neon));animation:spin 9s linear infinite;filter:drop-shadow(0 0 18px rgba(0,200,255,.45))}
+.pf .in{position:absolute;inset:0;border-radius:28px;overflow:hidden;background:var(--bg-2)}
+.pf img{width:100%;height:100%;object-fit:cover;object-position:top}
+.pf .in::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,9,20,.55),transparent 35%)}
+.bdg{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:rgba(8,16,31,.92);border:1px solid #24406e;box-shadow:0 14px 30px rgba(0,0,0,.45);font:600 13.5px var(--fd);white-space:nowrap;animation:bob 6s ease-in-out infinite}
+.bdg i{font-style:normal;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon)}
+.bdg.b1{left:-26px;top:14%}.bdg.b2{right:-22px;top:46%;animation-delay:-2s}.bdg.b3{left:-10px;bottom:9%;animation-delay:-4s}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.big{font:700 clamp(30px,4.6vw,54px)/1.1 var(--fd);letter-spacing:-.025em;max-width:22ch}
+.cmpw{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--bg-2)}
+.cmpr{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.cmpr:last-child{border-bottom:0}
+.cmpr>div{padding:16px 20px;display:flex;gap:12px;align-items:flex-start;min-width:0}
+.cmpr>div:first-child{color:var(--muted)}
+.cmpr>div:first-child::before{content:"✕";flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.05);color:#6f83a3;font-size:11px;font-weight:700;margin-top:1px}
+.cmpr>div:last-child{background:rgba(0,200,255,.05);font-weight:500}
+.cmpr>div:last-child::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.16);color:var(--neon);font-size:12px;font-weight:700;margin-top:1px}
+.cmph{font:700 12px var(--fd)!important;letter-spacing:.14em;text-transform:uppercase}
+.cmph>div::before{display:none!important}
+.cmph>div:last-child{color:var(--neon)}
+.ngrid{display:flex;flex-wrap:wrap;gap:10px}
+.ngrid a{text-decoration:none;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--panel);font:600 14.5px var(--fd);color:var(--ink);transition:border-color .2s,transform .2s}
+.ngrid a:hover{border-color:var(--neon);transform:translateY(-2px)}
+.first{border-radius:24px;padding:clamp(22px,4vw,36px);border:1px dashed #2a4776;display:grid;gap:12px;max-width:860px}
+.first h3{font-size:clamp(22px,2.8vw,30px)}
+.first p{color:var(--muted)}
+.rv{opacity:1}
+@supports (animation-timeline:view()){.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}}
+@media(min-width:960px){.ahg{grid-template-columns:1.1fr .9fr}}
+@media(max-width:700px){.kpi{grid-template-columns:repeat(2,1fr)}.cmpr{grid-template-columns:1fr}.cmpr>div:first-child{padding-bottom:6px}.cmpr>div:last-child{padding-top:6px}.cmph{display:none}.bdg{font-size:12px;padding:8px 10px}.bdg.b1{left:-6px}.bdg.b2{right:-6px}.bdg.b3{left:-4px}}
+@media(prefers-reduced-motion:reduce){.pf .ring,.bdg{animation:none}}
 </style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
 </head>
@@ -402,28 +438,47 @@ section{padding-block:96px;position:relative}
   </div>
 </header>
 <main>
-  <section class="ph">
-    <div class="wrap ahero" style="position:relative">
-      <div class="photo" data-photo="1"><img src="photos/valeh.jpg" alt="Valeh, Valeh Nexus X təsisçisi"></div>
-      <div class="atxt">
-        <a class="crumb" href="index.html" style="margin:0">← Ana səhifə</a>
-        <span class="eyebrow">Haqqımda</span>
-        <h1 style="margin:4px 0 0">Salam, mən <span class="grad">Valeh</span></h1>
-        <p>Bakıda yaşayıram və WordPress ilə saytlar qururam. Öz layihələrim üçün 10-dan çox sayt hazırlamışam, indi bu təcrübəni kiçik bizneslərə təklif edirəm.</p>
-        <p>Bu saytda gördüyünüz hər şeyi, o cümlədən 36 demonu özüm qurmuşam. Məqsədim sadədir: sizin biznesiniz üçün satış gətirən, telefonda rahat açılan və özünüz idarə edə biləcəyiniz sayt.</p>
-        <div class="facts"><div><b>12</b><span>sahə üçün hazır həll</span></div><div><b>36</b><span>canlı demo</span></div><div><b>10+</b><span>öz layihəm üçün sayt</span></div></div>
+  <section class="ah">
+    <div class="wrap ahg">
+      <div class="aht">
+        <span class="eyebrow">Haqqımda · Valeh Nexus X</span>
+        <h1>Saytınızı mən qururam. <span class="grad">Siz satışla məşğul olun.</span></h1>
+        <p class="lead">Mən Valeh, Valeh Nexus X-in qurucusuyam. Bakıda kiçik bizneslər üçün WordPress saytları qururam: Instagram-da satan mağazadan kurs mərkəzinə qədər. Məqsədim sadədir: müştəriniz sizi tapsın, bəyənsin və rahat sifariş versin.</p>
+        <div class="row">
+          <a class="btn wa" href="https://wa.me/994709331108?text=Salam%2C%20Valeh!%20Sayt%C4%B1m%20%C3%BC%C3%A7%C3%BCn%20m%C9%99sl%C9%99h%C9%99t%20almaq%20ist%C9%99yir%C9%99m." target="_blank" rel="noopener">WhatsApp-da yazın</a>
+          <a class="btn" href="demolar.html">36 demoya baxın</a>
+        </div>
+        <div class="kpi">
+          <div><b data-n="12">12</b><span>sahə üçün hazır həll</span></div>
+          <div><b data-n="36">36</b><span>canlı demo sayt</span></div>
+          <div><b>0 ₼</b><span>borc, sayt canlıya çıxanda</span></div>
+          <div><b data-n="7">7</b><span>gün pulsuz dəstək</span></div>
+        </div>
+      </div>
+      <div class="pf">
+        <span class="ring" aria-hidden="true"></span>
+        <div class="in" data-photo="1"><img src="photos/valeh.jpg" alt="Valeh, Valeh Nexus X təsisçisi"></div>
+        <span class="bdg b1"><i>◉</i>Ödənişdən əvvəl canlı demo</span>
+        <span class="bdg b2"><i>✓</i>Hər şey sizin adınıza</span>
+        <span class="bdg b3"><i>₼</i>Hissə-hissə ödəniş</span>
       </div>
     </div>
   </section>
 
-  <section style="padding-top:40px">
+  <section style="padding-block:56px;background:var(--bg-2);border-block:1px solid var(--line)">
+    <div class="wrap" style="display:grid;gap:18px">
+      <span class="eyebrow">Niyə Valeh Nexus X</span>
+      <p class="big rv">Sayt sadəcə vizit kartı deyil. <span class="grad">O, gecə də işləyən satıcınızdır.</span></p>
+      <p class="lead">Instagram-da hər sualı DM-də cavablandırmaq vaxt aparır. Saytda isə qiymət, ölçü, çatdırılma və sifariş forması həmişə hazırdır. Müştəri istədiyi saatda baxır və sifariş verir.</p>
+    </div>
+  </section>
+
+  <section>
     <div class="wrap">
-      <div class="head"><span class="eyebrow">Necə işləyirəm</span><h2>Sizə verdiyim <span class="grad">sözlər</span></h2></div>
-      <div class="prin">
-        <article class="card rise"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Hər şey sizin adınıza</h3><p>Sayt, domen və hostinq sizə məxsusdur. Bütün giriş məlumatlarını təhvildə alırsınız və məndən asılı qalmırsınız.</p></article>
-        <article class="card rise"><div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div><h3>Yazılı razılaşma</h3><p>İş həcmi, müddət və paketə daxil olanlar müqavilədə yazılır. Nəyin daxil olduğunu əvvəlcədən bilirsiniz.</p></article>
-        <article class="card rise"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><h3>Özünüz idarə edirsiniz</h3><p>Admin paneldə məhsul, qiymət və mətnləri necə dəyişəcəyinizi göstərirəm.</p></article>
-        <article class="card rise"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></div><h3>Təhvildən sonra da yanınızdayam</h3><p>7 gün pulsuz texniki dəstək. İstəsəniz aylıq texniki xidmətlə saytınızın qayğısına mən qalıram.</p></article>
+      <div class="head"><span class="eyebrow">Fərq</span><h2>Mənimlə işləyəndə <span class="grad">nə dəyişir</span></h2><p class="lead">Sayt sifariş edənlərin ən çox narahat olduğu şeyləri əvvəlcədən həll etmişəm.</p></div>
+      <div class="cmpw rv">
+        <div class="cmpr cmph"><div>Adi təcrübə</div><div>Valeh Nexus X</div></div>
+        <div class="cmpr"><div>Nəticəni yalnız sonda görürsünüz</div><div>Saytınızın necə görünəcəyini ödənişdən əvvəl canlı demoda görürsünüz</div></div><div class="cmpr"><div>Qiymət danışıqdan-danışığa dəyişir</div><div>Qiymətlər və paket tərkibi saytda açıq yazılıb</div></div><div class="cmpr"><div>Bütün pul əvvəlcədən istənilir</div><div>Ödəniş mərhələlərlə, istəsəniz taksit kartı ilə</div></div><div class="cmpr"><div>Domen və hostinq icraçının adına olur</div><div>Sayt, domen və hostinq həmişə sizin adınıza</div></div><div class="cmpr"><div>Saytı özünüz dəyişə bilmirsiniz</div><div>Admin paneli göstərirəm, özünüz idarə edirsiniz</div></div><div class="cmpr"><div>Təhvildən sonra əlaqə kəsilir</div><div>7 gün pulsuz dəstək, istəsəniz aylıq texniki xidmət</div></div>
       </div>
     </div>
   </section>
@@ -432,43 +487,42 @@ section{padding-block:96px;position:relative}
     <div class="wrap pgrid">
       <div class="head" style="margin:0">
         <span class="eyebrow">Proses</span>
-        <h2>Demodan <span class="grad">canlı sayta</span></h2>
-        <p class="lead">Hər addımda nə olacağını əvvəlcədən bilirsiniz.</p>
-        <div class="photo" style="aspect-ratio:4/3;margin-top:12px" data-photo="3"><span>Şəkil 3<small>noutbukla işləyərkən</small></span></div>
+        <h2>Demodan <span class="grad">canlı sayta</span> 5 addım</h2>
+        <p class="lead">Hər addımda nə olacağını əvvəlcədən bilirsiniz. Sayt canlıya çıxana qədər onu test ünvanında görür və yoxlayırsınız.</p>
+        <a class="btn pri" href="paketler.html" style="justify-self:start;margin-top:8px">Paketləri müqayisə edin</a>
       </div>
       <ol class="tl" id="tl">
-        <li><b>Demo seçimi</b><span>Sahənizin demolarına baxırsınız, uyğun paketi birlikdə seçirik.</span></li>
-        <li><b>Razılaşma</b><span>İş həcmi, müddət və şərtlər yazılı müqavilə ilə təsdiqlənir.</span></li>
-        <li><b>Materiallar</b><span>Loqo, şəkillər, qiymətlər və mətnləri göndərirsiniz.</span></li>
-        <li><b>Qurulma və test</b><span>Sayt sizin domeninizdə qurulur, telefonda və kompüterdə yoxlanılır.</span></li>
-        <li><b>Təhvil və təlim</b><span>Admin paneli göstərirəm, bütün giriş məlumatları sizə verilir.</span></li>
+        <li><b>Demo və ya tema seçimi</b><span>Sahənizin demosunu və ya hazır WordPress temasını seçirsiniz, uyğun paketi birlikdə müəyyənləşdiririk.</span></li>
+        <li><b>Müqavilə</b><span>İş həcmi, müddət, ödəniş mərhələləri və paketin tərkibi yazılı razılaşdırılır.</span></li>
+        <li><b>Materiallar</b><span>Loqo, şəkillər, qiymətlər və mətnləri göndərirsiniz. Nə lazım olduğunu siyahı ilə verirəm.</span></li>
+        <li><b>Qurulma və test</b><span>Sayt qurulur, telefonda və kompüterdə yoxlanılır, düzəlişləriniz edilir.</span></li>
+        <li><b>Canlıya çıxış və təlim</b><span>Sayt domeninizdə açılır, admin paneli göstərirəm, bütün girişlər sizə verilir.</span></li>
       </ol>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="head"><span class="eyebrow">Alətlər</span><h2>İşlədiyim texnologiyalar</h2></div>
-      <div class="chips" style="margin-bottom:34px"><span>WordPress</span><span>WooCommerce</span><span>HTML və CSS</span><span>JavaScript</span><span>Mobil uyğunluq</span><span>Sürət optimallaşdırması</span></div>
-      <div class="gal3">
-        <div class="photo" data-photo="2"><span>Şəkil 2</span></div>
-        <div class="photo" data-photo="4"><span>Şəkil 4</span></div>
-        <div class="photo" data-photo="5"><span>Şəkil 5<small>iş yeri və ya komanda</small></span></div>
-      </div>
+      <div class="head"><span class="eyebrow">Kimlər üçün</span><h2>Sahənizi seçin, <span class="grad">saytınızı görün</span></h2></div>
+      <div class="ngrid"><a href="demolar.html#butik">Geyim butiki →</a><a href="demolar.html#biju">Aksesuar →</a><a href="demolar.html#gul">Gül və hədiyyə →</a><a href="demolar.html#kosmetika">Kosmetika →</a><a href="demolar.html#telefon">Telefon mağazası →</a><a href="demolar.html#restoran">Restoran və kafe →</a><a href="demolar.html#salon">Gözəllik salonu →</a><a href="demolar.html#kurs">Kurs mərkəzi →</a><a href="demolar.html#tur">Tur şirkəti →</a><a href="demolar.html#huquq">Hüquq və mühasibat →</a><a href="demolar.html#repetitor">Repetitor →</a><a href="demolar.html#smm">SMM və digital →</a></div>
+      <div class="chips" style="margin-top:28px"><span>WordPress</span><span>WooCommerce</span><span>HTML və CSS</span><span>JavaScript</span><span>Mobil uyğunluq</span><span>Sürət optimallaşdırması</span></div>
     </div>
   </section>
 
   <section style="padding-top:0">
     <div class="wrap">
-      <div class="head" style="margin-bottom:22px"><span class="eyebrow">Rəylər</span><h2>Müştərilər nə deyir</h2></div>
-      <div class="empty"><b>İlk müştərilərimin rəyləri burada olacaq</b><span>Yalnız real müştərilərin icazəsi ilə paylaşılan rəylər yerləşdiriləcək.</span></div>
+      <div class="first rv">
+        <span class="eyebrow">Rəylər</span>
+        <h3>İlk müştərilərimdən biri olun</h3>
+        <p>Burada yalnız real müştərilərin icazəsi ilə paylaşılan rəylər olacaq. Saxta rəy yoxdur, uydurma rəqəm yoxdur. Sizin layihəniz bu səhifədə ilk nümunə ola bilər.</p>
+      </div>
     </div>
   </section>
-  
+
   <section>
     <div class="wrap"><div class="cta">
-      <div style="display:grid;gap:14px;max-width:720px"><span class="eyebrow">Növbəti addım</span><h2>Saytınızı birlikdə quraq</h2><p class="lead">Sahənizi və nə istədiyinizi yazın, sizə uyğun paketi və demonu göstərim. İlk məsləhət pulsuzdur.</p></div>
-      <div style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn pri" href="elaqe.html">Əlaqə saxla</a><a class="btn" href="demolar.html">Demolara bax</a></div>
+      <div style="display:grid;gap:14px;max-width:720px"><span class="eyebrow">Növbəti addım</span><h2>Saytınızı <span class="grad">birlikdə quraq</span></h2><p class="lead">Sahənizi yazın, sizə uyğun demonu və paketi göstərim. İlk məsləhət pulsuzdur.</p></div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn wa" href="https://wa.me/994709331108?text=Salam%2C%20Valeh!%20Sayt%20sifari%C5%9Fi%20il%C9%99%20ba%C4%9Fl%C4%B1%20yaz%C4%B1ram." target="_blank" rel="noopener">WhatsApp · +994 70 933 11 08</a><a class="btn" href="elaqe.html">Sorğu formu</a></div>
     </div></div>
   </section>
 </main>
@@ -476,10 +530,12 @@ section{padding-block:96px;position:relative}
 <script>
 (function(){
   document.getElementById("burger").addEventListener("click",function(){var o=document.getElementById("nav").classList.toggle("open");this.setAttribute("aria-expanded",o)});
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   var el=document.getElementById("tl");
   function prog(){var r=el.getBoundingClientRect(),vh=innerHeight;el.style.setProperty("--prog",Math.min(1,Math.max(0,(vh*.7-r.top)/r.height)))}
   addEventListener("scroll",prog,{passive:true});prog();
-  [].forEach.call(document.querySelectorAll(".card"),function(c){c.addEventListener("pointermove",function(e){var r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")})});
+  if(!reduce&&"IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var b=e.target,n=+b.dataset.n,t0=performance.now();(function st(t){var k=Math.min(1,(t-t0)/1100);b.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(st)})(t0)})},{threshold:.6});
+    [].forEach.call(document.querySelectorAll("[data-n]"),function(b){io.observe(b)})}
 })();
 </script>
 </body>

@@ -65,6 +65,9 @@ section{padding-block:96px;position:relative}
 .nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
 .foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--neon)}
 .ateaser{display:grid;gap:32px;align-items:center}
+.tick{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.tick li{display:flex;gap:10px;font-weight:500}
+.tick li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-weight:700;font-size:13px}
 .ateaser .photo{aspect-ratio:4/5;max-width:380px;width:100%}
 @media(min-width:960px){.ateaser{grid-template-columns:.7fr 1.3fr}}
 .top .btn{min-height:42px;padding:0 18px;font-size:14px}
@@ -526,11 +529,11 @@ section{padding-block:96px;position:relative}
     <div class="wrap ateaser">
       <div class="photo" data-photo="1"><img src="photos/valeh.jpg" alt="Valeh, Valeh Nexus X təsisçisi" loading="lazy"></div>
       <div class="atxt">
-        <span class="eyebrow">Haqqımda</span>
-        <h2>Salam, mən <span class="grad">Valeh</span></h2>
-        <p>Bakıda yaşayıram və WordPress ilə saytlar qururam. Bu saytda gördüyünüz hər şeyi, o cümlədən 36 demonu özüm qurmuşam.</p>
-        <div class="chips"><span>WordPress</span><span>WooCommerce</span><span>HTML və CSS</span><span>JavaScript</span></div>
-        <a class="btn" href="haqqimda.html" style="justify-self:start">Haqqımda və iş prosesi →</a>
+        <span class="eyebrow">Haqqımda · Valeh Nexus X</span>
+        <h2>Saytınızı mən qururam. <span class="grad">Siz satışla məşğul olun.</span></h2>
+        <p>Mən Valeh. Bakıda kiçik bizneslər üçün WordPress saytları qururam. Bu saytdakı hər şeyi, o cümlədən 36 demonu özüm hazırlamışam.</p>
+        <ul class="tick"><li>Ödənişdən əvvəl saytınızı canlı demoda görürsünüz</li><li>Sayt, domen və hostinq həmişə sizin adınıza</li><li>Ödəniş hissə-hissə, sayt canlıya çıxanda borc qalmır</li></ul>
+        <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn pri" href="haqqimda.html">Niyə mən? →</a><a class="btn" href="https://wa.me/994709331108?text=Salam%2C%20Valeh!" target="_blank" rel="noopener">WhatsApp-da yazın</a></div>
       </div>
     </div>
   </section>
