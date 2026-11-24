@@ -65,6 +65,8 @@ section{padding-block:96px;position:relative}
 .nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
 .foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--neon)}
 .ateaser{display:grid;gap:32px;align-items:center}
+.ph-cut{background:radial-gradient(70% 55% at 50% 38%,rgba(0,200,255,.28),transparent 70%),linear-gradient(180deg,#0d1c38,#060c1a)!important}
+.ph-cut img{object-fit:cover;object-position:50% 20%}
 .tick{margin:0;padding:0;list-style:none;display:grid;gap:10px}
 .tick li{display:flex;gap:10px;font-weight:500}
 .tick li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-weight:700;font-size:13px}
@@ -389,11 +391,11 @@ section{padding-block:96px;position:relative}
 .pf{position:relative;justify-self:center;width:min(100%,430px);aspect-ratio:4/5}
 .pf .ring{position:absolute;inset:-3px;border-radius:30px;background:conic-gradient(from var(--a),var(--neon),var(--neon-2) 20%,transparent 40%,transparent 60%,var(--neon-2) 80%,var(--neon));animation:spin 9s linear infinite;filter:drop-shadow(0 0 18px rgba(0,200,255,.45))}
 .pf .in{position:absolute;inset:0;border-radius:28px;overflow:hidden;background:var(--bg-2)}
-.pf img{width:100%;height:100%;object-fit:cover;object-position:top}
+.pf img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}.ph-cut{background:radial-gradient(70% 55% at 50% 38%,rgba(0,200,255,.28),transparent 70%),linear-gradient(180deg,#0d1c38,#060c1a)!important}.ph-cut img{object-fit:cover;object-position:50% 20%}
 .pf .in::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,9,20,.55),transparent 35%)}
 .bdg{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:rgba(8,16,31,.92);border:1px solid #24406e;box-shadow:0 14px 30px rgba(0,0,0,.45);font:600 13.5px var(--fd);white-space:nowrap;animation:bob 6s ease-in-out infinite}
 .bdg i{font-style:normal;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon)}
-.bdg.b1{left:-26px;top:14%}.bdg.b2{right:-22px;top:46%;animation-delay:-2s}.bdg.b3{left:-10px;bottom:9%;animation-delay:-4s}
+.bdg.b1{left:-26px;top:8%}.bdg.b2{right:-22px;top:72%;animation-delay:-2s}.bdg.b3{left:-10px;bottom:9%;animation-delay:-4s}
 @keyframes bob{50%{transform:translateY(-8px)}}
 .big{font:700 clamp(30px,4.6vw,54px)/1.1 var(--fd);letter-spacing:-.025em;max-width:22ch}
 .cmpw{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--bg-2)}
@@ -457,7 +459,7 @@ section{padding-block:96px;position:relative}
       </div>
       <div class="pf">
         <span class="ring" aria-hidden="true"></span>
-        <div class="in" data-photo="1"><img src="photos/valeh.jpg" alt="Valeh, Valeh Nexus X təsisçisi"></div>
+        <div class="in ph-cut" data-photo="1"><img src="photos/valeh.webp" alt="Valeh, Valeh Nexus X təsisçisi"></div>
         <span class="bdg b1"><i>◉</i>Ödənişdən əvvəl canlı demo</span>
         <span class="bdg b2"><i>✓</i>Hər şey sizin adınıza</span>
         <span class="bdg b3"><i>₼</i>Hissə-hissə ödəniş</span>
