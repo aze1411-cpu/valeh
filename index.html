@@ -305,6 +305,48 @@ section{padding-block:96px;position:relative}
 .vsl .b li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-size:12px;font-weight:700;margin-top:1px}
 .vsl h3{font-size:18px;margin-bottom:12px}
 @media(max-width:700px){.vs{aspect-ratio:auto;height:520px}.bub{font-size:13px;max-width:62%}.vs .web .ord{left:12px;right:12px;top:14px;bottom:auto;max-width:none}}
+
+/* ===== Ödəniş yolları (#odenis) ===== */
+.pway{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-bottom:22px}
+.pway button{display:grid;gap:4px;text-align:left;padding:18px 20px;border-radius:18px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;transition:border-color .25s,box-shadow .25s,transform .25s;min-width:0}
+.pway button:hover{border-color:#2a4776;transform:translateY(-2px)}
+.pway button[aria-pressed="true"]{border-color:var(--neon);box-shadow:var(--glow)}
+.pway b{font:600 18px var(--fd);display:flex;align-items:center;gap:10px}
+.pway b i{font-style:normal;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(0,200,255,.12);color:var(--neon);font-size:15px}
+.pway span{color:var(--muted);font-size:14.5px}
+.pbox{border-radius:26px;padding:clamp(20px,4vw,40px);background:radial-gradient(500px 260px at 90% 0%,rgba(0,200,255,.14),transparent 70%),var(--bg-2);border:1px solid var(--line);display:grid;gap:22px;min-width:0}
+.ptop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+.ptop h3{font-size:clamp(22px,2.6vw,28px)}
+.ptier{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--panel)}
+.ptier button{min-height:38px;padding:0 16px;border:0;border-radius:999px;background:none;color:var(--muted);font:600 14px var(--fd);cursor:pointer}
+.ptier button[aria-pressed="true"]{background:var(--neon);color:var(--neon-ink)}
+.ptrack{display:flex;gap:6px;align-items:stretch;min-width:0}
+.pseg{flex:var(--w) 1 0;min-width:0;display:grid;gap:8px}
+.pseg .bar2{height:14px;border-radius:8px;background:#13233f;overflow:hidden;position:relative}
+.pseg .bar2::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--neon-2),var(--neon));box-shadow:0 0 12px rgba(0,200,255,.5);transform-origin:left;transform:scaleX(0);animation:pfill .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--d) * 450ms)}
+@keyframes pfill{to{transform:scaleX(1)}}
+.pseg b{font:700 clamp(18px,2.4vw,24px)/1 var(--fd);font-variant-numeric:tabular-nums}
+.pseg small{display:block;color:var(--muted);font-size:13px;line-height:1.35}
+.pseg em{font-style:normal;color:var(--ink);font:600 13px var(--fd)}
+.pend{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px dashed #24406e;padding-top:18px}
+.pend .live{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--fd);background:rgba(0,200,255,.12);border:1px solid rgba(0,200,255,.4);color:var(--neon);padding:7px 14px;border-radius:999px}
+.pend .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.pend .zero{font:700 15px var(--fd)}
+.pend .zero span{color:var(--neon)}
+.pnote{color:var(--muted);font-size:15px;max-width:70ch}
+.pbank{display:grid;gap:10px;grid-template-columns:1fr auto 1fr;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.pbank div{display:grid;gap:2px;min-width:0}
+.pbank small{color:var(--muted);font-size:13px}
+.pbank b{font:600 15px var(--fd)}
+.pbank .ar{color:var(--neon);font-size:20px}
+.stairs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:end;min-height:230px}
+.st{border-radius:16px 16px 8px 8px;padding:14px;display:grid;align-content:end;gap:4px;background:linear-gradient(180deg,rgba(0,200,255,.22),rgba(47,123,255,.08));border:1px solid #24406e;height:var(--h);transform-origin:bottom;animation:stup .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--d) * 300ms);min-width:0}
+@keyframes stup{from{transform:scaleY(0);opacity:0}}
+.st small{color:var(--muted);font-size:12.5px;line-height:1.3}
+.st b{font:700 clamp(18px,2.4vw,24px)/1 var(--fd)}
+.st em{font-style:normal;font:600 13px var(--fd);color:var(--neon)}
+@media(prefers-reduced-motion:reduce){.pseg .bar2::after{transform:none}}
+@media(max-width:600px){.ptrack{flex-direction:column}.pseg{flex:none}.pbank{grid-template-columns:1fr}.pbank .ar{transform:rotate(90deg);justify-self:start}}
 /* 7. Kursorun ardınca zəif işıq (yalnız siçan) */
 .glow{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,255,.07),transparent 60%);pointer-events:none;z-index:40;opacity:0;transition:opacity .6s}
 .glow.on{opacity:1}
@@ -498,6 +540,24 @@ section{padding-block:96px;position:relative}
   </section>
 
   <div class="sline" aria-hidden="true"><i></i></div>
+  <section id="odenis">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Ödəniş</span>
+        <h2>Sizə uyğun <span class="grad">ödəniş yolu</span></h2>
+        <p class="lead">Vəziyyətinizi seçin və ödənişin necə bölündüyünü görün. Hansı yolu seçsəniz də, sayt canlıya çıxanda heç bir borcunuz qalmır.</p>
+      </div>
+      <div class="pway" id="pway" role="group" aria-label="Ödəniş yolu">
+        <button type="button" data-w="card" aria-pressed="true"><b><i>💳</i>Taksit kartım var</b><span>Birkart, Tamkart ilə aylara bölün</span></button>
+        <button type="button" data-w="stage" aria-pressed="false"><b><i>◔</i>Taksit kartım yoxdur</b><span>İş getdikcə hissə-hissə ödəyin</span></button>
+        <button type="button" data-w="grow" aria-pressed="false"><b><i>↗</i>Büdcəm azdır</b><span>Kiçikdən başlayın, sonra böyüdün</span></button>
+      </div>
+      <div class="pbox" id="pbox" aria-live="polite"></div>
+      <p style="color:var(--muted);font-size:13.5px;margin-top:14px">Nümunə qiymətlər mağaza tipli sayt üçündür: 399 / 899 / 1,499 ₼. Xidmət saytlarında 299 / 699 / 1,199 ₼, aksesuar saytlarında 449 / 899 / 1,499 ₼. Dəqiq şərtlər müqavilədə yazılır.</p>
+    </div>
+  </section>
+
+  <div class="sline" aria-hidden="true"><i></i></div>
   <section id="elaqe" style="padding-top:20px">
     <div class="wrap">
       <div class="cta rise">
@@ -650,6 +710,30 @@ section{padding-block:96px;position:relative}
     addEventListener("pointermove",function(e){tx=e.clientX;ty=e.clientY;if(!gon){gon=true;g.classList.add("on")}},{passive:true});
     document.addEventListener("pointerleave",function(){gon=false;g.classList.remove("on")});
     (function gl(){gx+=(tx-gx)*.08;gy+=(ty-gy)*.08;g.style.transform="translate3d("+gx+"px,"+gy+"px,0)";requestAnimationFrame(gl)})()}
+
+  /* ===== Ödəniş yolları ===== */
+  (function(){
+    var PR=[399,899,1499],TNm=["Start","Plus","Premium"],ST=[[[50,"İşə başlayanda"],[50,"Canlıya çıxmazdan əvvəl"]],[[40,"İşə başlayanda"],[30,"Dizayn təsdiqlənəndə"],[30,"Canlıya çıxmazdan əvvəl"]],[[30,"İşə başlayanda"],[40,"Dizayn təsdiqlənəndə"],[30,"Canlıya çıxmazdan əvvəl"]]];
+    var way="card",tier=1,box=$("pbox");
+    var fmt=function(n){return Math.round(n).toLocaleString("en-US")+" ₼"};
+    function tiers(){return '<div class="ptier" role="group" aria-label="Paket">'+TNm.map(function(t,i){return '<button type="button" data-t="'+i+'" aria-pressed="'+(i===tier)+'">'+t+'</button>'}).join("")+'</div>'}
+    function track(){var L=ST[tier],P=PR[tier],sum=0;return '<div class="ptrack">'+L.map(function(s,i){var v=i<L.length-1?Math.round(P*s[0]/100):P-sum;sum+=v;return '<div class="pseg" style="--w:'+s[0]+';--d:'+i+'"><div class="bar2"></div><b>'+s[0]+'%</b><small>'+s[1]+'<br><em>'+fmt(v)+'</em></small></div>'}).join("")+'</div>'}
+    var end='<div class="pend"><span class="live">Sayt canlıya çıxır</span><span class="zero">Qalan borc: <span>0 ₼</span></span></div>';
+    function render(){var h;
+      if(way==="grow"){
+        h='<div class="ptop"><h3>Start ilə başlayın, sonra yalnız fərqi ödəyin</h3></div>'+
+          '<div class="stairs"><div class="st" style="--h:38%;--d:0"><small>Bu gün</small><b>Start</b><em>'+fmt(PR[0])+'</em></div><div class="st" style="--h:66%;--d:1"><small>İstədiyiniz vaxt</small><b>Plus-a keçid</b><em>+'+fmt(PR[1]-PR[0])+'</em></div><div class="st" style="--h:100%;--d:2"><small>Biznes böyüyəndə</small><b>Premium-a keçid</b><em>+'+fmt(PR[2]-PR[1])+'</em></div></div>'+
+          '<p class="pnote">Ödədiyiniz pul itmir: daha böyük paketə keçəndə yalnız iki paket arasındakı fərqi ödəyirsiniz. Hər mərhələ də sayt yenilənməzdən əvvəl ödənilir, yəni borc yaranmır.</p>'}
+      else{
+        h='<div class="ptop"><h3>'+(way==="card"?"Mərhələləri taksit kartı ilə ödəyin":"İş getdikcə hissə-hissə ödəyin")+'</h3>'+tiers()+'</div>'+track()+
+          (way==="card"?'<div class="pbank"><div><small>Siz</small><b>Banka aylarla, hissə-hissə ödəyirsiniz</b></div><span class="ar" aria-hidden="true">⇄</span><div><small>Ödəniş</small><b>Onlayn ödəniş linki ilə, kartınızla</b></div></div><p class="pnote">Birkart, Tamkart kimi taksit kartı ilə hər mərhələnin ödənişini aylara bölə bilərsiniz. Taksit bankla aranızdadır.</p>'
+                        :'<p class="pnote">Ödəniş işin gedişinə bağlıdır: başlayanda, dizaynı təsdiqləyəndə və sayt canlıya çıxmazdan əvvəl. Sayt hazır olana qədər onu test ünvanında görüb yoxlayırsınız.</p>')+end}
+      box.innerHTML=h;
+      [].forEach.call(box.querySelectorAll(".ptier button"),function(b){b.addEventListener("click",function(){tier=+b.dataset.t;render()})})}
+    $("pway").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;way=b.dataset.w;
+      [].forEach.call($("pway").children,function(x){x.setAttribute("aria-pressed",x===b)});render()});
+    render();
+  })();
 
   /* sayğaclar (son rəqəm artıq yazılıb, görünəndə yenidən sayır) */
   if("IntersectionObserver" in window&&!reduce){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var el=e.target,n=+el.dataset.n,t0=performance.now();(function st(t){var k=Math.min(1,(t-t0)/1200);el.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(st)})(t0)})},{threshold:.6});
