@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Valeh — Veb Studiya</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Valeh: 12 sahə üzrə 36 canlı demo ilə kiçik bizneslər üçün WordPress saytları.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Konsepsiya: gecə rejimli "stüdiya monitoru" — neon mavi işıq, cihaz çərçivələrində canlı demo, video kimi keçidlər. Bilərəkdən tək tünd görünüş. */
+:root{
+  --bg:#050914;
+  --bg-2:#08101f;
+  --panel:#0c1628;
+  --line:#18294a;
+  --ink:#eaf4ff;
+  --muted:#8ea4c4;
+  --neon:#00c8ff;
+  --neon-2:#2f7bff;
+  --neon-ink:#021220;
+  --glow:0 0 0 1px rgba(0,200,255,.35),0 0 32px rgba(0,200,255,.25);
+  --fd:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fb:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:18px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--fb);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+h1,h2,h3{font-family:var(--fd);line-height:1.05;letter-spacing:-.025em;margin:0;text-wrap:balance}
+h2{font-size:clamp(32px,5.4vw,58px)}
+h3{font-size:21px;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+section{padding-block:96px;position:relative}
+.eyebrow{font:600 12px var(--fd);letter-spacing:.2em;text-transform:uppercase;color:var(--neon);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.lead{color:var(--muted);font-size:18px;max-width:60ch}
+.head{display:grid;gap:16px;margin-bottom:44px;max-width:780px}
+.grad{background:linear-gradient(90deg,var(--neon),var(--neon-2) 60%,#8be9ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:600 15.5px var(--fd);text-decoration:none;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--neon)}
+.btn.pri{background:linear-gradient(90deg,var(--neon),var(--neon-2));color:var(--neon-ink);border:0;box-shadow:0 10px 30px rgba(0,200,255,.3)}
+.btn.pri:hover{box-shadow:0 14px 40px rgba(0,200,255,.45)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+.icb{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:border-color .2s,background .2s}
+.icb:hover{border-color:var(--neon);background:#10203a}
+.icb svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Başlıq */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(5,9,20,.72);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:70px}
+.logo{font:700 24px var(--fd);text-decoration:none;letter-spacing:-.02em}
+.logo i{font-style:normal;color:var(--neon);text-shadow:0 0 12px var(--neon)}
+.nav{display:flex;gap:26px;font:500 15px var(--fd)}
+.nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+.nav a:hover{color:var(--ink)}
+.top .btn{min-height:42px;padding:0 18px;font-size:14px}
+.burger{display:none}
+@media(max-width:900px){.nav{display:none}.burger{display:grid}.top .btn{display:none}
+  .nav.open{display:flex;position:absolute;left:0;right:0;top:70px;flex-direction:column;gap:0;background:var(--bg-2);border-bottom:1px solid var(--line);padding:8px max(18px,env(safe-area-inset-right,0px)) 16px max(18px,env(safe-area-inset-left,0px))}
+  .nav.open a{padding:14px 0;border-bottom:1px solid var(--line);font-size:18px;color:var(--ink)}}
+
+/* Hero */
+.hero{padding-block:72px 40px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 380px at 78% 30%,rgba(0,200,255,.16),transparent 70%),
+  radial-gradient(500px 340px at 10% 90%,rgba(47,123,255,.14),transparent 70%),
+  linear-gradient(rgba(0,200,255,.06) 1px,transparent 1px) 0 0/48px 48px,
+  linear-gradient(90deg,rgba(0,200,255,.06) 1px,transparent 1px) 0 0/48px 48px;
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 40%,transparent 80%);mask-image:radial-gradient(ellipse at center,#000 40%,transparent 80%);pointer-events:none}
+.hgrid{display:grid;gap:56px;align-items:center;position:relative}
+.htxt{display:grid;gap:22px;min-width:0}
+.hero h1{font-size:clamp(40px,6.6vw,80px)}
+.rot{display:grid;overflow:hidden;height:1.18em;line-height:1.12}
+.rot span{grid-area:1/1;transform:translateY(105%);opacity:0;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.rot span.on{transform:none;opacity:1}
+.rot span.out{transform:translateY(-105%);opacity:0}
+.hero .row{display:flex;flex-wrap:wrap;gap:14px}
+.mini{display:flex;flex-wrap:wrap;gap:22px;margin-top:6px}
+.mini div{display:grid}
+.mini b{font:700 26px var(--fd);font-variant-numeric:tabular-nums}
+.mini span{font-size:13px;color:var(--muted)}
+
+/* Cihaz səhnəsi (video kimi) */
+.stage{position:relative;min-width:0;padding-bottom:30px}
+.laptop{position:relative;border-radius:16px;background:#0a1324;border:1px solid #1e3358;box-shadow:var(--glow),0 40px 80px rgba(0,0,0,.6);padding:10px 10px 14px;transform:perspective(1400px) rotateY(-8deg) rotateX(4deg);transition:transform .6s}
+.stage:hover .laptop{transform:perspective(1400px) rotateY(-3deg) rotateX(2deg)}
+.bar{display:flex;align-items:center;gap:6px;padding:2px 4px 9px}
+.bar i{width:9px;height:9px;border-radius:50%;background:#26406b}
+.bar i:first-child{background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.bar u{margin-left:10px;flex:1;text-decoration:none;font:500 11px var(--fb);color:var(--muted);background:#0f1d36;border-radius:6px;padding:3px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.screen{position:relative;aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:#0d1a30}
+.screen img,.pscreen img,.reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transform:scale(1.06);transition:opacity 1s ease,transform 6s ease-out}
+.screen img.on,.pscreen img.on,.reel img.on{opacity:1;transform:scale(1)}
+.phone{position:absolute;right:-6px;bottom:0;width:27%;min-width:96px;aspect-ratio:9/19;border-radius:22px;background:#0a1324;border:1px solid #1e3358;box-shadow:var(--glow),0 30px 60px rgba(0,0,0,.6);padding:6px;z-index:2}
+.pscreen{position:relative;width:100%;height:100%;border-radius:17px;overflow:hidden;background:#0d1a30}
+.ctrl{display:flex;align-items:center;gap:12px;margin-top:22px;padding-right:30%}
+.ctrl .icb{flex:none}
+.seg{display:flex;gap:4px;flex:1;min-width:0}
+.seg button{flex:1;height:4px;border:0;border-radius:4px;background:#1a2c4d;padding:0;cursor:pointer;position:relative;overflow:hidden}
+.seg button::after{content:"";position:absolute;inset:0;background:var(--neon);transform-origin:left;transform:scaleX(var(--p,0));box-shadow:0 0 8px var(--neon)}
+.now{font:600 13px var(--fd);color:var(--muted);white-space:nowrap}
+.now b{color:var(--ink)}
+
+/* Sonsuz zolaq */
+.marq{padding-block:28px;border-block:1px solid var(--line);background:var(--bg-2);overflow:hidden;display:grid;gap:14px}
+.track{display:flex;gap:14px;width:max-content;animation:mq 60s linear infinite}
+.track.rev{animation-direction:reverse;animation-duration:70s}
+.marq:hover .track{animation-play-state:paused}
+.track a{flex:none;width:230px;aspect-ratio:16/10;border-radius:12px;overflow:hidden;border:1px solid var(--line);position:relative;transition:border-color .2s,transform .2s}
+.track a:hover{border-color:var(--neon);transform:translateY(-3px)}
+.track img{width:100%;height:100%;object-fit:cover;object-position:top}
+.track span{position:absolute;left:8px;bottom:8px;font:600 11px var(--fd);background:rgba(5,9,20,.85);padding:3px 8px;border-radius:6px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* Rəqəmlər */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px}
+.stat{border:1px solid var(--line);border-radius:var(--r);padding:24px;background:linear-gradient(180deg,var(--panel),transparent)}
+.stat b{display:block;font:700 clamp(40px,6vw,60px)/1 var(--fd);font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:14.5px}
+
+/* Vitrin: sahə + slayder */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:26px;scrollbar-width:none;scroll-snap-type:x proximity}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;scroll-snap-align:start;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font:600 14.5px var(--fd);cursor:pointer;transition:all .2s}
+.tab:hover{color:var(--ink);border-color:#2a4776}
+.tab[aria-selected="true"]{background:var(--neon);color:var(--neon-ink);border-color:var(--neon);box-shadow:0 0 22px rgba(0,200,255,.4)}
+.slider{position:relative;overflow:hidden;border-radius:24px;border:1px solid var(--line);background:var(--bg-2);touch-action:pan-y}
+.strack{display:flex;transition:transform .7s cubic-bezier(.65,0,.25,1)}
+.slide{flex:0 0 100%;display:grid;gap:28px;padding:28px;align-items:center;min-width:0}
+.slide .frame{border-radius:14px;overflow:hidden;border:1px solid #1e3358;background:#0a1324;box-shadow:0 30px 60px rgba(0,0,0,.5);min-width:0}
+.slide .frame .bar{padding:9px 10px}
+.slide .frame img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.sinfo{display:grid;gap:14px;min-width:0}
+.sinfo .pk{font:700 13px var(--fd);letter-spacing:.16em;text-transform:uppercase;color:var(--neon)}
+.sinfo h3{font-size:clamp(26px,3vw,36px)}
+.sinfo .price{font:700 44px/1 var(--fd);font-variant-numeric:tabular-nums}
+.sinfo .price small{font-size:16px;color:var(--muted);font-weight:500}
+.sinfo ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;color:var(--muted)}
+.sinfo li{display:flex;gap:10px}
+.sinfo li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--neon);box-shadow:0 0 8px var(--neon)}
+.snav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px}
+.dots{display:flex;gap:8px}
+.dots button{width:42px;height:6px;border-radius:6px;border:0;background:#1a2c4d;cursor:pointer;padding:0;transition:background .3s,width .3s}
+.dots button[aria-current="true"]{background:var(--neon);width:64px;box-shadow:0 0 10px var(--neon)}
+.arrows{display:flex;gap:10px}
+.fade{animation:fd .5s ease}
+@keyframes fd{from{opacity:.2;transform:translateY(8px)}}
+
+/* Showreel */
+.reelbox{border-radius:26px;overflow:hidden;border:1px solid var(--line);position:relative;background:#000}
+.reel{position:relative;aspect-ratio:16/9;max-height:78vh;width:100%}
+.reel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,6,14,.85),transparent 45%),linear-gradient(90deg,rgba(2,6,14,.4),transparent 40%);pointer-events:none}
+.cap{position:absolute;left:24px;bottom:62px;z-index:2;display:grid;gap:4px;max-width:70%}
+.cap small{font:600 12px var(--fd);letter-spacing:.18em;text-transform:uppercase;color:var(--neon)}
+.cap b{font:700 clamp(22px,3.4vw,40px)/1.05 var(--fd)}
+.rctl{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;align-items:center;gap:14px;padding:14px 20px;background:rgba(2,6,14,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ticks{display:flex;gap:3px;flex:1;min-width:0;height:22px;align-items:center}
+.ticks button{flex:1;height:5px;border:0;border-radius:3px;background:#24395f;padding:0;cursor:pointer;transition:height .2s,background .2s}
+.ticks button:hover{height:12px}
+.ticks button.done{background:#3a76b8}
+.ticks button.on{background:var(--neon);height:12px;box-shadow:0 0 10px var(--neon)}
+.cnt{font:600 14px var(--fd);font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+
+/* Kartlar */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{position:relative;border-radius:var(--r);padding:26px;background:var(--panel);border:1px solid var(--line);display:grid;gap:12px;align-content:start;overflow:hidden;min-width:0}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(0,200,255,.16),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover::before{opacity:1}
+.card:hover{border-color:#24406e}
+.card .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(0,200,255,.1);border:1px solid rgba(0,200,255,.3)}
+.card .ic svg{width:22px;height:22px;fill:none;stroke:var(--neon);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card p{color:var(--muted)}
+.card .pk{font:700 12px var(--fd);letter-spacing:.16em;text-transform:uppercase;color:var(--neon)}
+.card b.big{font:700 42px/1 var(--fd);font-variant-numeric:tabular-nums}
+.card b.big small{font-size:15px;color:var(--muted);font-weight:500}
+.card ul{margin:0;padding-left:18px;color:var(--muted);display:grid;gap:4px}
+.card.hot{border-color:var(--neon);box-shadow:var(--glow)}
+
+/* Domen və hostinq */
+.dh{border-radius:26px;padding:clamp(24px,4vw,48px);display:grid;gap:28px;position:relative;background:linear-gradient(var(--bg-2),var(--bg-2)) padding-box,linear-gradient(120deg,var(--neon),var(--neon-2),transparent 70%) border-box;border:1.5px solid transparent}
+.dh ul{margin:0;padding:0;list-style:none;display:grid;gap:14px}
+.dh li{display:flex;gap:12px;font-weight:500}
+.dh li::before{content:"✓";flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-weight:700;font-size:14px}
+
+/* Proses */
+.tl{list-style:none;margin:0;padding:0 0 0 34px;display:grid;gap:22px;position:relative;counter-reset:s}
+.tl::before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:2px;background:#1a2c4d}
+.tl::after{content:"";position:absolute;left:12px;top:6px;width:2px;height:calc(var(--prog,0) * (100% - 12px));background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.tl li{position:relative;counter-increment:s;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px;min-width:0}
+.tl li::before{content:counter(s);position:absolute;left:-34px;top:16px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:2px solid var(--neon);font:700 12px var(--fd);color:var(--neon);z-index:1}
+.tl b{display:block;font:600 18px var(--fd)}
+.tl span{color:var(--muted);font-size:15px}
+.pgrid{display:grid;gap:40px;align-items:start}
+
+/* Şəkillər */
+.photo{position:relative;border-radius:20px;overflow:hidden;border:1px solid #1e3358;background:repeating-linear-gradient(135deg,#0c1830 0 14px,#0a1426 14px 28px);display:grid;place-items:center;text-align:center;min-width:0;max-width:100%}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo span{font:600 14px var(--fd);background:rgba(5,9,20,.8);border:1px solid var(--line);padding:8px 14px;border-radius:10px}
+.photo small{display:block;font:400 12px var(--fb);color:var(--muted)}
+.about{display:grid;gap:40px;align-items:center}
+.agal{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;aspect-ratio:1;max-width:520px;width:100%}
+.agal .photo:first-child{grid-row:span 2}
+.atxt{display:grid;gap:16px;min-width:0}
+.atxt p{color:var(--muted);font-size:17px;max-width:60ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font:500 14px var(--fd);color:var(--muted)}
+
+.empty{border:1px dashed #2a4776;border-radius:var(--r);padding:28px;display:grid;gap:6px;max-width:780px}
+.empty b{font:600 19px var(--fd)}
+.empty span{color:var(--muted)}
+
+/* Əlaqə */
+.cta{border-radius:30px;padding:clamp(28px,6vw,72px);position:relative;overflow:hidden;background:radial-gradient(600px 300px at 80% 0%,rgba(0,200,255,.25),transparent 70%),radial-gradient(500px 300px at 0% 100%,rgba(47,123,255,.25),transparent 70%),var(--panel);border:1px solid #24406e;display:grid;gap:28px}
+.cgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.citem{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:rgba(5,9,20,.6);display:grid;gap:2px;min-width:0}
+.citem small{font:600 12px var(--fd);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.citem b{font:600 19px var(--fd);overflow-wrap:anywhere;user-select:all}
+.foot{border-top:1px solid var(--line);padding-block:26px;color:var(--muted);font-size:14px}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+/* Görünən hissədə yumşaq daxilolma (statik vəziyyət görünəndir) */
+@supports (animation-timeline:view()){
+  .rise{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+  @keyframes rise{from{opacity:.35;transform:translateY(26px)}to{opacity:1;transform:none}}
+}
+.hero .htxt>*{animation:hin .9s cubic-bezier(.2,.8,.2,1) both}
+.hero .htxt>*:nth-child(2){animation-delay:.08s}.hero .htxt>*:nth-child(3){animation-delay:.16s}.hero .htxt>*:nth-child(4){animation-delay:.24s}.hero .htxt>*:nth-child(5){animation-delay:.32s}
+@keyframes hin{from{opacity:0;transform:translateY(18px)}}
+
+@media(min-width:960px){
+  .hgrid{grid-template-columns:1fr 1.08fr}
+  .slide{grid-template-columns:1.5fr 1fr;padding:40px}
+  .dh{grid-template-columns:1fr 1fr;align-items:center}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .about{grid-template-columns:1fr 1.1fr}
+}
+@media(max-width:600px){
+  section{padding-block:72px}
+  .laptop{transform:none}.stage:hover .laptop{transform:none}
+  .ctrl{padding-right:31%}.now{padding-right:31%}
+  .cap{left:16px;bottom:58px;max-width:85%}
+  .rctl{padding:10px 12px;gap:10px}
+  .slide{padding:18px}
+  .dots button{width:28px}.dots button[aria-current="true"]{width:44px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#ana">Valeh<i>.</i></a>
+    <nav class="nav" id="nav" aria-label="Əsas menyu">
+      <a href="#vitrin">Demolar</a>
+      <a href="#showreel">Showreel</a>
+      <a href="#xidmet">Xidmətlər</a>
+      <a href="#proses">Proses</a>
+      <a href="#haqqimda">Haqqımda</a>
+      <a href="#elaqe">Əlaqə</a>
+    </nav>
+    <a class="btn pri" href="#elaqe">Sayt sifariş et</a>
+    <button class="icb burger" id="burger" aria-label="Menyunu aç" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main id="ana">
+  <section class="hero">
+    <div class="wrap hgrid">
+      <div class="htxt">
+        <span class="eyebrow">Veb sayt hazırlayıram · Bakı</span>
+        <h1><span class="rot" id="rot" aria-live="off"><span class="on">Butikiniz</span><span>Salonunuz</span><span>Restoranınız</span><span>Kursunuz</span><span>Mağazanız</span><span>Büronuz</span></span>üçün <span class="grad">satış edən</span> sayt</h1>
+        <p class="lead">Salam, mən Valeh. 12 sahə üçün 36 canlı demo hazırlamışam. Saytınızın necə görünəcəyini sifarişdən əvvəl öz gözünüzlə görürsünüz.</p>
+        <div class="row">
+          <a class="btn pri" href="#vitrin">Sahəmin demosuna bax</a>
+          <a class="btn" href="#showreel">Showreel-ə bax</a>
+        </div>
+        <div class="mini"><div><b>12</b><span>sahə</span></div><div><b>36</b><span>canlı demo</span></div><div><b>299 ₼</b><span>başlayan qiymət</span></div></div>
+      </div>
+      <div class="stage" id="stage">
+        <div class="laptop">
+          <div class="bar"><i></i><i></i><i></i><u id="url">aze1411-cpu.github.io/demo-premium-butik</u></div>
+          <div class="screen" id="screen"></div>
+        </div>
+        <div class="phone"><div class="pscreen" id="pscreen"></div></div>
+        <div class="ctrl">
+          <button class="icb" id="hplay" aria-label="Dayandır"><svg viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></svg></button>
+          <div class="seg" id="hseg"></div>
+        </div>
+        <div class="now" id="hnow" style="margin-top:10px">İndi: <b>Velora Butik</b> · Premium</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marq" aria-label="Bütün demolar">
+    <div class="track" id="t1"></div>
+    <div class="track rev" id="t2"></div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat rise"><b data-n="12">12</b><span>sahə üçün hazır həll</span></div>
+        <div class="stat rise"><b data-n="36">36</b><span>canlı demo sayt</span></div>
+        <div class="stat rise"><b data-n="3">3</b><span>paket: Start, Plus, Premium</span></div>
+        <div class="stat rise"><b data-n="7">7</b><span>gün pulsuz texniki dəstək</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vitrin" style="padding-top:20px">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Demolar və qiymətlər</span>
+        <h2>Sahənizi seçin, <span class="grad">saytınıza baxın</span></h2>
+        <p class="lead">Hər sahənin üç paketi var. Sürüşdürün və ya oxlara toxunun. Demo yeni pəncərədə canlı açılır.</p>
+      </div>
+      <div class="tabs" id="tabs" role="tablist" aria-label="Sahələr"></div>
+      <div class="slider" id="slider">
+        <div class="strack" id="strack"></div>
+      </div>
+      <div class="snav">
+        <div class="dots" id="dots"></div>
+        <div class="arrows">
+          <button class="icb" id="prev" aria-label="Əvvəlki paket"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button class="icb" id="next" aria-label="Növbəti paket"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="showreel">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Showreel</span>
+        <h2>36 demo, <span class="grad">bir baxışda</span></h2>
+        <p class="lead">Bütün demolar bir-birinin ardınca. İstənilən nöqtəyə toxunun, həmin demoya keçin.</p>
+      </div>
+      <div class="reelbox">
+        <div class="reel" id="reel"></div>
+        <a class="cap" id="cap" target="_blank" rel="noopener"><small id="capk">Geyim butiki · Start</small><b id="capb">Velora Butik</b></a>
+        <div class="rctl">
+          <button class="icb" id="rplay" aria-label="Dayandır"><svg viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></svg></button>
+          <div class="ticks" id="ticks"></div>
+          <span class="cnt" id="rcnt">01 / 33</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="xidmet" style="background:var(--bg-2);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Xidmətlər</span>
+        <h2>Nə edirəm</h2>
+      </div>
+      <div class="cards">
+        <article class="card rise"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 12h-13z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></div><h3>Onlayn mağaza</h3><p>Kataloq, səbət və sifariş forması. Məhsulları admin paneldən özünüz idarə edirsiniz.</p></article>
+        <article class="card rise"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></div><h3>Randevu və qeydiyyat</h3><p>Salon, klinika, kurs və repetitorlar üçün gün və saat seçimi olan sayt.</p></article>
+        <article class="card rise"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg></div><h3>Fərdi premium dizayn</h3><p>Sahənizə xas alətlər: kalkulyator, test, qurucu, filtrlər və animasiyalar.</p></article>
+        <article class="card rise"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Texniki xidmət</h3><p>Yeniləmə, ehtiyat nüsxə və aylıq dəyişikliklər. Siz satışla məşğul olursunuz.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="dh rise">
+        <div style="display:grid;gap:14px">
+          <span class="eyebrow">Sizin seçiminiz</span>
+          <h2 style="font-size:clamp(30px,4.4vw,46px)">Domen və hostinq</h2>
+          <p class="lead">Sayt, domen və hostinq həmişə sizin adınıza olur. Məndən asılı qalmırsınız və istədiyiniz vaxt başqa mütəxəssisə keçə bilərsiniz.</p>
+        </div>
+        <ul>
+          <li>Domen və ya hostinqiniz varsa, onu istifadə edirəm</li>
+          <li>Yoxdursa, sizin adınıza qeydiyyatdan keçirib quraşdırıram</li>
+          <li>Xərci birbaşa provayderə ödəyirsiniz, üstünə heç nə əlavə etmirəm</li>
+          <li>Quraşdırma və texniki sazlama paketə daxildir</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="proses" style="padding-top:20px">
+    <div class="wrap pgrid">
+      <div class="head" style="margin:0">
+        <span class="eyebrow">Proses</span>
+        <h2>Demodan <span class="grad">canlı sayta</span></h2>
+        <p class="lead">Hər addımda nə olacağını əvvəlcədən bilirsiniz.</p>
+        <div class="photo" style="aspect-ratio:4/3;margin-top:12px" data-photo="3"><span>Şəkil 3<small>noutbukla işləyərkən</small></span></div>
+      </div>
+      <ol class="tl" id="tl">
+        <li><b>Demo seçimi</b><span>Sahənizin demolarına baxırsınız, uyğun paketi birlikdə seçirik.</span></li>
+        <li><b>Razılaşma</b><span>İş həcmi, müddət və şərtlər yazılı müqavilə ilə təsdiqlənir.</span></li>
+        <li><b>Materiallar</b><span>Loqo, şəkillər, qiymətlər və mətnləri göndərirsiniz.</span></li>
+        <li><b>Qurulma və test</b><span>Sayt sizin domeninizdə qurulur, telefonda və kompüterdə yoxlanılır.</span></li>
+        <li><b>Təhvil və təlim</b><span>Admin paneli göstərirəm, bütün giriş məlumatları sizə verilir.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-2);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Təhvildən sonra</span>
+        <h2>Aylıq texniki xidmət</h2>
+        <p class="lead">İstəsəniz saytı özünüz idarə edirsiniz, istəsəniz bu işi mən görürəm.</p>
+      </div>
+      <div class="cards">
+        <article class="card rise"><span class="pk">Baza</span><b class="big">39 <small>₼ / ay</small></b><ul><li>Yeniləmələr</li><li>Aylıq ehtiyat nüsxə</li><li>Ayda 1 saat dəyişiklik</li></ul></article>
+        <article class="card hot rise"><span class="pk">Standart</span><b class="big">79 <small>₼ / ay</small></b><ul><li>Həftəlik ehtiyat nüsxə</li><li>Ayda 3 saat dəyişiklik</li><li>Kampaniya və banner yeniləmələri</li></ul></article>
+        <article class="card rise"><span class="pk">Aktiv</span><b class="big">149 <small>₼ / ay</small></b><ul><li>Ayda 6 saat iş</li><li>Hər ay kiçik təkmilləşdirmə</li><li>Eyni gün cavab</li></ul></article>
+      </div>
+      <p style="color:var(--muted);font-size:14px;margin-top:18px">Plus və Premium paketlərinə 1 ay Standart xidmət hədiyyədir. Plandan kənar iş: saatı 20 ₼.</p>
+    </div>
+  </section>
+
+  <section id="haqqimda">
+    <div class="wrap about">
+      <div class="agal">
+        <div class="photo" data-photo="1"><span>Şəkil 1<small>əsas portret</small></span></div>
+        <div class="photo" data-photo="2"><span>Şəkil 2</span></div>
+        <div class="photo" data-photo="4"><span>Şəkil 4</span></div>
+      </div>
+      <div class="atxt">
+        <span class="eyebrow">Haqqımda</span>
+        <h2>Salam, mən <span class="grad">Valeh</span></h2>
+        <p>Bakıda yaşayıram və WordPress ilə saytlar qururam. Öz layihələrim üçün 10-dan çox sayt hazırlamışam, indi bu təcrübəni kiçik bizneslərə təklif edirəm.</p>
+        <p>Bu saytda gördüyünüz hər şeyi, o cümlədən 36 demonu özüm qurmuşam. Sizin saytınız da bu keyfiyyətdə olacaq.</p>
+        <div class="chips"><span>WordPress</span><span>WooCommerce</span><span>HTML və CSS</span><span>JavaScript</span><span>Mobil uyğunluq</span></div>
+        <div class="photo" style="aspect-ratio:16/7" data-photo="5"><span>Şəkil 5<small>iş yeri və ya komanda</small></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:22px"><span class="eyebrow">Rəylər</span><h2>Müştərilər nə deyir</h2></div>
+      <div class="empty"><b>İlk müştərilərimin rəyləri burada olacaq</b><span>Yalnız real müştərilərin icazəsi ilə paylaşılan rəylər yerləşdiriləcək.</span></div>
+    </div>
+  </section>
+
+  <section id="elaqe" style="padding-top:20px">
+    <div class="wrap">
+      <div class="cta rise">
+        <div style="display:grid;gap:14px;max-width:720px">
+          <span class="eyebrow">Əlaqə</span>
+          <h2>Saytınızı <span class="grad">birlikdə quraq</span></h2>
+          <p class="lead">Sahənizi və nə istədiyinizi yazın, sizə uyğun paketi və demonu göstərim. İlk məsləhət pulsuzdur.</p>
+        </div>
+        <div class="cgrid">
+          <div class="citem"><small>WhatsApp</small><b>+994 XX XXX XX XX</b><span style="font-size:13px;color:var(--muted)">nömrə əlavə olunacaq</span></div>
+          <div class="citem"><small>E-poçt</small><b>əlavə olunacaq</b></div>
+          <div class="citem"><small>Instagram və TikTok</small><b>əlavə olunacaq</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap"><span>© Valeh · Veb saytların hazırlanması · Bakı</span><span>Demolardakı brend adları və məlumatlar nümunədir</span></div>
+</footer>
+
+<script>
+(function(){
+  var GH="https://aze1411-cpu.github.io/demo-";
+  var SHOP=[399,899,1499], SERV=[299,699,1199];
+  var N=[
+    {k:"butik",n:"Geyim butiki",b:"Velora Butik",p:SHOP,f:["Kataloq və WhatsApp sifarişi","Ölçü və rəng seçimi, səbət, checkout","Lookbook, filtrlər, ölçü bələdçisi"]},
+    {k:"gul",n:"Gül və hədiyyə",b:"Florya Gül Evi",p:SHOP,f:["Buket vitrini və WhatsApp sifarişi","Çatdırılma günü və saatı, kart mətni","Buket qurucusu, florist profilləri"]},
+    {k:"kosmetika",n:"Kosmetika və ətriyyat",b:"Lumi Beauty",p:SHOP,f:["Məhsul vitrini və WhatsApp sifarişi","Həcm və çalar seçimi, pulsuz nümunə","Ətir tapıcısı, dəri tipinə görə filtr"]},
+    {k:"telefon",n:"Telefon və aksesuarlar",b:"Mobil Mərkəz",p:SHOP,f:["Məhsul vitrini və WhatsApp sifarişi","Yaddaş və rəng seçimi, trade-in sahəsi","Hissəli ödəniş kalkulyatoru"]},
+    {k:"restoran",n:"Restoran və kafe",b:"Sumaq Mətbəx",p:SHOP,f:["Menyu, QR menyu və WhatsApp sifarişi","Çatdırılma, vaxt seçimi, rezervasiya","Masa və banket planlayıcısı"]},
+    {k:"salon",n:"Gözəllik salonu",b:"Sena Beauty Studio",p:SERV,f:["Xidmətlər, qiymətlər, WhatsApp randevu","Usta, gün və saat seçimi","Hədiyyə sertifikatı, usta profilləri"]},
+    {k:"kurs",n:"Kurs mərkəzi",b:"Pillə Akademiya",p:SERV,f:["Kurslar və WhatsApp qeydiyyatı","Format, vaxt və sınaq dərsi təqvimi","Səviyyə testi, müəllim profilləri"]},
+    {k:"tur",n:"Tur şirkəti",b:"Səyyah Travel",p:SERV,f:["Turlar və WhatsApp sorğusu","Tarix, nəfər və otel seçimi","Səyahət büdcəsi kalkulyatoru"]},
+    {k:"huquq",n:"Hüquqşünas və mühasib",b:"Ədalət & Hesab",p:SERV,f:["Xidmətlər və WhatsApp müraciəti","Görüş formatı, gün və saat","Mühasibat qiymət kalkulyatoru"]},
+    {k:"repetitor",n:"Repetitor",b:"Bilgə Repetitor",p:SERV,f:["Fənlər və WhatsApp qeydiyyatı","Format, tezlik, sınaq dərsi","Repetitor seçim testi"]},
+    {k:"smm",n:"SMM və digital",b:"Pulse Digital",p:SERV,f:["Xidmətlər və WhatsApp müraciəti","Onlayn brif və audit zəngi","SMM paket qurucusu, portfolio"]},
+    {k:"biju",n:"Aksesuar və bijuteriya",b:"Nüra Aksesuar",p:[449,899,1499],f:["Kataloq və WhatsApp sifarişi","Rəng və ölçü seçimi, səbət, checkout","Hədiyyə bələdçisi, lookbook, filtrlər"]}
+  ];
+  var T=["start","plus","premium"], TN=["Start","Plus","Premium"];
+  var img=function(t,k){return "shots/"+t+"-"+k+".jpg"};
+  var url=function(t,k){return GH+t+"-"+k+"/"};
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $=function(id){return document.getElementById(id)};
+
+  /* menyu */
+  $("burger").addEventListener("click",function(){var o=$("nav").classList.toggle("open");this.setAttribute("aria-expanded",o)});
+  [].forEach.call(document.querySelectorAll("#nav a"),function(a){a.addEventListener("click",function(){$("nav").classList.remove("open")})});
+
+  /* dəyişən söz */
+  var rw=[].slice.call($("rot").children),ri=0;
+  if(!reduce)setInterval(function(){var c=rw[ri];c.classList.remove("on");c.classList.add("out");ri=(ri+1)%rw.length;var n=rw[ri];n.classList.remove("out");void n.offsetWidth;n.classList.add("on");setTimeout(function(){c.classList.remove("out")},650)},2400);
+
+  /* hero: video kimi cihaz səhnəsi */
+  var H=N.map(function(x){return x.k});
+  $("screen").innerHTML=H.map(function(k,i){return '<img src="'+img("premium",k)+'" alt="'+N[i].b+' premium demo" '+(i?'loading="lazy"':'class="on"')+'>'}).join("");
+  $("pscreen").innerHTML=H.map(function(k,i){return '<img src="shots/m-'+k+'.jpg" alt="" '+(i?'loading="lazy"':'class="on"')+'>'}).join("");
+  $("hseg").innerHTML=H.map(function(k,i){return '<button aria-label="'+N[i].n+'"></button>'}).join("");
+  var hs=[].slice.call($("screen").children),hp=[].slice.call($("pscreen").children),hb=[].slice.call($("hseg").children);
+  var hi=0,ht=0,hplay=!reduce,HD=4200,last=performance.now();
+  function hgo(i){hs[hi].classList.remove("on");hp[hi].classList.remove("on");hi=(i+H.length)%H.length;hs[hi].classList.add("on");hp[hi].classList.add("on");ht=0;
+    hb.forEach(function(b,j){b.style.setProperty("--p",j<hi?1:0)});
+    $("url").textContent="aze1411-cpu.github.io/demo-premium-"+H[hi];$("hnow").innerHTML="İndi: <b>"+N[hi].b+"</b> · Premium"}
+  hb.forEach(function(b,i){b.addEventListener("click",function(){hgo(i)})});
+  function setPlayIcon(btn,on){btn.setAttribute("aria-label",on?"Dayandır":"Oynat");btn.innerHTML=on?'<svg viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></svg>':'<svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg>'}
+  setPlayIcon($("hplay"),hplay);
+  $("hplay").addEventListener("click",function(){hplay=!hplay;setPlayIcon(this,hplay)});
+  $("stage").addEventListener("click",function(e){if(e.target.closest(".laptop"))window.open(url("premium",H[hi]),"_blank","noopener")});
+
+  /* showreel: 33 demo */
+  var R=[];N.forEach(function(x){T.forEach(function(t,j){R.push({t:t,k:x.k,b:x.b,n:x.n,tn:TN[j]})})});
+  $("reel").innerHTML=R.map(function(r,i){return '<img src="'+img(r.t,r.k)+'" alt="'+r.b+' '+r.tn+'" loading="lazy" '+(i?'':'class="on"')+'>'}).join("");
+  $("ticks").innerHTML=R.map(function(r){return '<button aria-label="'+r.b+' '+r.tn+'"></button>'}).join("");
+  var rs=[].slice.call($("reel").children),rt=[].slice.call($("ticks").children),rI=0,rT=0,rplay=!reduce,RD=3200,reelSeen=false;
+  function rgo(i){rs[rI].classList.remove("on");rI=(i+R.length)%R.length;var im=rs[rI];im.loading="eager";im.classList.add("on");rT=0;
+    rt.forEach(function(b,j){b.className=j<rI?"done":j===rI?"on":""});var r=R[rI];
+    $("capk").textContent=r.n+" · "+r.tn;$("capb").textContent=r.b;$("cap").href=url(r.t,r.k);
+    $("rcnt").textContent=String(rI+1).padStart(2,"0")+" / "+R.length;
+    var nx=rs[(rI+1)%R.length];if(nx)nx.loading="eager"}
+  rt.forEach(function(b,i){b.addEventListener("click",function(){rgo(i)})});
+  rgo(0);setPlayIcon($("rplay"),rplay);
+  $("rplay").addEventListener("click",function(){rplay=!rplay;setPlayIcon(this,rplay)});
+  if("IntersectionObserver" in window){new IntersectionObserver(function(es){reelSeen=es[0].isIntersecting},{threshold:.25}).observe($("reel"))}else reelSeen=true;
+
+  /* bir saat dövrü */
+  function tick(now){var dt=now-last;last=now;
+    if(hplay){ht+=dt;hb[hi].style.setProperty("--p",Math.min(1,ht/HD));if(ht>=HD)hgo(hi+1)}
+    if(rplay&&reelSeen){rT+=dt;if(rT>=RD)rgo(rI+1)}
+    requestAnimationFrame(tick)}
+  requestAnimationFrame(tick);
+
+  /* sonsuz zolaq */
+  function row(list){var h=list.map(function(r){return '<a href="'+url(r.t,r.k)+'" target="_blank" rel="noopener"><img src="'+img(r.t,r.k)+'" alt="'+r.b+' '+r.tn+'" loading="lazy"><span>'+r.b+' · '+r.tn+'</span></a>'}).join("");return h+h}
+  $("t1").innerHTML=row(R.filter(function(r,i){return i%2===0}));
+  $("t2").innerHTML=row(R.filter(function(r,i){return i%2===1}));
+
+  /* vitrin: sahə tabları + slayder */
+  var cur=0,si=0;
+  $("tabs").innerHTML=N.map(function(x,i){return '<button class="tab" role="tab" aria-selected="'+(i===0)+'" data-i="'+i+'">'+x.n+'</button>'}).join("");
+  function renderNiche(i){cur=i;si=0;var x=N[i];
+    [].forEach.call($("tabs").children,function(b,j){b.setAttribute("aria-selected",j===i)});
+    $("strack").innerHTML=T.map(function(t,j){return '<article class="slide" aria-roledescription="slayd" aria-label="'+TN[j]+'">'+
+      '<a class="frame" href="'+url(t,x.k)+'" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i><u>'+x.b.toLowerCase().replace(/[^a-zəğıöşüç&]+/g,"")+'.az</u></div><img src="'+img(t,x.k)+'" alt="'+x.b+' '+TN[j]+' demo" loading="lazy"></a>'+
+      '<div class="sinfo"><span class="pk">'+TN[j]+' paketi</span><h3>'+x.n+'</h3><div class="price">'+x.p[j].toLocaleString("en-US")+' <small>₼ · bir dəfəlik</small></div><ul><li>'+x.f[j]+'</li><li>'+(j===0?"Mobil uyğun dizayn, admin panel":j===1?"Start-dakı hər şey, promo kod və axtarış":"Plus-dakı hər şey, fərdi dizayn")+'</li><li>'+(j===0?"Haqqımızda və Əlaqə səhifələri":j===1?"1 ay texniki xidmət hədiyyə":"Tam ekran slayder və animasiyalar")+'</li></ul>'+
+      '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px"><a class="btn pri" href="'+url(t,x.k)+'" target="_blank" rel="noopener">Demoya bax ↗</a><a class="btn" href="#elaqe">Bu paketi istəyirəm</a></div></div></article>'}).join("");
+    $("dots").innerHTML=T.map(function(t,j){return '<button aria-label="'+TN[j]+'" aria-current="'+(j===0)+'"></button>'}).join("");
+    [].forEach.call($("dots").children,function(b,j){b.addEventListener("click",function(){sgo(j)})});
+    $("slider").classList.remove("fade");void $("slider").offsetWidth;$("slider").classList.add("fade");sgo(0)}
+  function sgo(j){si=Math.max(0,Math.min(2,j));$("strack").style.transform="translateX("+(-si*100)+"%)";
+    [].forEach.call($("dots").children,function(b,k){b.setAttribute("aria-current",k===si)})}
+  $("tabs").addEventListener("click",function(e){var b=e.target.closest(".tab");if(b)renderNiche(+b.dataset.i)});
+  $("prev").addEventListener("click",function(){sgo(si-1)});
+  $("next").addEventListener("click",function(){sgo(si+1)});
+  $("slider").addEventListener("keydown",function(e){if(e.key==="ArrowRight")sgo(si+1);if(e.key==="ArrowLeft")sgo(si-1)});
+  var sx=null;$("slider").addEventListener("pointerdown",function(e){sx=e.clientX});
+  $("slider").addEventListener("pointerup",function(e){if(sx===null)return;var d=e.clientX-sx;if(Math.abs(d)>50)sgo(si+(d<0?1:-1));sx=null});
+  renderNiche(0);
+
+  /* kart işığı siçanın ardınca */
+  [].forEach.call(document.querySelectorAll(".card"),function(c){c.addEventListener("pointermove",function(e){var r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")})});
+
+  /* proses xətti scroll ilə dolur */
+  function prog(){var el=$("tl"),r=el.getBoundingClientRect(),vh=innerHeight;var p=Math.min(1,Math.max(0,(vh*.7-r.top)/r.height));el.style.setProperty("--prog",p)}
+  addEventListener("scroll",prog,{passive:true});prog();
+
+  /* sayğaclar (son rəqəm artıq yazılıb, görünəndə yenidən sayır) */
+  if("IntersectionObserver" in window&&!reduce){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var el=e.target,n=+el.dataset.n,t0=performance.now();(function st(t){var k=Math.min(1,(t-t0)/1200);el.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(st)})(t0)})},{threshold:.6});
+    [].forEach.call(document.querySelectorAll("[data-n]"),function(el){io.observe(el)})}
+})();
+</script>
+
+</body>
+</html>
