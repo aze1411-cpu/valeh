@@ -424,6 +424,129 @@ section{padding-block:96px;position:relative}
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
 </head>
 <body>
+<!--BF-START-->
+<style>
+.bfr{position:relative;z-index:60;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:9px 16px;background:linear-gradient(90deg,#00c8ff,#2f7bff,#00c8ff);background-size:200% 100%;animation:bfmove 6s linear infinite;color:#021220;font:700 14px/1.3 Inter,system-ui,sans-serif;text-align:center}
+.bfr b{font-weight:800;letter-spacing:.06em}.bfr a{color:#021220;text-decoration:underline;text-underline-offset:3px;font-weight:800}
+.bfr .bfc{font-variant-numeric:tabular-nums;background:rgba(2,18,32,.14);padding:2px 9px;border-radius:999px}
+@keyframes bfmove{to{background-position:-200% 0}}
+s.bfo{color:var(--muted,#8ea4c4);font-weight:500;font-size:.62em;margin-right:4px;text-decoration-thickness:2px}
+.bfn{color:var(--neon,#00c8ff);text-shadow:0 0 18px rgba(0,200,255,.45)}
+em.bft{font-style:normal;font:800 10px/1 Inter,sans-serif;letter-spacing:.1em;background:var(--neon,#00c8ff);color:#021220;border-radius:5px;padding:3px 6px;vertical-align:middle;margin-left:6px}
+.bfi{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#050914;overflow:hidden;color:#eaf4ff;font-family:Inter,system-ui,sans-serif;transition:opacity .5s,visibility .5s}
+.bfi.out{opacity:0;visibility:hidden}
+.bfi .g{position:absolute;left:-50%;right:-50%;bottom:-10%;height:70%;background-image:linear-gradient(rgba(0,200,255,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,255,.35) 1px,transparent 1px);background-size:60px 60px;transform:perspective(500px) rotateX(62deg);transform-origin:bottom;animation:bfgrid 2.4s linear infinite;-webkit-mask-image:linear-gradient(transparent,#000 70%)}
+@keyframes bfgrid{to{background-position:0 60px}}
+.bfi .glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,255,.28),transparent 60%);top:-35%;left:50%;transform:translateX(-50%);animation:bfpulse 3s ease-in-out infinite}
+@keyframes bfpulse{50%{opacity:.55}}
+.bfi .in{position:relative;text-align:center;padding:24px;max-width:960px}
+.bfi .k{display:inline-block;border:1.5px solid #00c8ff;color:#00c8ff;border-radius:999px;padding:7px 16px;font:700 12px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:0;animation:bfup .6s .15s forwards}
+.bfi h2{margin:18px 0 0;font:800 clamp(54px,13vw,150px)/.9 "Space Grotesk",Inter,sans-serif;letter-spacing:-.03em}
+.bfi h2 span{display:block;opacity:0}
+.bfi h2 .l1{animation:bfl .8s .3s cubic-bezier(.2,.9,.2,1) forwards}
+.bfi h2 .l2{color:#00c8ff;text-shadow:0 0 50px rgba(0,200,255,.6);animation:bfr2 .8s .5s cubic-bezier(.2,.9,.2,1) forwards}
+@keyframes bfl{from{opacity:0;transform:translateX(-70px)}to{opacity:1;transform:none}}
+@keyframes bfr2{from{opacity:0;transform:translateX(70px)}to{opacity:1;transform:none}}
+@keyframes bfup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.bfi .pct{margin-top:10px;font:800 clamp(60px,14vw,140px)/1 "Space Grotesk",Inter,sans-serif;color:#00c8ff;text-shadow:0 0 60px rgba(0,200,255,.6);opacity:0;animation:bfup .6s .9s forwards;font-variant-numeric:tabular-nums}
+.bfi .pct small{font-size:.32em;color:#eaf4ff;text-shadow:none;margin-left:8px;letter-spacing:0}
+.bfi p{margin:8px 0 0;color:#b9cbe4;font-size:clamp(15px,2.2vw,19px);opacity:0;animation:bfup .6s 1.15s forwards}
+.bfi .cd{margin-top:16px;display:inline-flex;gap:10px;opacity:0;animation:bfup .6s 1.3s forwards}
+.bfi .cd div{min-width:64px;padding:10px 8px;border:1px solid #18294a;border-radius:12px;background:rgba(12,22,40,.8)}
+.bfi .cd b{display:block;font:800 26px/1 "Space Grotesk",Inter,sans-serif;font-variant-numeric:tabular-nums}.bfi .cd small{font-size:11px;color:#8ea4c4;text-transform:uppercase;letter-spacing:.08em}
+.bfi .bt{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;animation:bfup .6s 1.45s forwards}
+.bfi .bt a,.bfi .bt button{cursor:pointer;border-radius:999px;padding:14px 24px;font:700 15px Inter,sans-serif;text-decoration:none;border:1.5px solid #00c8ff}
+.bfi .bt .p{background:#00c8ff;color:#021220;box-shadow:0 0 34px rgba(0,200,255,.5)}.bfi .bt .s{background:transparent;color:#eaf4ff;border-color:#2a3f66}
+.bfi .x{position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid #2a3f66;background:rgba(12,22,40,.8);color:#eaf4ff;font-size:20px;cursor:pointer}
+.bfs{padding:72px 0 24px;scroll-margin-top:70px}
+.bfs .wrapx{max-width:1180px;margin:0 auto;padding:0 20px}
+.bfs .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.bfs .k{color:var(--neon,#00c8ff);font:700 12px Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.bfs h2{margin:10px 0 0;font:700 clamp(30px,4.4vw,48px)/1.05 "Space Grotesk",Inter,sans-serif}
+.bfs h2 em{font-style:normal;color:var(--neon,#00c8ff)}
+.bfs .sub{color:var(--muted,#8ea4c4);margin-top:10px;max-width:620px}
+.bfs .cd{display:flex;gap:8px}.bfs .cd div{min-width:62px;text-align:center;padding:10px 6px;border:1px solid var(--line,#18294a);border-radius:12px;background:var(--panel,#0c1628)}
+.bfs .cd b{display:block;font:700 24px/1 "Space Grotesk",Inter,sans-serif;font-variant-numeric:tabular-nums;color:var(--neon,#00c8ff)}.bfs .cd small{font-size:11px;color:var(--muted,#8ea4c4);text-transform:uppercase}
+.bfs .tw{margin-top:28px;overflow-x:auto;border:1px solid var(--line,#18294a);border-radius:18px;background:var(--panel,#0c1628)}
+.bfs table{width:100%;border-collapse:collapse;min-width:640px}
+.bfs th,.bfs td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line,#18294a);font-size:15px}
+.bfs th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted,#8ea4c4);font-weight:700}
+.bfs tr:last-child td{border-bottom:0}.bfs td:first-child a{color:inherit;text-decoration:none;font-weight:600}.bfs td:first-child a:hover{color:var(--neon,#00c8ff)}
+.bfs td b{font:700 18px "Space Grotesk",Inter,sans-serif;color:var(--neon,#00c8ff)}.bfs td s{color:var(--muted,#8ea4c4);font-size:13px;margin-right:6px}
+.bfs .ft{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.bfs .ft a.p{background:var(--neon,#00c8ff);color:#021220;border-radius:999px;padding:13px 22px;font-weight:800;text-decoration:none;box-shadow:0 0 30px rgba(0,200,255,.35)}
+.bfs .ft small{color:var(--muted,#8ea4c4)}
+@media (prefers-reduced-motion:reduce){.bfi *,.bfr{animation:none!important;opacity:1!important}}
+</style>
+<script>
+(function(){
+var END=Date.UTC(2026,10,30,20,0,0); /* 30.11.2026 24:00 Bakı */
+var ON=Date.now()<END;
+var M={299:219,399:249,449:249,699:499,899:649,1199:849,1499:1099};
+var L=(document.documentElement.lang||'az').slice(0,2);
+var T={
+ az:{off:'ENDİRİM',rib:'<b>BLACK FRIDAY</b> · Saytlara 45%-ə qədər endirim · 26–30 noyabr',see:'Qiymətlər',left:'Bitməsinə',d:'gün',h:'saat',m:'dəq',s:'san',
+  k:'26–30 noyabr',sub:'Saytlara <b>45%-ə qədər</b> endirim. Start paketi artıq <b>219 ₼</b>-dan.',b1:'Endirimli qiymətlər',b2:'Sayta keç',
+  sk:'Black Friday · 26–30 noyabr',sh:'Bütün paketlərə <em>endirim</em>',ss:'12 sahənin hamısında Start, Plus və Premium endirimdədir. Endirim 30 noyabra qədər sifariş verənlər üçündür. Domen və hostinq qiymətə daxil deyil.',
+  nh:'Sahə',wa:'WhatsApp-a “BF” yazın',fine:'Endirim 30.11.2026 saat 23:59-dək (Bakı vaxtı).',waT:'BF — Black Friday endirimi ilə sayt istəyirəm'},
+ en:{off:'OFF',rib:'<b>BLACK FRIDAY</b> · Up to 45% off websites · Nov 26–30',see:'Prices',left:'Ends in',d:'days',h:'hrs',m:'min',s:'sec',
+  k:'Nov 26–30',sub:'Up to <b>45% off</b> websites. The Start package now from <b>219 ₼</b>.',b1:'See sale prices',b2:'Go to site',
+  sk:'Black Friday · Nov 26–30',sh:'Every package is <em>on sale</em>',ss:'Start, Plus and Premium are discounted in all 12 industries. The discount applies to orders placed by Nov 30. Domain and hosting are not included.',
+  nh:'Industry',wa:'Send “BF” on WhatsApp',fine:'Offer valid until 30.11.2026, 23:59 (Baku time).',waT:'BF — I want a website with the Black Friday discount'},
+ ru:{off:'СКИДКА',rib:'<b>BLACK FRIDAY</b> · Скидка на сайты до 45% · 26–30 ноября',see:'Цены',left:'До конца',d:'дн',h:'ч',m:'мин',s:'сек',
+  k:'26–30 ноября',sub:'Скидка на сайты <b>до 45%</b>. Пакет Start теперь <b>от 219 ₼</b>.',b1:'Цены со скидкой',b2:'Перейти на сайт',
+  sk:'Black Friday · 26–30 ноября',sh:'Скидка на <em>все пакеты</em>',ss:'Start, Plus и Premium со скидкой во всех 12 сферах. Скидка действует для заказов до 30 ноября. Домен и хостинг не входят в цену.',
+  nh:'Сфера',wa:'Напишите «BF» в WhatsApp',fine:'Акция действует до 30.11.2026, 23:59 (по Баку).',waT:'BF — хочу сайт со скидкой Black Friday'}
+}[L]||null; if(!T)T={};
+var f=function(n){return n.toLocaleString('en-US')};
+window.BF_ON=ON;
+window.BFP=function(v){if(!ON||!M[v])return f(v);return '<s class="bfo">'+f(v)+'</s><span class="bfn">'+f(M[v])+'</span>'};
+if(!ON)return;
+var WA='https://wa.me/994709331108?text='+encodeURIComponent(T.waT);
+function left(){var s=Math.max(0,Math.floor((END-Date.now())/1000));return [Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60]}
+function pad(n){return n<10?'0'+n:''+n}
+function cdHTML(){var a=left();return '<div><b data-bfi="0">'+a[0]+'</b><small>'+T.d+'</small></div><div><b data-bfi="1">'+pad(a[1])+'</b><small>'+T.h+'</small></div><div><b data-bfi="2">'+pad(a[2])+'</b><small>'+T.m+'</small></div><div><b data-bfi="3">'+pad(a[3])+'</b><small>'+T.s+'</small></div>'}
+function tick(){var a=left();document.querySelectorAll('[data-bfi]').forEach(function(b){var i=+b.getAttribute("data-bfi");b.textContent=i?pad(a[i]):a[i]});var r=document.querySelector('.bfr .bfc');if(r)r.textContent=T.left+': '+a[0]+T.d.charAt(0)+' '+pad(a[1])+':'+pad(a[2])+':'+pad(a[3])}
+var NICHES=[['butik',{az:'Geyim butiki',en:'Clothing boutique',ru:'Бутик одежды'},[399,899,1499]],['biju',{az:'Aksesuar və bijuteriya',en:'Accessories & jewellery',ru:'Аксессуары и бижутерия'},[449,899,1499]],['gul',{az:'Gül və hədiyyə',en:'Flowers & gifts',ru:'Цветы и подарки'},[399,899,1499]],['kosmetika',{az:'Kosmetika və ətriyyat',en:'Cosmetics & perfume',ru:'Косметика и парфюмерия'},[399,899,1499]],['telefon',{az:'Telefon və aksesuarlar',en:'Phones & accessories',ru:'Телефоны и аксессуары'},[399,899,1499]],['restoran',{az:'Restoran və kafe',en:'Restaurant & café',ru:'Ресторан и кафе'},[399,899,1499]],['salon',{az:'Gözəllik salonu',en:'Beauty salon',ru:'Салон красоты'},[299,699,1199]],['kurs',{az:'Kurs mərkəzi',en:'Training centre',ru:'Учебный центр'},[299,699,1199]],['tur',{az:'Tur şirkəti',en:'Travel agency',ru:'Турфирма'},[299,699,1199]],['huquq',{az:'Hüquqşünas və mühasib',en:'Lawyer & accountant',ru:'Юрист и бухгалтер'},[299,699,1199]],['repetitor',{az:'Repetitor',en:'Private tutor',ru:'Репетитор'},[299,699,1199]],['smm',{az:'SMM və digital',en:'SMM & digital',ru:'SMM и digital'},[299,699,1199]]];
+document.addEventListener('DOMContentLoaded',function(){
+ var hd=document.querySelector('header');
+ var r=document.createElement('div');r.className='bfr';r.innerHTML='<span>'+T.rib+'</span><span class="bfc"></span><a href="'+(document.querySelector('section.hero')?'#bf':'index.html#bf')+'">'+T.see+' →</a>';
+ if(hd&&hd.parentNode)hd.parentNode.insertBefore(r,hd);else document.body.insertBefore(r,document.body.firstChild);
+ var hero=document.querySelector('section.hero');
+ if(hero){
+  var sec=document.createElement('section');sec.className='bfs';sec.id='bf';
+  sec.innerHTML='<div class="wrapx"><div class="hd"><div><div class="k">'+T.sk+'</div><h2>'+T.sh+'</h2><p class="sub">'+T.ss+'</p></div><div class="cd">'+cdHTML()+'</div></div>'+
+   '<div class="tw"><table><thead><tr><th>'+T.nh+'</th><th>Start</th><th>Plus</th><th>Premium</th></tr></thead><tbody>'+
+   NICHES.map(function(n){return '<tr><td><a href="paketler.html#'+n[0]+'">'+(n[1][L]||n[1].az)+'</a></td>'+n[2].map(function(p){return '<td><s>'+f(p)+'</s><b>'+f(M[p])+' ₼</b></td>'}).join('')+'</tr>'}).join('')+
+   '</tbody></table></div><div class="ft"><a class="p" href="'+WA+'" target="_blank" rel="noopener">'+T.wa+'</a><small>'+T.fine+'</small></div></div>';
+  hero.parentNode.insertBefore(sec,hero.nextSibling);
+  var seen=false;try{seen=sessionStorage.getItem('bfIntro')==='1'}catch(e){}
+  if(!seen&&!/[?&]nointro/.test(location.search)){
+   var o=document.createElement('div');o.className='bfi';o.setAttribute('role','dialog');o.setAttribute('aria-label','Black Friday');
+   o.innerHTML='<div class="g"></div><div class="glow"></div><button class="x" aria-label="Close">✕</button><div class="in"><div class="k">'+T.k+'</div><h2><span class="l1">BLACK</span><span class="l2">FRIDAY</span></h2><div class="pct"><span id="bfn">0</span>%<small>'+(T.off||'OFF')+'</small></div><p>'+T.sub+'</p><div class="cd">'+cdHTML()+'</div><div class="bt"><a class="p" href="#bf">'+T.b1+'</a><button class="s">'+T.b2+'</button></div></div>';
+   document.body.appendChild(o);document.documentElement.style.overflow='hidden';
+   var close=function(){o.classList.add('out');document.documentElement.style.overflow='';try{sessionStorage.setItem('bfIntro','1')}catch(e){}setTimeout(function(){o.remove()},600)};
+   o.querySelector('.x').onclick=close;o.querySelector('.s').onclick=close;o.querySelector('.p').onclick=function(){close()};
+   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+   var n=0,el=o.querySelector('#bfn');setTimeout(function(){var iv=setInterval(function(){n+=3;if(n>=45){n=45;clearInterval(iv)}el.textContent='-'+n},28)},900);
+  }
+ }
+ var hp=function(){document.querySelectorAll('section.hero b').forEach(function(b){if(/^\s*299\s*₼\s*$/.test(b.textContent))b.innerHTML='<span class="bfn">219 ₼</span>'})};hp();setTimeout(hp,2500);
+ tick();setInterval(tick,1000);
+});
+})();
+</script>
+<!--BF-END-->
+
+
+
+
+
+
+
+
+
+
 <header class="top">
   <div class="wrap">
     <a class="logo" href="index.html" aria-label="Valeh Nexus X">VALEH NEXUS <i>X</i></a>
