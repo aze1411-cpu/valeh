@@ -60,7 +60,11 @@ section{padding-block:96px;position:relative}
 .logo i{font-style:normal;color:var(--neon);text-shadow:0 0 12px var(--neon)}
 .nav{display:flex;gap:26px;font:500 15px var(--fd)}
 .nav a{text-decoration:none;color:var(--muted);transition:color .2s}
-.nav a:hover{color:var(--ink)}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
+.foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--neon)}
+.ateaser{display:grid;gap:32px;align-items:center}
+.ateaser .photo{aspect-ratio:4/5;max-width:380px;width:100%}
+@media(min-width:960px){.ateaser{grid-template-columns:.7fr 1.3fr}}
 .top .btn{min-height:42px;padding:0 18px;font-size:14px}
 .burger{display:none}
 @media(max-width:900px){.nav{display:none}.burger{display:grid}.top .btn{display:none}
@@ -263,15 +267,13 @@ section{padding-block:96px;position:relative}
   <div class="wrap">
     <a class="logo" href="#ana">Valeh<i>.</i></a>
     <nav class="nav" id="nav" aria-label="Əsas menyu">
-      <a href="#vitrin">Demolar</a>
+      <a href="demolar.html">Demolar</a>
       <a href="paketler.html">Paketlər</a>
-      <a href="#showreel">Showreel</a>
       <a href="#xidmet">Xidmətlər</a>
-      <a href="#proses">Proses</a>
-      <a href="#haqqimda">Haqqımda</a>
-      <a href="#elaqe">Əlaqə</a>
+      <a href="haqqimda.html">Haqqımda</a>
+      <a href="elaqe.html">Əlaqə</a>
     </nav>
-    <a class="btn pri" href="#elaqe">Sayt sifariş et</a>
+    <a class="btn pri" href="elaqe.html">Sayt sifariş et</a>
     <button class="icb burger" id="burger" aria-label="Menyunu aç" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
 </header>
@@ -326,7 +328,7 @@ section{padding-block:96px;position:relative}
         <span class="eyebrow">Demolar və qiymətlər</span>
         <h2>Sahənizi seçin, <span class="grad">saytınıza baxın</span></h2>
         <p class="lead">Hər sahənin üç paketi var. Sürüşdürün və ya oxlara toxunun. Demo yeni pəncərədə canlı açılır.</p>
-        <a class="btn" href="paketler.html" style="justify-self:start">Bütün paketlərin tam tərkibi →</a>
+        <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn" href="demolar.html">Bütün 36 demo →</a><a class="btn" href="paketler.html">Paketlərin tam tərkibi →</a></div>
       </div>
       <div class="tabs" id="tabs" role="tablist" aria-label="Sahələr"></div>
       <div class="slider" id="slider">
@@ -394,54 +396,15 @@ section{padding-block:96px;position:relative}
     </div>
   </section>
 
-  <section id="proses" style="padding-top:20px">
-    <div class="wrap pgrid">
-      <div class="head" style="margin:0">
-        <span class="eyebrow">Proses</span>
-        <h2>Demodan <span class="grad">canlı sayta</span></h2>
-        <p class="lead">Hər addımda nə olacağını əvvəlcədən bilirsiniz.</p>
-        <div class="photo" style="aspect-ratio:4/3;margin-top:12px" data-photo="3"><span>Şəkil 3<small>noutbukla işləyərkən</small></span></div>
-      </div>
-      <ol class="tl" id="tl">
-        <li><b>Demo seçimi</b><span>Sahənizin demolarına baxırsınız, uyğun paketi birlikdə seçirik.</span></li>
-        <li><b>Razılaşma</b><span>İş həcmi, müddət və şərtlər yazılı müqavilə ilə təsdiqlənir.</span></li>
-        <li><b>Materiallar</b><span>Loqo, şəkillər, qiymətlər və mətnləri göndərirsiniz.</span></li>
-        <li><b>Qurulma və test</b><span>Sayt sizin domeninizdə qurulur, telefonda və kompüterdə yoxlanılır.</span></li>
-        <li><b>Təhvil və təlim</b><span>Admin paneli göstərirəm, bütün giriş məlumatları sizə verilir.</span></li>
-      </ol>
-    </div>
-  </section>
-
-  <section style="background:var(--bg-2);border-block:1px solid var(--line)">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Təhvildən sonra</span>
-        <h2>Aylıq texniki xidmət</h2>
-        <p class="lead">İstəsəniz saytı özünüz idarə edirsiniz, istəsəniz bu işi mən görürəm.</p>
-      </div>
-      <div class="cards">
-        <article class="card rise"><span class="pk">Baza</span><b class="big">39 <small>₼ / ay</small></b><ul><li>Yeniləmələr</li><li>Aylıq ehtiyat nüsxə</li><li>Ayda 1 saat dəyişiklik</li></ul></article>
-        <article class="card hot rise"><span class="pk">Standart</span><b class="big">79 <small>₼ / ay</small></b><ul><li>Həftəlik ehtiyat nüsxə</li><li>Ayda 3 saat dəyişiklik</li><li>Kampaniya və banner yeniləmələri</li></ul></article>
-        <article class="card rise"><span class="pk">Aktiv</span><b class="big">149 <small>₼ / ay</small></b><ul><li>Ayda 6 saat iş</li><li>Hər ay kiçik təkmilləşdirmə</li><li>Eyni gün cavab</li></ul></article>
-      </div>
-      <p style="color:var(--muted);font-size:14px;margin-top:18px">Plus və Premium paketlərinə 1 ay Standart xidmət hədiyyədir. Plandan kənar iş: saatı 20 ₼.</p>
-    </div>
-  </section>
-
   <section id="haqqimda">
-    <div class="wrap about">
-      <div class="agal">
-        <div class="photo" data-photo="1"><span>Şəkil 1<small>əsas portret</small></span></div>
-        <div class="photo" data-photo="2"><span>Şəkil 2</span></div>
-        <div class="photo" data-photo="4"><span>Şəkil 4</span></div>
-      </div>
+    <div class="wrap ateaser">
+      <div class="photo" data-photo="1"><span>Şəkil 1<small>əsas portret</small></span></div>
       <div class="atxt">
         <span class="eyebrow">Haqqımda</span>
         <h2>Salam, mən <span class="grad">Valeh</span></h2>
-        <p>Bakıda yaşayıram və WordPress ilə saytlar qururam. Öz layihələrim üçün 10-dan çox sayt hazırlamışam, indi bu təcrübəni kiçik bizneslərə təklif edirəm.</p>
-        <p>Bu saytda gördüyünüz hər şeyi, o cümlədən 36 demonu özüm qurmuşam. Sizin saytınız da bu keyfiyyətdə olacaq.</p>
-        <div class="chips"><span>WordPress</span><span>WooCommerce</span><span>HTML və CSS</span><span>JavaScript</span><span>Mobil uyğunluq</span></div>
-        <div class="photo" style="aspect-ratio:16/7" data-photo="5"><span>Şəkil 5<small>iş yeri və ya komanda</small></span></div>
+        <p>Bakıda yaşayıram və WordPress ilə saytlar qururam. Bu saytda gördüyünüz hər şeyi, o cümlədən 36 demonu özüm qurmuşam.</p>
+        <div class="chips"><span>WordPress</span><span>WooCommerce</span><span>HTML və CSS</span><span>JavaScript</span></div>
+        <a class="btn" href="haqqimda.html" style="justify-self:start">Haqqımda və iş prosesi →</a>
       </div>
     </div>
   </section>
@@ -461,19 +424,13 @@ section{padding-block:96px;position:relative}
           <h2>Saytınızı <span class="grad">birlikdə quraq</span></h2>
           <p class="lead">Sahənizi və nə istədiyinizi yazın, sizə uyğun paketi və demonu göstərim. İlk məsləhət pulsuzdur.</p>
         </div>
-        <div class="cgrid">
-          <div class="citem"><small>WhatsApp</small><b>+994 XX XXX XX XX</b><span style="font-size:13px;color:var(--muted)">nömrə əlavə olunacaq</span></div>
-          <div class="citem"><small>E-poçt</small><b>əlavə olunacaq</b></div>
-          <div class="citem"><small>Instagram və TikTok</small><b>əlavə olunacaq</b></div>
-        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn pri" href="elaqe.html">Sorğu göndər</a><a class="btn" href="paketler.html">Paketləri müqayisə et</a></div>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="foot">
-  <div class="wrap"><span>© Valeh · Veb saytların hazırlanması · Bakı</span><span>Demolardakı brend adları və məlumatlar nümunədir</span></div>
-</footer>
+<footer class="foot"><div class="wrap"><span>© Valeh · Veb saytların hazırlanması · Bakı</span><span><a href="demolar.html">Demolar</a> · <a href="paketler.html">Paketlər</a> · <a href="haqqimda.html">Haqqımda</a> · <a href="elaqe.html">Əlaqə</a></span></div></footer>
 
 <script>
 (function(){
@@ -575,10 +532,7 @@ section{padding-block:96px;position:relative}
   /* kart işığı siçanın ardınca */
   [].forEach.call(document.querySelectorAll(".card"),function(c){c.addEventListener("pointermove",function(e){var r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")})});
 
-  /* proses xətti scroll ilə dolur */
-  function prog(){var el=$("tl"),r=el.getBoundingClientRect(),vh=innerHeight;var p=Math.min(1,Math.max(0,(vh*.7-r.top)/r.height));el.style.setProperty("--prog",p)}
-  addEventListener("scroll",prog,{passive:true});prog();
-
+  
   /* sayğaclar (son rəqəm artıq yazılıb, görünəndə yenidən sayır) */
   if("IntersectionObserver" in window&&!reduce){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var el=e.target,n=+el.dataset.n,t0=performance.now();(function st(t){var k=Math.min(1,(t-t0)/1200);el.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(st)})(t0)})},{threshold:.6});
     [].forEach.call(document.querySelectorAll("[data-n]"),function(el){io.observe(el)})}
