@@ -255,6 +255,59 @@ section{padding-block:96px;position:relative}
   .slide{padding:18px}
   .dots button{width:28px}.dots button[aria-current="true"]{width:44px}
 }
+
+/* ===== Canlandırma: yavaş, kiçik, bir ekranda bir hərəkət ===== */
+/* 1. Hero arxasında axan neon işıq */
+.aur{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.aur i{position:absolute;width:min(60vw,680px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(0,200,255,.16),transparent 62%);left:45%;top:-10%;animation:aur 28s ease-in-out infinite alternate;will-change:transform}
+.aur i:nth-child(2){left:-12%;top:35%;background:radial-gradient(circle,rgba(47,123,255,.14),transparent 62%);animation-duration:34s;animation-direction:alternate-reverse}
+@keyframes aur{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-14%,12%) scale(1.12)}100%{transform:translate(10%,22%) scale(.94)}}
+/* 2. Başlıq sözləri bir-bir */
+.fx-on .head h2 .w{display:inline-block;opacity:0;transform:translateY(.45em);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i) * 70ms)}
+.fx-on .head h2.in .w{opacity:1;transform:none}
+/* 3. İkonların çəkilməsi */
+.fx-on .card .ic svg *{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.3s ease .15s}
+.fx-on .card.in .ic svg *{stroke-dashoffset:0}
+/* 4. Domen bölməsinin fırlanan çərçivəsi */
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+.dh{background:linear-gradient(var(--bg-2),var(--bg-2)) padding-box,conic-gradient(from var(--a),var(--neon),var(--neon-2) 18%,transparent 34%,transparent 66%,var(--neon-2) 82%,var(--neon)) border-box;animation:spin 12s linear infinite}
+@keyframes spin{to{--a:360deg}}
+/* 5. Bölmələr arasında dolan neon xətt */
+.sline{max-width:1200px;margin:0 auto;height:1px;background:var(--line);position:relative}
+.sline i{position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--neon) 50%,transparent);box-shadow:0 0 10px rgba(0,200,255,.6);transform:scaleX(var(--s,1));transition:transform .2s linear}
+/* 6. Instagram vs sayt */
+.vs{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/8;min-height:420px;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;--x:50%}
+.vs .ly{position:absolute;inset:0}
+.vs .ig{background:radial-gradient(500px 300px at 20% 20%,rgba(225,48,108,.18),transparent 70%),radial-gradient(400px 300px at 80% 90%,rgba(253,186,51,.12),transparent 70%),#120a14;display:grid;place-items:center}
+.vs .web{clip-path:inset(0 0 0 var(--x));background:radial-gradient(600px 300px at 80% 10%,rgba(0,200,255,.2),transparent 70%),var(--bg-2);display:grid;place-items:center;padding:clamp(16px,4vw,48px)}
+.vs .web .frame{width:min(100%,720px);border-radius:14px;overflow:hidden;border:1px solid #1e3358;background:#0a1324;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.vs .web .frame .bar{padding:9px 10px}
+.vs .web img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top}
+.vs .web .ord{position:absolute;right:clamp(12px,3vw,36px);bottom:clamp(12px,3vw,36px);background:var(--panel);border:1px solid var(--neon);box-shadow:var(--glow);border-radius:14px;padding:12px 16px;display:grid;gap:2px;font-size:13px;max-width:260px}
+.vs .web .ord b{font:600 14px var(--fd);color:var(--neon)}
+.vs .web .ord span{color:var(--muted)}
+.bub{position:absolute;max-width:min(240px,42%);padding:10px 14px;border-radius:18px 18px 18px 6px;background:#2a1d2e;color:#f3e6f0;font-size:14px;line-height:1.35;box-shadow:0 10px 20px rgba(0,0,0,.35)}
+.bub small{display:block;color:#a68a9f;font-size:11px;margin-top:3px}
+.bub.me{border-radius:18px 18px 6px 18px;background:#3d2a6b}
+.dmhead{position:absolute;left:clamp(14px,3vw,30px);top:clamp(14px,3vw,26px);display:flex;align-items:center;gap:10px;font:600 14px var(--fd);color:#f3e6f0}
+.dmhead em{font-style:normal;background:#e1306c;color:#fff;border-radius:999px;padding:2px 9px;font-size:12px}
+.vtag{position:absolute;bottom:clamp(14px,3vw,22px);font:700 12px var(--fd);letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:999px;z-index:3;pointer-events:none}
+.vtag.l{left:auto;right:calc(100% - var(--x) + 12px);background:rgba(225,48,108,.18);color:#ff9cc0;border:1px solid rgba(225,48,108,.4);white-space:nowrap}
+.vtag.r{left:calc(var(--x) + 12px);background:rgba(0,200,255,.14);color:var(--neon);border:1px solid rgba(0,200,255,.4);white-space:nowrap}
+.vs .hd{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:var(--neon);box-shadow:0 0 14px var(--neon);z-index:4;pointer-events:none}
+.vs .hd button{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;border:2px solid var(--neon);background:var(--bg);color:var(--neon);display:grid;place-items:center;pointer-events:auto;cursor:ew-resize}
+.vs .hd svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.vsl{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:22px}
+.vsl ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.vsl li{display:flex;gap:10px;color:var(--muted)}
+.vsl .a li::before{content:"✕";flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(225,48,108,.14);color:#ff7aa8;font-size:11px;font-weight:700;margin-top:1px}
+.vsl .b li{color:var(--ink)}
+.vsl .b li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-size:12px;font-weight:700;margin-top:1px}
+.vsl h3{font-size:18px;margin-bottom:12px}
+@media(max-width:700px){.vs{aspect-ratio:auto;height:520px}.bub{font-size:13px;max-width:62%}.vs .web .ord{left:12px;right:12px;top:14px;bottom:auto;max-width:none}}
+/* 7. Kursorun ardınca zəif işıq (yalnız siçan) */
+.glow{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,255,.07),transparent 60%);pointer-events:none;z-index:40;opacity:0;transition:opacity .6s}
+.glow.on{opacity:1}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
