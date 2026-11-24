@@ -65,6 +65,8 @@ section{padding-block:96px;position:relative}
 .nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
 .foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--neon)}
 .ateaser{display:grid;gap:32px;align-items:center}
+.ph-cut{background:radial-gradient(70% 55% at 50% 38%,rgba(0,200,255,.28),transparent 70%),linear-gradient(180deg,#0d1c38,#060c1a)!important}
+.ph-cut img{object-fit:cover;object-position:50% 20%}
 .tick{margin:0;padding:0;list-style:none;display:grid;gap:10px}
 .tick li{display:flex;gap:10px;font-weight:500}
 .tick li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-weight:700;font-size:13px}
@@ -447,6 +449,7 @@ a.ch:hover{border-color:var(--neon)}
         <div class="fl"><span>Domen və ya saytınız varmı?</span><div class="pills"><label><input type="radio" name="dm" value="Var"><span>Var</span></label><label><input type="radio" name="dm" value="Yoxdur" checked><span>Yoxdur</span></label><label><input type="radio" name="dm" value="Bilmirəm"><span>Bilmirəm</span></label></div></div>
         <div class="fl"><span>Ödəniş üçün hansı yol rahatdır?</span><div class="pills"><label><input type="radio" name="od" value="Taksit kartı"><span>Taksit kartı</span></label><label><input type="radio" name="od" value="Mərhələli ödəniş"><span>Mərhələli ödəniş</span></label><label><input type="radio" name="od" value="Kiçikdən başlamaq"><span>Kiçikdən başlamaq</span></label><label><input type="radio" name="od" value="Bilmirəm" checked><span>Bilmirəm</span></label></div></div>
         <label class="fl"><span>Qısa məlumat</span><textarea id="fm" placeholder="Nə satırsınız və ya hansı xidməti göstərirsiniz? Saytda nə olmalıdır?"></textarea></label>
+        <input type="text" id="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button class="btn pri" type="submit" id="go">Mesajı hazırla</button>
         <div class="out" id="out" aria-live="polite">
           <pre id="txt"></pre>
@@ -477,6 +480,8 @@ a.ch:hover{border-color:var(--neon)}
 (function(){
   document.getElementById("burger").addEventListener("click",function(){var o=document.getElementById("nav").classList.toggle("open");this.setAttribute("aria-expanded",o)});
   /* Əlaqə məlumatları: doldurulanda avtomatik görünür. wa: 994XXXXXXXXX formatında */
+  /* SHEET: Google Apps Script veb proqram linki (…/exec). Boşdursa sorğular yalnız WhatsApp ilə gedir. */
+  var SHEET="";
   var C={wa:"994709331108",email:"",instagram:"",tiktok:"",facebook:"",linkedin:""};
   var IC={"wa":"<path d=\"M4 20l1.3-4A8 8 0 1 1 8 18.7z\"/><path d=\"M9 9.5c.5 2 2 3.6 4 4.3l1.2-1.2 2 1-.5 1.7c-3.6.2-7.4-3.5-7.3-7.2l1.6-.6 1 2z\"/>","mail":"<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7l9 6 9-6\"/>","ig":"<rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"3.6\"/><circle cx=\"17\" cy=\"7\" r=\".6\"/>","tt":"<path d=\"M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5\"/><path d=\"M14 4c.4 2.6 2.2 4.2 5 4.4\"/>","fb":"<path d=\"M14 21v-8h3l.5-3.5H14V7.6c0-1 .4-1.6 1.7-1.6H18V3.2A20 20 0 0 0 15 3c-2.6 0-4.4 1.6-4.4 4.5v2H8V13h2.6v8\"/>","li":"<rect x=\"3.5\" y=\"3.5\" width=\"17\" height=\"17\" rx=\"2.5\"/><path d=\"M8 10.5V17M8 7.5v.01M12 17v-6.5M12 13.5c0-1.7 1-3 2.5-3s2 1 2 2.8V17\"/>"};
   var CH=[["wa","WhatsApp",function(v){return "https://wa.me/"+v},function(v){return "+"+v.slice(0,3)+" "+v.slice(3,5)+" "+v.slice(5,8)+" "+v.slice(8,10)+" "+v.slice(10)}],["email","E-poçt",function(v){return "mailto:"+v},function(v){return v}],["instagram","Instagram",function(v){return "https://instagram.com/"+v},function(v){return "@"+v}],["tiktok","TikTok",function(v){return "https://tiktok.com/@"+v},function(v){return "@"+v}],["facebook","Facebook",function(v){return "https://facebook.com/"+v},function(v){return v}],["linkedin","LinkedIn",function(v){return "https://linkedin.com/in/"+v},function(v){return v}]];
@@ -494,6 +499,7 @@ a.ch:hover{border-color:var(--neon)}
     L.push("Paket: "+val("pk"));L.push("Domen və ya sayt: "+val("dm"));L.push("Ödəniş: "+val("od"));
     if($("fm").value.trim())L.push("Məlumat: "+$("fm").value.trim());
     var t=L.join("\n");$("txt").textContent=t;$("out").classList.add("on");
+    if(SHEET&&!$("f").dataset.sent){$("f").dataset.sent="1";try{fetch(SHEET,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({ad:$("fn").value.trim(),biznes:$("fb").value.trim(),sahe:$("fs").value,paket:val("pk"),domen:val("dm"),odenis:val("od"),melumat:$("fm").value.trim(),sehife:location.href,hp:$("hp").value})})}catch(err){}}
     if(C.wa){$("wa").style.display="";$("wa").href="https://wa.me/"+C.wa+"?text="+encodeURIComponent(t);$("note").textContent="Mesaj hazırdır. Göndərmək üçün düyməyə toxunun."}
     else{$("wa").style.display="none";$("note").textContent="WhatsApp nömrəsi tezliklə əlavə olunacaq. Hələlik mətni kopyalaya bilərsiniz."}
     $("out").scrollIntoView({behavior:"smooth",block:"nearest"})});
