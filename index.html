@@ -264,6 +264,7 @@ section{padding-block:96px;position:relative}
     <a class="logo" href="#ana">Valeh<i>.</i></a>
     <nav class="nav" id="nav" aria-label="Əsas menyu">
       <a href="#vitrin">Demolar</a>
+      <a href="paketler.html">Paketlər</a>
       <a href="#showreel">Showreel</a>
       <a href="#xidmet">Xidmətlər</a>
       <a href="#proses">Proses</a>
@@ -325,6 +326,7 @@ section{padding-block:96px;position:relative}
         <span class="eyebrow">Demolar və qiymətlər</span>
         <h2>Sahənizi seçin, <span class="grad">saytınıza baxın</span></h2>
         <p class="lead">Hər sahənin üç paketi var. Sürüşdürün və ya oxlara toxunun. Demo yeni pəncərədə canlı açılır.</p>
+        <a class="btn" href="paketler.html" style="justify-self:start">Bütün paketlərin tam tərkibi →</a>
       </div>
       <div class="tabs" id="tabs" role="tablist" aria-label="Sahələr"></div>
       <div class="slider" id="slider">
@@ -556,7 +558,7 @@ section{padding-block:96px;position:relative}
     $("strack").innerHTML=T.map(function(t,j){return '<article class="slide" aria-roledescription="slayd" aria-label="'+TN[j]+'">'+
       '<a class="frame" href="'+url(t,x.k)+'" target="_blank" rel="noopener"><div class="bar"><i></i><i></i><i></i><u>'+x.b.toLowerCase().replace(/[^a-zəğıöşüç&]+/g,"")+'.az</u></div><img src="'+img(t,x.k)+'" alt="'+x.b+' '+TN[j]+' demo" loading="lazy"></a>'+
       '<div class="sinfo"><span class="pk">'+TN[j]+' paketi</span><h3>'+x.n+'</h3><div class="price">'+x.p[j].toLocaleString("en-US")+' <small>₼ · bir dəfəlik</small></div><ul><li>'+x.f[j]+'</li><li>'+(j===0?"Mobil uyğun dizayn, admin panel":j===1?"Start-dakı hər şey, promo kod və axtarış":"Plus-dakı hər şey, fərdi dizayn")+'</li><li>'+(j===0?"Haqqımızda və Əlaqə səhifələri":j===1?"1 ay texniki xidmət hədiyyə":"Tam ekran slayder və animasiyalar")+'</li></ul>'+
-      '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px"><a class="btn pri" href="'+url(t,x.k)+'" target="_blank" rel="noopener">Demoya bax ↗</a><a class="btn" href="#elaqe">Bu paketi istəyirəm</a></div></div></article>'}).join("");
+      '<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px"><a class="btn pri" href="'+url(t,x.k)+'" target="_blank" rel="noopener">Demoya bax ↗</a><a class="btn" href="paketler.html#'+x.k+'">Tam tərkib →</a></div></div></article>'}).join("");
     $("dots").innerHTML=T.map(function(t,j){return '<button aria-label="'+TN[j]+'" aria-current="'+(j===0)+'"></button>'}).join("");
     [].forEach.call($("dots").children,function(b,j){b.addEventListener("click",function(){sgo(j)})});
     $("slider").classList.remove("fade");void $("slider").offsetWidth;$("slider").classList.add("fade");sgo(0)}

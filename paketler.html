@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Valeh — Paketlər</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="12 sahə üzrə Start, Plus və Premium paketlərinin tam tərkibi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Konsepsiya: gecə rejimli "stüdiya monitoru" — neon mavi işıq, cihaz çərçivələrində canlı demo, video kimi keçidlər. Bilərəkdən tək tünd görünüş. */
+:root{
+  --bg:#050914;
+  --bg-2:#08101f;
+  --panel:#0c1628;
+  --line:#18294a;
+  --ink:#eaf4ff;
+  --muted:#8ea4c4;
+  --neon:#00c8ff;
+  --neon-2:#2f7bff;
+  --neon-ink:#021220;
+  --glow:0 0 0 1px rgba(0,200,255,.35),0 0 32px rgba(0,200,255,.25);
+  --fd:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fb:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:18px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--fb);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+h1,h2,h3{font-family:var(--fd);line-height:1.05;letter-spacing:-.025em;margin:0;text-wrap:balance}
+h2{font-size:clamp(32px,5.4vw,58px)}
+h3{font-size:21px;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+section{padding-block:96px;position:relative}
+.eyebrow{font:600 12px var(--fd);letter-spacing:.2em;text-transform:uppercase;color:var(--neon);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.lead{color:var(--muted);font-size:18px;max-width:60ch}
+.head{display:grid;gap:16px;margin-bottom:44px;max-width:780px}
+.grad{background:linear-gradient(90deg,var(--neon),var(--neon-2) 60%,#8be9ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:600 15.5px var(--fd);text-decoration:none;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--neon)}
+.btn.pri{background:linear-gradient(90deg,var(--neon),var(--neon-2));color:var(--neon-ink);border:0;box-shadow:0 10px 30px rgba(0,200,255,.3)}
+.btn.pri:hover{box-shadow:0 14px 40px rgba(0,200,255,.45)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+.icb{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:border-color .2s,background .2s}
+.icb:hover{border-color:var(--neon);background:#10203a}
+.icb svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Başlıq */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(5,9,20,.72);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:70px}
+.logo{font:700 24px var(--fd);text-decoration:none;letter-spacing:-.02em}
+.logo i{font-style:normal;color:var(--neon);text-shadow:0 0 12px var(--neon)}
+.nav{display:flex;gap:26px;font:500 15px var(--fd)}
+.nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+.nav a:hover{color:var(--ink)}
+.top .btn{min-height:42px;padding:0 18px;font-size:14px}
+.burger{display:none}
+@media(max-width:900px){.nav{display:none}.burger{display:grid}.top .btn{display:none}
+  .nav.open{display:flex;position:absolute;left:0;right:0;top:70px;flex-direction:column;gap:0;background:var(--bg-2);border-bottom:1px solid var(--line);padding:8px max(18px,env(safe-area-inset-right,0px)) 16px max(18px,env(safe-area-inset-left,0px))}
+  .nav.open a{padding:14px 0;border-bottom:1px solid var(--line);font-size:18px;color:var(--ink)}}
+
+/* Hero */
+.hero{padding-block:72px 40px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 380px at 78% 30%,rgba(0,200,255,.16),transparent 70%),
+  radial-gradient(500px 340px at 10% 90%,rgba(47,123,255,.14),transparent 70%),
+  linear-gradient(rgba(0,200,255,.06) 1px,transparent 1px) 0 0/48px 48px,
+  linear-gradient(90deg,rgba(0,200,255,.06) 1px,transparent 1px) 0 0/48px 48px;
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 40%,transparent 80%);mask-image:radial-gradient(ellipse at center,#000 40%,transparent 80%);pointer-events:none}
+.hgrid{display:grid;gap:56px;align-items:center;position:relative}
+.htxt{display:grid;gap:22px;min-width:0}
+.hero h1{font-size:clamp(40px,6.6vw,80px)}
+.rot{display:grid;overflow:hidden;height:1.18em;line-height:1.12}
+.rot span{grid-area:1/1;transform:translateY(105%);opacity:0;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.rot span.on{transform:none;opacity:1}
+.rot span.out{transform:translateY(-105%);opacity:0}
+.hero .row{display:flex;flex-wrap:wrap;gap:14px}
+.mini{display:flex;flex-wrap:wrap;gap:22px;margin-top:6px}
+.mini div{display:grid}
+.mini b{font:700 26px var(--fd);font-variant-numeric:tabular-nums}
+.mini span{font-size:13px;color:var(--muted)}
+
+/* Cihaz səhnəsi (video kimi) */
+.stage{position:relative;min-width:0;padding-bottom:30px}
+.laptop{position:relative;border-radius:16px;background:#0a1324;border:1px solid #1e3358;box-shadow:var(--glow),0 40px 80px rgba(0,0,0,.6);padding:10px 10px 14px;transform:perspective(1400px) rotateY(-8deg) rotateX(4deg);transition:transform .6s}
+.stage:hover .laptop{transform:perspective(1400px) rotateY(-3deg) rotateX(2deg)}
+.bar{display:flex;align-items:center;gap:6px;padding:2px 4px 9px}
+.bar i{width:9px;height:9px;border-radius:50%;background:#26406b}
+.bar i:first-child{background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.bar u{margin-left:10px;flex:1;text-decoration:none;font:500 11px var(--fb);color:var(--muted);background:#0f1d36;border-radius:6px;padding:3px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.screen{position:relative;aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:#0d1a30}
+.screen img,.pscreen img,.reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transform:scale(1.06);transition:opacity 1s ease,transform 6s ease-out}
+.screen img.on,.pscreen img.on,.reel img.on{opacity:1;transform:scale(1)}
+.phone{position:absolute;right:-6px;bottom:0;width:27%;min-width:96px;aspect-ratio:9/19;border-radius:22px;background:#0a1324;border:1px solid #1e3358;box-shadow:var(--glow),0 30px 60px rgba(0,0,0,.6);padding:6px;z-index:2}
+.pscreen{position:relative;width:100%;height:100%;border-radius:17px;overflow:hidden;background:#0d1a30}
+.ctrl{display:flex;align-items:center;gap:12px;margin-top:22px;padding-right:30%}
+.ctrl .icb{flex:none}
+.seg{display:flex;gap:4px;flex:1;min-width:0}
+.seg button{flex:1;height:4px;border:0;border-radius:4px;background:#1a2c4d;padding:0;cursor:pointer;position:relative;overflow:hidden}
+.seg button::after{content:"";position:absolute;inset:0;background:var(--neon);transform-origin:left;transform:scaleX(var(--p,0));box-shadow:0 0 8px var(--neon)}
+.now{font:600 13px var(--fd);color:var(--muted);white-space:nowrap}
+.now b{color:var(--ink)}
+
+/* Sonsuz zolaq */
+.marq{padding-block:28px;border-block:1px solid var(--line);background:var(--bg-2);overflow:hidden;display:grid;gap:14px}
+.track{display:flex;gap:14px;width:max-content;animation:mq 60s linear infinite}
+.track.rev{animation-direction:reverse;animation-duration:70s}
+.marq:hover .track{animation-play-state:paused}
+.track a{flex:none;width:230px;aspect-ratio:16/10;border-radius:12px;overflow:hidden;border:1px solid var(--line);position:relative;transition:border-color .2s,transform .2s}
+.track a:hover{border-color:var(--neon);transform:translateY(-3px)}
+.track img{width:100%;height:100%;object-fit:cover;object-position:top}
+.track span{position:absolute;left:8px;bottom:8px;font:600 11px var(--fd);background:rgba(5,9,20,.85);padding:3px 8px;border-radius:6px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* Rəqəmlər */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px}
+.stat{border:1px solid var(--line);border-radius:var(--r);padding:24px;background:linear-gradient(180deg,var(--panel),transparent)}
+.stat b{display:block;font:700 clamp(40px,6vw,60px)/1 var(--fd);font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:14.5px}
+
+/* Vitrin: sahə + slayder */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:26px;scrollbar-width:none;scroll-snap-type:x proximity}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;scroll-snap-align:start;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font:600 14.5px var(--fd);cursor:pointer;transition:all .2s}
+.tab:hover{color:var(--ink);border-color:#2a4776}
+.tab[aria-selected="true"]{background:var(--neon);color:var(--neon-ink);border-color:var(--neon);box-shadow:0 0 22px rgba(0,200,255,.4)}
+.slider{position:relative;overflow:hidden;border-radius:24px;border:1px solid var(--line);background:var(--bg-2);touch-action:pan-y}
+.strack{display:flex;transition:transform .7s cubic-bezier(.65,0,.25,1)}
+.slide{flex:0 0 100%;display:grid;gap:28px;padding:28px;align-items:center;min-width:0}
+.slide .frame{border-radius:14px;overflow:hidden;border:1px solid #1e3358;background:#0a1324;box-shadow:0 30px 60px rgba(0,0,0,.5);min-width:0}
+.slide .frame .bar{padding:9px 10px}
+.slide .frame img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.sinfo{display:grid;gap:14px;min-width:0}
+.sinfo .pk{font:700 13px var(--fd);letter-spacing:.16em;text-transform:uppercase;color:var(--neon)}
+.sinfo h3{font-size:clamp(26px,3vw,36px)}
+.sinfo .price{font:700 44px/1 var(--fd);font-variant-numeric:tabular-nums}
+.sinfo .price small{font-size:16px;color:var(--muted);font-weight:500}
+.sinfo ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;color:var(--muted)}
+.sinfo li{display:flex;gap:10px}
+.sinfo li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--neon);box-shadow:0 0 8px var(--neon)}
+.snav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px}
+.dots{display:flex;gap:8px}
+.dots button{width:42px;height:6px;border-radius:6px;border:0;background:#1a2c4d;cursor:pointer;padding:0;transition:background .3s,width .3s}
+.dots button[aria-current="true"]{background:var(--neon);width:64px;box-shadow:0 0 10px var(--neon)}
+.arrows{display:flex;gap:10px}
+.fade{animation:fd .5s ease}
+@keyframes fd{from{opacity:.2;transform:translateY(8px)}}
+
+/* Showreel */
+.reelbox{border-radius:26px;overflow:hidden;border:1px solid var(--line);position:relative;background:#000}
+.reel{position:relative;aspect-ratio:16/9;max-height:78vh;width:100%}
+.reel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,6,14,.85),transparent 45%),linear-gradient(90deg,rgba(2,6,14,.4),transparent 40%);pointer-events:none}
+.cap{position:absolute;left:24px;bottom:62px;z-index:2;display:grid;gap:4px;max-width:70%}
+.cap small{font:600 12px var(--fd);letter-spacing:.18em;text-transform:uppercase;color:var(--neon)}
+.cap b{font:700 clamp(22px,3.4vw,40px)/1.05 var(--fd)}
+.rctl{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;align-items:center;gap:14px;padding:14px 20px;background:rgba(2,6,14,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ticks{display:flex;gap:3px;flex:1;min-width:0;height:22px;align-items:center}
+.ticks button{flex:1;height:5px;border:0;border-radius:3px;background:#24395f;padding:0;cursor:pointer;transition:height .2s,background .2s}
+.ticks button:hover{height:12px}
+.ticks button.done{background:#3a76b8}
+.ticks button.on{background:var(--neon);height:12px;box-shadow:0 0 10px var(--neon)}
+.cnt{font:600 14px var(--fd);font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+
+/* Kartlar */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{position:relative;border-radius:var(--r);padding:26px;background:var(--panel);border:1px solid var(--line);display:grid;gap:12px;align-content:start;overflow:hidden;min-width:0}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(0,200,255,.16),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover::before{opacity:1}
+.card:hover{border-color:#24406e}
+.card .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(0,200,255,.1);border:1px solid rgba(0,200,255,.3)}
+.card .ic svg{width:22px;height:22px;fill:none;stroke:var(--neon);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card p{color:var(--muted)}
+.card .pk{font:700 12px var(--fd);letter-spacing:.16em;text-transform:uppercase;color:var(--neon)}
+.card b.big{font:700 42px/1 var(--fd);font-variant-numeric:tabular-nums}
+.card b.big small{font-size:15px;color:var(--muted);font-weight:500}
+.card ul{margin:0;padding-left:18px;color:var(--muted);display:grid;gap:4px}
+.card.hot{border-color:var(--neon);box-shadow:var(--glow)}
+
+/* Domen və hostinq */
+.dh{border-radius:26px;padding:clamp(24px,4vw,48px);display:grid;gap:28px;position:relative;background:linear-gradient(var(--bg-2),var(--bg-2)) padding-box,linear-gradient(120deg,var(--neon),var(--neon-2),transparent 70%) border-box;border:1.5px solid transparent}
+.dh ul{margin:0;padding:0;list-style:none;display:grid;gap:14px}
+.dh li{display:flex;gap:12px;font-weight:500}
+.dh li::before{content:"✓";flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-weight:700;font-size:14px}
+
+/* Proses */
+.tl{list-style:none;margin:0;padding:0 0 0 34px;display:grid;gap:22px;position:relative;counter-reset:s}
+.tl::before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:2px;background:#1a2c4d}
+.tl::after{content:"";position:absolute;left:12px;top:6px;width:2px;height:calc(var(--prog,0) * (100% - 12px));background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.tl li{position:relative;counter-increment:s;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px;min-width:0}
+.tl li::before{content:counter(s);position:absolute;left:-34px;top:16px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:2px solid var(--neon);font:700 12px var(--fd);color:var(--neon);z-index:1}
+.tl b{display:block;font:600 18px var(--fd)}
+.tl span{color:var(--muted);font-size:15px}
+.pgrid{display:grid;gap:40px;align-items:start}
+
+/* Şəkillər */
+.photo{position:relative;border-radius:20px;overflow:hidden;border:1px solid #1e3358;background:repeating-linear-gradient(135deg,#0c1830 0 14px,#0a1426 14px 28px);display:grid;place-items:center;text-align:center;min-width:0;max-width:100%}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo span{font:600 14px var(--fd);background:rgba(5,9,20,.8);border:1px solid var(--line);padding:8px 14px;border-radius:10px}
+.photo small{display:block;font:400 12px var(--fb);color:var(--muted)}
+.about{display:grid;gap:40px;align-items:center}
+.agal{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;aspect-ratio:1;max-width:520px;width:100%}
+.agal .photo:first-child{grid-row:span 2}
+.atxt{display:grid;gap:16px;min-width:0}
+.atxt p{color:var(--muted);font-size:17px;max-width:60ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font:500 14px var(--fd);color:var(--muted)}
+
+.empty{border:1px dashed #2a4776;border-radius:var(--r);padding:28px;display:grid;gap:6px;max-width:780px}
+.empty b{font:600 19px var(--fd)}
+.empty span{color:var(--muted)}
+
+/* Əlaqə */
+.cta{border-radius:30px;padding:clamp(28px,6vw,72px);position:relative;overflow:hidden;background:radial-gradient(600px 300px at 80% 0%,rgba(0,200,255,.25),transparent 70%),radial-gradient(500px 300px at 0% 100%,rgba(47,123,255,.25),transparent 70%),var(--panel);border:1px solid #24406e;display:grid;gap:28px}
+.cgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.citem{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:rgba(5,9,20,.6);display:grid;gap:2px;min-width:0}
+.citem small{font:600 12px var(--fd);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.citem b{font:600 19px var(--fd);overflow-wrap:anywhere;user-select:all}
+.foot{border-top:1px solid var(--line);padding-block:26px;color:var(--muted);font-size:14px}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+/* Görünən hissədə yumşaq daxilolma (statik vəziyyət görünəndir) */
+@supports (animation-timeline:view()){
+  .rise{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+  @keyframes rise{from{opacity:.35;transform:translateY(26px)}to{opacity:1;transform:none}}
+}
+.hero .htxt>*{animation:hin .9s cubic-bezier(.2,.8,.2,1) both}
+.hero .htxt>*:nth-child(2){animation-delay:.08s}.hero .htxt>*:nth-child(3){animation-delay:.16s}.hero .htxt>*:nth-child(4){animation-delay:.24s}.hero .htxt>*:nth-child(5){animation-delay:.32s}
+@keyframes hin{from{opacity:0;transform:translateY(18px)}}
+
+@media(min-width:960px){
+  .hgrid{grid-template-columns:1fr 1.08fr}
+  .slide{grid-template-columns:1.5fr 1fr;padding:40px}
+  .dh{grid-template-columns:1fr 1fr;align-items:center}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .about{grid-template-columns:1fr 1.1fr}
+}
+@media(max-width:600px){
+  section{padding-block:72px}
+  .laptop{transform:none}.stage:hover .laptop{transform:none}
+  .ctrl{padding-right:31%}.now{padding-right:31%}
+  .cap{left:16px;bottom:58px;max-width:85%}
+  .rctl{padding:10px 12px;gap:10px}
+  .slide{padding:18px}
+  .dots button{width:28px}.dots button[aria-current="true"]{width:44px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style><style>
+.ph{padding-block:64px 24px;position:relative;overflow:hidden}
+.ph::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 80% 0%,rgba(0,200,255,.16),transparent 70%);pointer-events:none}
+.crumb{font:500 14px var(--fd);color:var(--muted);text-decoration:none;display:inline-flex;gap:8px;margin-bottom:18px}
+.crumb:hover{color:var(--neon)}
+.ph h1{font-size:clamp(38px,6vw,68px);margin-bottom:16px}
+.sticky-tabs{position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px);z-index:20;background:rgba(5,9,20,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-block:12px}
+.sticky-tabs .tabs{margin:0;padding:0}
+.pkgs{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:34px}
+.pkg{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:26px;display:grid;gap:14px;align-content:start;min-width:0}
+.pkg.hot{border-color:var(--neon);box-shadow:var(--glow)}
+.pkg .pk{font:700 13px var(--fd);letter-spacing:.16em;text-transform:uppercase;color:var(--neon);display:flex;justify-content:space-between;gap:10px}
+.pkg .pk em{font-style:normal;color:var(--neon-ink);background:var(--neon);border-radius:999px;padding:2px 10px;font-size:11px;letter-spacing:.08em}
+.pkg .pr{font:700 46px/1 var(--fd);font-variant-numeric:tabular-nums}
+.pkg .pr small{font-size:15px;color:var(--muted);font-weight:500}
+.pkg .for{color:var(--ink);font-weight:500}
+.pkg .ld{color:var(--muted);font-size:15px}
+.pkg h4{font:600 13px var(--fd);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:6px 0 0}
+.ok,.no{margin:0;padding:0;list-style:none;display:grid;gap:9px;font-size:15px}
+.ok li,.no li{display:flex;gap:10px;align-items:flex-start}
+.ok li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-weight:700;font-size:12px;margin-top:1px}
+.no li{color:var(--muted)}
+.no li::before{content:"—";flex:none;width:22px;text-align:center;color:#45618c}
+.pkg .btn{margin-top:6px}
+.two{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:22px}
+.box{background:var(--bg-2);border:1px solid var(--line);border-radius:22px;padding:26px;display:grid;gap:14px;min-width:0}
+.box h3{font-size:22px}
+.tblw{overflow-x:auto;border:1px solid var(--line);border-radius:22px;margin-top:22px;background:var(--bg-2)}
+.tblw table{width:100%;border-collapse:collapse;min-width:620px;font-size:15px}
+.tblw th,.tblw td{padding:14px 16px;text-align:center;border-bottom:1px solid var(--line)}
+.tblw th:first-child,.tblw td:first-child{text-align:left;color:var(--ink)}
+.tblw th{font:600 13px var(--fd);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tblw td{color:var(--muted)}
+.tblw .y{color:var(--neon);font-weight:700}
+.tblw .hl{background:rgba(0,200,255,.06)}
+.tblw tr:last-child td{border-bottom:0}
+.note2{color:var(--muted);font-size:14px;margin-top:16px}
+.cmn{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html">Valeh<i>.</i></a>
+    <nav class="nav" id="nav" aria-label="Əsas menyu">
+      <a href="index.html">Ana səhifə</a>
+      <a href="index.html#vitrin">Demolar</a>
+      <a href="paketler.html" style="color:var(--ink)">Paketlər</a>
+      <a href="index.html#elaqe">Əlaqə</a>
+    </nav>
+    <a class="btn pri" href="index.html#elaqe">Sayt sifariş et</a>
+    <button class="icb burger" id="burger" aria-label="Menyunu aç" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<main>
+  <section class="ph">
+    <div class="wrap" style="position:relative">
+      <a class="crumb" href="index.html">← Ana səhifə</a>
+      <span class="eyebrow">Paketlər</span>
+      <h1 style="margin-top:12px">Hər paketə <span class="grad">nə daxildir</span></h1>
+      <p class="lead">Sahənizi seçin. Start, Plus və Premium paketlərinə nəyin daxil olduğu, nəyin daxil olmadığı və sizdən nə lazım olduğu açıq yazılıb. Müqavilədə də eyni siyahı olur.</p>
+    </div>
+  </section>
+  <div class="sticky-tabs"><div class="wrap"><div class="tabs" id="tabs" role="tablist" aria-label="Sahələr"></div></div></div>
+  <section style="padding-top:24px">
+    <div class="wrap" id="niche"></div>
+  </section>
+  <section style="background:var(--bg-2);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Bütün paketlərdə</span><h2>Ümumi şərtlər</h2></div>
+      <div class="cmn">
+        <div class="box"><h3>Domen və hostinq</h3><ul class="ok"><li>Sizin seçiminizdir və sizin adınıza olur</li><li>Varsa, mövcud domen və hostinqiniz istifadə olunur</li><li>Xərci birbaşa provayderə ödəyirsiniz</li><li>Quraşdırma paketə daxildir</li></ul></div>
+        <div class="box"><h3>Təhvildən sonra</h3><ul class="ok"><li>7 gün pulsuz texniki dəstək</li><li>Admin panelin istifadəsi göstərilir</li><li>Bütün giriş məlumatları sizə verilir</li><li>Plus və Premium-a 1 ay Standart texniki xidmət hədiyyə</li></ul></div>
+        <div class="box"><h3>Aylıq texniki xidmət</h3><ul class="ok"><li>Baza: 39 ₼ / ay</li><li>Standart: 79 ₼ / ay</li><li>Aktiv: 149 ₼ / ay</li><li>Plandan kənar iş: saatı 20 ₼</li></ul></div>
+      </div>
+      <p class="note2">Kartla onlayn ödəniş inteqrasiyası Plus və Premium-a daxildir, amma işləməsi sizin ödəniş provayderi və ya bankla müqavilənizdən asılıdır. Yeni funksiyalar və əlavə işlər ayrıca qiymətləndirilir.</p>
+    </div>
+  </section>
+  <section>
+    <div class="wrap"><div class="cta">
+      <div style="display:grid;gap:14px;max-width:720px"><span class="eyebrow">Sual var?</span><h2>Hansı paket sizə uyğundur?</h2><p class="lead">Sahənizi və ehtiyacınızı yazın, birlikdə seçək. İlk məsləhət pulsuzdur.</p></div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn pri" href="index.html#elaqe">Əlaqə saxla</a><a class="btn" href="index.html#vitrin">Demolara bax</a></div>
+    </div></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><span>© Valeh · Veb saytların hazırlanması · Bakı</span><span>Demolardakı brend adları və məlumatlar nümunədir</span></div></footer>
+<script>
+(function(){
+  var D=[{"k":"butik","n":"Geyim butiki","b":"Velora Butik","needs":["Məhsul şəkilləri (ideal halda 2–3 bucaqdan)","Məhsul adları, qiymətləri, ölçüləri və təsvirləri","Domen və hostinq varsa, giriş məlumatları (yoxdursa, birlikdə seçirik)","Loqo, brend rəngləri və əlaqə məlumatları"],"compare":[["İlkin məhsul sayı","20","50","100"],["Dizayn","Brendə uyğun","Brendə uyğun","Fərdi"],["WhatsApp ilə sifariş",true,true,true],["Ölçü və rəng seçimi",false,true,true],["Səbət və tam checkout",false,true,true],["Promo kod",false,true,true],["Axtarış",false,true,true],["Filtrlər",false,false,true],["Seçilmişlər və tez baxış",false,false,true],["Ölçü bələdçisi",false,false,true],["Lookbook",false,false,true],["Hədiyyə texniki xidmət",false,"1 ay","1 ay"]],"t":[{"price":399,"for":"WhatsApp ilə sifariş qəbul edən butik","lead":"START paketi sifarişləri WhatsApp ilə qəbul edən butik üçün sadə, zövqlü və satış yönümlü onlayn vitrindir.","inc":["Brendə uyğunlaşdırılmış dizayn","Ana səhifə, kolleksiya və 3–5 kateqoriya","20 məhsula qədər ilkin yerləşdirmə","Hər məhsul üçün ayrıca səhifə","Səbətə yığıb bir WhatsApp mesajı ilə sifariş","Haqqımızda və Əlaqə səhifələri","Mobil uyğunluq","WordPress admin paneli və istifadə təlimi"],"exc":["Saytda tam checkout və kartla ödəniş (PLUS paketində)","Ölçü və rəng seçimi (PLUS paketində)"]},{"price":899,"for":"Saytdan birbaşa sifariş almaq istəyən butik","lead":"PLUS paketi ölçü və rəng seçimi, səbət və tam sifariş forması olan, admin paneldən idarə olunan onlayn mağazadır.","inc":["START-dakı hər şey","WooCommerce onlayn mağaza","Ölçü və rəng variantları","Səbət və tam sifariş forması: ad, telefon, ünvan, çatdırılma üsulu","Çatdırılma haqqının avtomatik hesablanması","Promo kod və endirimlər","Məhsul axtarışı","50 məhsula qədər ilkin yerləşdirmə","Çatdırılma və qaytarılma səhifəsi, FAQ","Kartla ödəniş inteqrasiyası*","Əsas SEO sazlamaları","1 ay Standart texniki xidmət hədiyyə"],"exc":["Müştəri hesabı və şəxsi kabinet (ayrıca qiymətləndirilir)"]},{"price":1499,"for":"Brendini fərqləndirmək istəyən butik","lead":"PREMIUM paketi brendinizə xas fərdi dizayn, lookbook, filtrlər və ölçü bələdçisi ilə premium alış təcrübəsidir.","inc":["PLUS-dakı hər şey","Fərdi dizayn: bu demodakı görünüş WordPress-də birə-bir","Tam ekran kampaniya slayderi və animasiyalar","Filtrlər: kateqoriya, qiymət, üslub","Seçilmişlər və tez baxış","Ölçü bələdçisi və ölçü cədvəli","Lookbook qalereyası","Mərhələli sifariş forması","Son baxılan məhsullar","Abunə forması","100 məhsula qədər ilkin yerləşdirmə","Sürət optimizasiyası və genişləndirilmiş test"],"exc":[]}]},{"k":"biju","n":"Aksesuar və bijuteriya","b":"Nüra Aksesuar","needs":["Məhsul şəkilləri, adları, qiymətləri və təsvirləri","Domen və hostinq varsa, giriş məlumatları (yoxdursa, birlikdə seçirik)","Brend adı, loqo və əlaqə məlumatları"],"compare":[["İlkin məhsul sayı","20","50","100"],["Dizayn","Brendə uyğun","Brendə uyğun","Fərdi"],["WhatsApp ilə sifariş",true,true,true],["Səbət və tam checkout",false,true,true],["Rəng və ölçü variantları",false,true,true],["Promo kod və axtarış",false,true,true],["Filtrlər",false,false,true],["Seçilmişlər və tez baxış",false,false,true],["Hədiyyə bələdçisi",false,false,true],["Lookbook",false,false,true],["Hədiyyə texniki xidmət",false,"1 ay","1 ay"]],"t":[{"price":449,"for":"WhatsApp ilə sifariş qəbul edən mağaza","lead":"START paketi sifarişləri WhatsApp ilə qəbul edən mağaza üçün sadə, zövqlü və satış yönümlü onlayn vitrindir.","inc":["Brendə uyğunlaşdırılmış dizayn","Ana səhifə, kataloq və 3–5 kateqoriya","20 məhsula qədər ilkin yerləşdirmə","Hər məhsul üçün ayrıca səhifə","Səbətə yığıb bir WhatsApp mesajı ilə sifariş","Haqqımızda və Əlaqə səhifələri","Mobil uyğunluq","Pulsuz WordPress tema, admin panel və təlim"],"exc":["Kartla onlayn ödəniş və tam checkout (PLUS paketində)","Müştəri hesabı və şəxsi kabinet (ayrıca qiymətləndirilir)"]},{"price":899,"for":"Saytdan birbaşa sifariş almaq istəyənlər","lead":"PLUS paketi tam onlayn sifariş qəbul edən, məhsulların rahat idarə olunduğu peşəkar onlayn mağazadır.","inc":["START-dakı hər şey","WooCommerce inteqrasiyası","Səbət və tam checkout: ad, telefon, ünvan","Sifarişlərin admin paneldə idarəsi","Məhsul variantları (rəng, ölçü)","Kupon və endirim kodları","Məhsul axtarışı","50 məhsula qədər ilkin yerləşdirmə","Çatdırılma və qaytarılma səhifəsi","Kartla ödəniş inteqrasiyası*","Əsas SEO sazlamaları","1 ay Standart texniki xidmət hədiyyə"],"exc":["Müştəri hesabı və şəxsi kabinet (ayrıca qiymətləndirilir)"]},{"price":1499,"for":"Brendini fərqləndirmək istəyənlər","lead":"PREMIUM paketi brendinizə xas fərdi dizayn, filtrlər, lookbook və hədiyyə bələdçisi ilə premium alış təcrübəsidir.","inc":["PLUS-dakı hər şey","Fərdi dizayn: bu demodakı görünüş WordPress-də birə-bir","Tam ekran kampaniya slayderi və animasiyalar","Axtarış və filtrlər: kateqoriya, qiymət, üslub","Seçilmişlər və tez baxış","Hədiyyə bələdçisi","Lookbook qalereyası","Mərhələli sifariş forması və hədiyyə kartı","Son baxılan məhsullar və abunə forması","100 məhsula qədər ilkin yerləşdirmə","Sürət optimizasiyası və genişləndirilmiş test"],"exc":[]}]},{"k":"kosmetika","n":"Kosmetika və ətriyyat","b":"Lumi Beauty","needs":["Məhsul şəkilləri, adları, qiymətləri və tərkibi","Həcm və çalar variantları","Domen və hostinq varsa, giriş məlumatları (yoxdursa, birlikdə seçirik)","Loqo, brend rəngləri və əlaqə məlumatları"],"compare":[["İlkin məhsul sayı","20","50","100"],["Dizayn","Brendə uyğun","Brendə uyğun","Fərdi"],["WhatsApp ilə sifariş",true,true,true],["Həcm və çalar seçimi",false,true,true],["Səbət və tam checkout",false,true,true],["Nümunə və qablaşdırma seçimi",false,true,true],["Ətir tapıcısı",false,false,true],["Dəri tipinə görə filtr",false,false,true],["Seçilmişlər və tez baxış",false,false,true],["Hədiyyə texniki xidmət",false,"1 ay","1 ay"]],"t":[{"price":399,"for":"WhatsApp ilə sifariş qəbul edən kosmetika mağazası","lead":"START paketi məhsulları gözəl göstərən və sifarişi hazır WhatsApp mesajı ilə qəbul edən onlayn vitrindir.","inc":["Brendə uyğunlaşdırılmış dizayn","Ana səhifə, kataloq və 3–5 kateqoriya","20 məhsula qədər ilkin yerləşdirmə","Hər məhsul üçün ayrıca səhifə","Səbətə yığıb bir WhatsApp mesajı ilə sifariş","Haqqımızda və Əlaqə səhifələri","Mobil uyğunluq","WordPress admin paneli və təlim"],"exc":["Həcm və çalar seçimi, tam checkout (PLUS paketində)"]},{"price":899,"for":"Saytdan birbaşa sifariş almaq istəyən mağaza","lead":"PLUS paketi həcm və çalar variantları, səbət və tam sifariş forması olan onlayn kosmetika mağazasıdır.","inc":["START-dakı hər şey","WooCommerce onlayn mağaza","Həcm və çalar variantları","Səbət və tam sifariş forması","Çatdırılma haqqının avtomatik hesablanması","Pulsuz nümunə və hədiyyə qablaşdırması seçimi","Promo kod","Axtarış","50 məhsula qədər yerləşdirmə","Çatdırılma və qaytarılma səhifəsi, FAQ","Kartla ödəniş inteqrasiyası*","1 ay Standart texniki xidmət hədiyyə"],"exc":[]},{"price":1499,"for":"Brendini fərqləndirmək istəyən gözəllik mağazası","lead":"PREMIUM paketi fərdi dizayn, ətir tapıcısı, dəri tipinə görə filtrlər və məsləhətçi profilləri ilə premium mağazadır.","inc":["PLUS-dakı hər şey","Fərdi dizayn: bu demodakı görünüş WordPress-də birə-bir","Ətir tapıcısı testi","Filtrlər: kateqoriya, qiymət, dəri tipi","Seçilmişlər və tez baxış","Məsləhətçi profilləri və qalereya","Mərhələli sifariş forması","100 məhsula qədər yerləşdirmə","Tam ekran slayder və animasiyalar","Sürət optimizasiyası və genişləndirilmiş test"],"exc":[]}]},{"k":"telefon","n":"Telefon və aksesuarlar","b":"Mobil Mərkəz","needs":["Məhsul şəkilləri, model adları, qiymətləri və xüsusiyyətləri","Yaddaş və rəng variantları","Hissəli ödəniş şərtləri (bankla razılaşma)","Domen və hostinq varsa, giriş məlumatları (yoxdursa, birlikdə seçirik)","Loqo və əlaqə məlumatları"],"compare":[["İlkin məhsul sayı","20","50","100"],["Dizayn","Brendə uyğun","Brendə uyğun","Fərdi"],["WhatsApp ilə sifariş",true,true,true],["Yaddaş və rəng seçimi",false,true,true],["Səbət və tam checkout",false,true,true],["Hissəli və trade-in seçimi",false,"Formada","Kalkulyator"],["Filtrlər",false,false,true],["Seçilmişlər və tez baxış",false,false,true],["Qalereya",false,false,true],["Hədiyyə texniki xidmət",false,"1 ay","1 ay"]],"t":[{"price":399,"for":"WhatsApp ilə sifariş qəbul edən telefon mağazası","lead":"START paketi telefon və aksesuarları aydın göstərən, sifarişi hazır WhatsApp mesajı ilə qəbul edən onlayn vitrindir.","inc":["Brendə uyğunlaşdırılmış dizayn","Ana səhifə, kataloq və 3–5 kateqoriya","20 məhsula qədər ilkin yerləşdirmə","Hər məhsul üçün ayrıca səhifə","Səbətə yığıb bir WhatsApp mesajı ilə sifariş","Haqqımızda və Əlaqə səhifələri","Mobil uyğunluq","WordPress admin paneli və təlim"],"exc":["Yaddaş və rəng seçimi, tam checkout (PLUS paketində)"]},{"price":899,"for":"Saytdan birbaşa sifariş almaq istəyən mağaza","lead":"PLUS paketi yaddaş və rəng variantları, hissəli ödəniş seçimi və tam sifariş forması olan onlayn mağazadır.","inc":["START-dakı hər şey","WooCommerce onlayn mağaza","Yaddaş və rəng variantları","Səbət və tam sifariş forması","Hissəli ödəniş və trade-in seçimi formada","Çatdırılma haqqının avtomatik hesablanması","Promo kod","Axtarış","50 məhsula qədər yerləşdirmə","Zəmanət və çatdırılma səhifəsi, FAQ","Kartla ödəniş inteqrasiyası*","1 ay Standart texniki xidmət hədiyyə"],"exc":["Bankın hissəli ödəniş API inteqrasiyası (bankla müqavilədən asılıdır)"]},{"price":1499,"for":"Böyük çeşidli və ya şəbəkə mağaza","lead":"PREMIUM paketi fərdi dizayn, hissəli ödəniş və trade-in kalkulyatoru, filtrlər və müqayisə rahatlığı ilə premium mağazadır.","inc":["PLUS-dakı hər şey","Fərdi dizayn: bu demodakı görünüş WordPress-də birə-bir","Hissəli ödəniş və trade-in kalkulyatoru","Filtrlər: kateqoriya, qiymət, xüsusiyyət","Seçilmişlər və tez baxış","Komanda və qalereya","Mərhələli sifariş forması","100 məhsula qədər yerləşdirmə","Tam ekran slayder və animasiyalar","Sürət optimizasiyası və genişləndirilmiş test"],"exc":[]}]},{"k":"gul","n":"Gül və hədiyyə","b":"Florya Gül Evi","needs":["Buket şəkilləri və qiymətləri","Çatdırılma zonaları və qiymətləri","Domen və hostinq varsa, giriş məlumatları (yoxdursa, birlikdə seçirik)","Loqo, brend rəngləri və əlaqə məlumatları"],"compare":[["İlkin məhsul sayı","20","50","100"],["Dizayn","Brendə uyğun","Brendə uyğun","Fərdi"],["WhatsApp ilə sifariş",true,true,true],["Çatdırılma günü və saatı",false,true,true],["Kart mətni və anonim çatdırılma",false,true,true],["Səbət və tam checkout",false,true,true],["Promo kod",false,true,true],["Buket qurucusu",false,false,true],["Filtrlər və seçilmişlər",false,false,true],["Florist profilləri və qalereya",false,false,true],["Hədiyyə texniki xidmət",false,"1 ay","1 ay"]],"t":[{"price":399,"for":"WhatsApp ilə sifariş qəbul edən gül mağazası","lead":"START paketi buketləri gözəl göstərən və sifarişi hazır WhatsApp mesajı ilə qəbul edən onlayn vitrindir.","inc":["Brendə uyğunlaşdırılmış dizayn","Ana səhifə, kataloq və 3–5 kateqoriya","20 buketə qədər ilkin yerləşdirmə","Hər buket üçün ayrıca səhifə","Səbətə yığıb bir WhatsApp mesajı ilə sifariş","Haqqımızda və Əlaqə səhifələri","Mobil uyğunluq","WordPress admin paneli və istifadə təlimi"],"exc":["Çatdırılma günü və saatı seçimi (PLUS paketində)","Saytda tam checkout və kartla ödəniş (PLUS paketində)"]},{"price":899,"for":"Saytdan birbaşa sifariş almaq istəyən gül mağazası","lead":"PLUS paketi çatdırılma günü və saatı, alıcı məlumatları və kart mətni ilə tam sifariş qəbul edən onlayn gül mağazasıdır.","inc":["START-dakı hər şey","WooCommerce onlayn mağaza","Ölçü və gül sayı variantları","Alıcı adı, telefonu və ünvanı","Çatdırılma günü və 2 saatlıq aralıq seçimi","Kart mətni və anonim çatdırılma seçimi","Çatdırılma haqqının avtomatik hesablanması","Promo kod və endirimlər","Axtarış","50 məhsula qədər yerləşdirmə","Çatdırılma şərtləri səhifəsi və FAQ","Kartla ödəniş inteqrasiyası*","1 ay Standart texniki xidmət hədiyyə"],"exc":[]},{"price":1499,"for":"Brendini fərqləndirmək istəyən gül evi","lead":"PREMIUM paketi fərdi dizayn, buket qurucusu, florist profilləri və mərhələli sifarişlə premium onlayn gül evidir.","inc":["PLUS-dakı hər şey","Fərdi dizayn: bu demodakı görünüş WordPress-də birə-bir","Buket qurucusu: gül, say, qablaşdırma və hədiyyə ilə canlı qiymət","Tam ekran slayder və animasiyalar","Filtrlər: kateqoriya, qiymət, münasibət","Seçilmişlər və tez baxış","Florist profilləri və qalereya","Mərhələli sifariş forması","100 məhsula qədər yerləşdirmə","Sürət optimizasiyası və genişləndirilmiş test"],"exc":["Buket qurucusu üçün xüsusi plugin lazım olarsa, lisenziya xərci"]}]},{"k":"restoran","n":"Restoran və kafe","b":"Sumaq Mətbəx","needs":["Menyu: yeməklərin adları, qiymətləri, çəkiləri və şəkilləri","Çatdırılma zonası, qiyməti və iş saatları","Restoranın və yeməklərin şəkilləri","Domen və hostinq varsa, giriş məlumatları (yoxdursa, birlikdə seçirik)","Loqo və əlaqə məlumatları"],"compare":[["Menyu həcmi","30","60","100"],["Dizayn","Brendə uyğun","Brendə uyğun","Fərdi"],["WhatsApp ilə sifariş",true,true,true],["QR menyu",true,true,true],["Tam checkout və çatdırılma haqqı",false,true,true],["Çatdırılma vaxtının seçimi",false,true,true],["Masa rezervasiyası","WhatsApp ilə","Forma","Təqvim və zal seçimi"],["Banket hesablayıcısı",false,false,true],["Menyu filtrləri",false,false,true],["Komanda və qalereya",false,false,true],["Hədiyyə texniki xidmət",false,"1 ay","1 ay"]],"t":[{"price":399,"for":"Menyusunu göstərib WhatsApp ilə sifariş alan restoran","lead":"START paketi menyunu gözəl göstərən, sifarişi hazır WhatsApp mesajı ilə qəbul edən və QR menyu kimi işləyən saytdır.","inc":["Brendə uyğunlaşdırılmış dizayn","Ana səhifə və menyu (3–5 bölmə)","30 yeməyə qədər yerləşdirmə","Hər yemək üçün ayrıca səhifə","Səbətə yığıb bir WhatsApp mesajı ilə sifariş","Masalar üçün QR menyu kodu","Haqqımızda və Əlaqə səhifələri","Mobil uyğunluq","WordPress admin paneli və təlim"],"exc":["Saytda tam checkout və onlayn rezervasiya (PLUS paketində)"]},{"price":899,"for":"Saytdan çatdırılma sifarişi və rezervasiya qəbul edən restoran","lead":"PLUS paketi çatdırılma və ya götürmə seçimi, vaxt təyini və masa rezervasiyası olan tam onlayn sifariş saytıdır.","inc":["START-dakı hər şey","WooCommerce onlayn sifariş","Porsiya və qarnir variantları","Çatdırılma və ya götürmə seçimi","Çatdırılma haqqının avtomatik hesablanması","Çatdırılma vaxtının seçimi","Masa rezervasiyası forması","Promo kod","Axtarış","60 yeməyə qədər yerləşdirmə","Çatdırılma şərtləri və FAQ","Kartla ödəniş inteqrasiyası*","1 ay Standart texniki xidmət hədiyyə"],"exc":["Wolt və Bolt Food kimi platformalarla inteqrasiya"]},{"price":1499,"for":"Premium imicli restoran və ya şəbəkə","lead":"PREMIUM paketi fərdi dizayn, rezervasiya və banket planlayıcısı, mətbəx komandası və qalereya ilə premium restoran saytıdır.","inc":["PLUS-dakı hər şey","Fərdi dizayn: bu demodakı görünüş WordPress-də birə-bir","Rezervasiya: gün, saat, zal, qonaq sayı","Banket büdcəsi hesablayıcısı","Menyu filtrləri: acılı, vegetarian, ənənəvi","Seçilmişlər və tez baxış","Mətbəx komandası səhifəsi","Qalereya və tam ekran baxış","Mərhələli sifariş forması","Tam ekran slayder və animasiyalar","Sürət optimizasiyası və genişləndirilmiş test"],"exc":["Kassa (POS) sistemi ilə inteqrasiya (ayrıca qiymətləndirilir)"]}]},{"k":"salon","n":"Gözəllik salonu","b":"Sena Beauty Studio","needs":["Xidmətlərin siyahısı, qiymətləri və müddətləri","Ustaların adları, şəkilləri və iş qrafiki","Salonun və işlərin şəkilləri","Domen və hostinq varsa, giriş məlumatları (yoxdursa, birlikdə seçirik)","Loqo və əlaqə məlumatları"],"compare":[["Xidmət sayı","20","40","60"],["Dizayn","Brendə uyğun","Brendə uyğun","Fərdi"],["WhatsApp ilə randevu",true,true,true],["Onlayn təqvim və saat seçimi",false,true,true],["Usta seçimi",false,true,true],["Qiymət siyahısı",true,true,true],["Usta profilləri",false,false,true],["Hədiyyə sertifikatı",false,false,true],["Qalereya",false,false,true],["Filtrlər və seçilmişlər",false,false,true],["Hədiyyə texniki xidmət",false,"1 ay","1 ay"]],"t":[{"price":299,"for":"WhatsApp ilə randevu qəbul edən salon","lead":"START paketi xidmətləri və qiymətləri aydın göstərən, randevunu hazır WhatsApp mesajı ilə qəbul edən sayt-vitrindir.","inc":["Brendə uyğunlaşdırılmış dizayn","Ana səhifə və xidmətlər kataloqu (3–5 kateqoriya)","20 xidmətə qədər: qiymət, müddət, təsvir","Hər xidmət üçün ayrıca səhifə","Xidmətləri seçib bir WhatsApp mesajı ilə randevu","Haqqımızda və Əlaqə səhifələri","Mobil uyğunluq","WordPress admin paneli və istifadə təlimi"],"exc":["Onlayn təqvim və saat seçimi (PLUS paketində)","Usta profilləri (PREMIUM paketində)"]},{"price":699,"for":"Saytdan onlayn randevu almaq istəyən salon","lead":"PLUS paketi müştərinin xidməti, ustanı, günü və saatı özü seçdiyi onlayn randevu sistemi olan saytdır.","inc":["START-dakı hər şey","Onlayn randevu: xidmət, usta, gün və saat seçimi","Dolu saatların göstərilməsi","Randevu bildirişi (e-poçt)","Usta səviyyəsinə görə qiymət variantı","Qiymət siyahısı bölməsi","Promo kod","Axtarış","40 xidmətə qədər yerləşdirmə","Randevu qaydaları səhifəsi və FAQ","Xəritə və iş saatları","1 ay Standart texniki xidmət hədiyyə"],"exc":["SMS bildirişləri (SMS provayderinin xərci ayrıca)"]},{"price":1199,"for":"Premium imic yaratmaq istəyən studiya","lead":"PREMIUM paketi fərdi dizayn, usta profilləri, mərhələli randevu və hədiyyə sertifikatı ilə premium gözəllik studiyası saytıdır.","inc":["PLUS-dakı hər şey","Fərdi dizayn: bu demodakı görünüş WordPress-də birə-bir","Usta profilləri səhifəsi","Mərhələli randevu forması","Hədiyyə sertifikatı satışı","Qalereya və tam ekran baxış","Filtrlər: kateqoriya, qiymət, seçim","Seçilmişlər və tez baxış","Tam ekran slayder və animasiyalar","Sürət optimizasiyası və genişləndirilmiş test"],"exc":[]}]},{"k":"kurs","n":"Kurs mərkəzi","b":"Pillə Akademiya","needs":["Kursların siyahısı, qiymətləri, müddəti və proqramı","Müəllimlərin adları, şəkilləri və təcrübəsi","Mərkəzin şəkilləri və cədvəl","Domen və hostinq varsa, giriş məlumatları (yoxdursa, birlikdə seçirik)","Loqo və əlaqə məlumatları"],"compare":[["Kurs sayı","20","40","60"],["Dizayn","Brendə uyğun","Brendə uyğun","Fərdi"],["WhatsApp ilə qeydiyyat",true,true,true],["Onlayn qeydiyyat forması",false,true,true],["Sınaq dərsi təqvimi",false,true,true],["Format və vaxt seçimi",false,true,true],["Səviyyə testi",false,false,true],["Müəllim profilləri",false,false,true],["Filtrlər və seçilmişlər",false,false,true],["Qalereya",false,false,true],["Hədiyyə texniki xidmət",false,"1 ay","1 ay"]],"t":[{"price":299,"for":"WhatsApp ilə qeydiyyat qəbul edən kurs mərkəzi","lead":"START paketi kursları, qiymətləri və müddəti aydın göstərən, qeydiyyatı hazır WhatsApp mesajı ilə qəbul edən saytdır.","inc":["Brendə uyğunlaşdırılmış dizayn","Ana səhifə və kurslar kataloqu (3–5 istiqamət)","20 kursa qədər: qiymət, müddət, təsvir","Hər kurs üçün ayrıca səhifə","Kursları seçib bir WhatsApp mesajı ilə qeydiyyat","Haqqımızda və Əlaqə səhifələri","Mobil uyğunluq","WordPress admin paneli və təlim"],"exc":["Onlayn qeydiyyat forması və sınaq dərsi təqvimi (PLUS paketində)"]},{"price":699,"for":"Saytdan onlayn qeydiyyat almaq istəyən mərkəz","lead":"PLUS paketi format, dərs vaxtı və pulsuz sınaq dərsi seçimi olan onlayn qeydiyyat saytıdır.","inc":["START-dakı hər şey","Onlayn qeydiyyat forması","Format (qrup, mini qrup, fərdi) və vaxt seçimi","Pulsuz sınaq dərsi üçün gün və saat","Valideyn məlumatları (uşaq kursları)","Qeydiyyat bildirişi (e-poçt)","Promo kod","Axtarış","40 kursa qədər yerləşdirmə","Qaydalar səhifəsi və FAQ","Xəritə və iş saatları","1 ay Standart texniki xidmət hədiyyə"],"exc":["Tələbə kabineti və onlayn dərs platforması (ayrıca qiymətləndirilir)"]},{"price":1199,"for":"Güclü brend qurmaq istəyən akademiya","lead":"PREMIUM paketi fərdi dizayn, səviyyə testi, müəllim profilləri və mərhələli qeydiyyatla premium təhsil saytıdır.","inc":["PLUS-dakı hər şey","Fərdi dizayn: bu demodakı görünüş WordPress-də birə-bir","İnteraktiv səviyyə testi və kurs tövsiyəsi","Müəllim profilləri səhifəsi","Filtrlər: istiqamət, qiymət, səviyyə, format","Seçilmişlər və tez baxış","Mərhələli qeydiyyat forması","Qalereya","Tam ekran slayder və animasiyalar","Sürət optimizasiyası və genişləndirilmiş test"],"exc":[]}]},{"k":"tur","n":"Tur şirkəti","b":"Səyyah Travel","needs":["Turların siyahısı: proqram, qiymət, daxil olanlar","Otel və istiqamət şəkilləri","Lisenziya və müqavilə şərtləri","Domen və hostinq varsa, giriş məlumatları (yoxdursa, birlikdə seçirik)","Loqo və əlaqə məlumatları"],"compare":[["Tur sayı","20","40","60"],["Dizayn","Brendə uyğun","Brendə uyğun","Fərdi"],["WhatsApp ilə sorğu",true,true,true],["Onlayn sorğu forması",false,true,true],["Otel səviyyəsi seçimi",false,true,true],["İlkin ödəniş",false,true,true],["Tur kalkulyatoru",false,false,true],["Filtrlər və seçilmişlər",false,false,true],["Menecer profilləri və qalereya",false,false,true],["Hədiyyə texniki xidmət",false,"1 ay","1 ay"]],"t":[{"price":299,"for":"Turlarını göstərib WhatsApp ilə sorğu alan agentlik","lead":"START paketi turları qiyməti və proqramı ilə göstərən, sorğunu hazır WhatsApp mesajı ilə qəbul edən saytdır.","inc":["Brendə uyğunlaşdırılmış dizayn","Ana səhifə və turlar kataloqu (3–5 istiqamət)","20 tura qədər: qiymət, müddət, proqram","Hər tur üçün ayrıca səhifə","Turları seçib bir WhatsApp mesajı ilə sorğu","Haqqımızda və Əlaqə səhifələri","Mobil uyğunluq","WordPress admin paneli və təlim"],"exc":["Onlayn sorğu forması və tarix seçimi (PLUS paketində)","Real vaxtda otel və bilet sistemi ilə inteqrasiya"]},{"price":699,"for":"Saytdan sorğu və ilkin ödəniş qəbul edən agentlik","lead":"PLUS paketi otel səviyyəsi, nəfər sayı və gediş tarixi ilə tam sorğu forması olan tur saytıdır.","inc":["START-dakı hər şey","Onlayn sorğu: tarix, nəfər, uşaq, otel səviyyəsi","Otel səviyyəsinə görə qiymət variantları","Təxmini cəmin avtomatik hesablanması","İlkin ödəniş inteqrasiyası*","Promo kod","Axtarış","40 tura qədər yerləşdirmə","Rezervasiya və ödəniş şərtləri səhifəsi, FAQ","Xəritə və iş saatları","1 ay Standart texniki xidmət hədiyyə"],"exc":["Aviabilet və otel axtarış sistemi (GDS) inteqrasiyası"]},{"price":1199,"for":"Güclü brend qurmaq istəyən tur şirkəti","lead":"PREMIUM paketi fərdi dizayn, tur kalkulyatoru, menecer profilləri və qalereya ilə premium tur saytıdır.","inc":["PLUS-dakı hər şey","Fərdi dizayn: bu demodakı görünüş WordPress-də birə-bir","Tur kalkulyatoru: istiqamət, gecə, nəfər, otel","Filtrlər: istiqamət, qiymət, tur tipi","Seçilmişlər və tez baxış","Menecer profilləri və qalereya","Mərhələli sorğu forması","Tam ekran slayder və animasiyalar","Sürət optimizasiyası və genişləndirilmiş test"],"exc":[]}]},{"k":"huquq","n":"Hüquqşünas və mühasib","b":"Ədalət & Hesab","needs":["Xidmətlərin siyahısı və başlanğıc qiymətləri","Mütəxəssislərin adları, şəkilləri və ixtisası","Lisenziya və qeydiyyat məlumatları","Domen və hostinq varsa, giriş məlumatları (yoxdursa, birlikdə seçirik)","Loqo və əlaqə məlumatları"],"compare":[["Xidmət sayı","20","40","60"],["Dizayn","Brendə uyğun","Brendə uyğun","Fərdi"],["WhatsApp ilə müraciət",true,true,true],["Onlayn randevu",false,true,true],["Görüş formatı seçimi",false,true,true],["Mühasibat kalkulyatoru",false,false,true],["Mütəxəssis profilləri",false,false,true],["Filtrlər və seçilmişlər",false,false,true],["Qalereya",false,false,true],["Hədiyyə texniki xidmət",false,"1 ay","1 ay"]],"t":[{"price":299,"for":"Xidmətlərini göstərib WhatsApp ilə müraciət alan büro","lead":"START paketi xidmətləri və başlanğıc qiymətləri aydın göstərən, müraciəti hazır WhatsApp mesajı ilə qəbul edən saytdır.","inc":["Brendə uyğunlaşdırılmış dizayn","Ana səhifə və xidmətlər kataloqu (3–5 sahə)","20 xidmətə qədər: qiymət, müddət, təsvir","Hər xidmət üçün ayrıca səhifə","Xidmətləri seçib bir WhatsApp mesajı ilə müraciət","Haqqımızda və Əlaqə səhifələri","Mobil uyğunluq","WordPress admin paneli və təlim"],"exc":["Onlayn görüş təqvimi (PLUS paketində)"]},{"price":699,"for":"Saytdan konsultasiya randevusu alan büro","lead":"PLUS paketi görüş formatı, gün və saat seçimi olan onlayn konsultasiya sistemi ilə saytdır.","inc":["START-dakı hər şey","Onlayn randevu: format, gün və saat","Dolu saatların göstərilməsi","Fərdi şəxs və biznes üçün ayrı sahələr","Randevu bildirişi (e-poçt)","Promo kod","Axtarış","40 xidmətə qədər yerləşdirmə","Xidmət şərtləri səhifəsi və FAQ","Xəritə və iş saatları","1 ay Standart texniki xidmət hədiyyə"],"exc":["Müştəri kabineti və sənəd mübadiləsi (ayrıca qiymətləndirilir)"]},{"price":1199,"for":"Güclü korporativ imic istəyən büro","lead":"PREMIUM paketi fərdi dizayn, mühasibat kalkulyatoru, mütəxəssis profilləri və mərhələli müraciətlə premium büro saytıdır.","inc":["PLUS-dakı hər şey","Fərdi dizayn: bu demodakı görünüş WordPress-də birə-bir","Mühasibat qiymət kalkulyatoru","Mütəxəssis profilləri səhifəsi","Filtrlər: sahə, qiymət, müştəri tipi","Seçilmişlər və tez baxış","Mərhələli müraciət forması","Qalereya","Tam ekran slayder və animasiyalar","Sürət optimizasiyası və genişləndirilmiş test"],"exc":[]}]},{"k":"repetitor","n":"Repetitor","b":"Bilgə Repetitor","needs":["Fənlər, qiymətlər və dərs formatları","Repetitorların adları, şəkilləri və təcrübəsi","Cədvəl və iş saatları","Domen və hostinq varsa, giriş məlumatları (yoxdursa, birlikdə seçirik)","Loqo və əlaqə məlumatları"],"compare":[["Fənn sayı","20","40","60"],["Dizayn","Brendə uyğun","Brendə uyğun","Fərdi"],["WhatsApp ilə qeydiyyat",true,true,true],["Onlayn qeydiyyat forması",false,true,true],["Sınaq dərsi təqvimi",false,true,true],["Format və tezlik seçimi",false,true,true],["Repetitor seçim testi",false,false,true],["Repetitor profilləri","—","Qısa","Tam səhifə"],["Filtrlər və seçilmişlər",false,false,true],["Hədiyyə texniki xidmət",false,"1 ay","1 ay"]],"t":[{"price":299,"for":"Fərdi repetitor və ya kiçik komanda","lead":"START paketi fənləri və qiymətləri aydın göstərən, qeydiyyatı hazır WhatsApp mesajı ilə qəbul edən saytdır.","inc":["Brendə uyğunlaşdırılmış dizayn","Ana səhifə və fənlər kataloqu (3–5 bölmə)","20 fənnə qədər: qiymət, format, təsvir","Hər fənn üçün ayrıca səhifə","Fənləri seçib bir WhatsApp mesajı ilə qeydiyyat","Haqqımızda və Əlaqə səhifələri","Mobil uyğunluq","WordPress admin paneli və təlim"],"exc":["Sınaq dərsi təqvimi (PLUS paketində)"]},{"price":699,"for":"Saytdan qeydiyyat və sınaq dərsi qəbul edən mərkəz","lead":"PLUS paketi sinif, məqsəd, format və sınaq dərsi vaxtı seçimi olan onlayn qeydiyyat saytıdır.","inc":["START-dakı hər şey","Onlayn qeydiyyat: sinif, məqsəd, format","Format və tezliyə görə qiymət variantları","Pulsuz sınaq dərsi üçün gün və saat","Qeydiyyat bildirişi (e-poçt)","Repetitorlar bölməsi","Promo kod","Axtarış","40 fənnə qədər yerləşdirmə","Qaydalar səhifəsi və FAQ","1 ay Standart texniki xidmət hədiyyə"],"exc":["Valideyn kabineti və onlayn dərs platforması (ayrıca qiymətləndirilir)"]},{"price":1199,"for":"Repetitor platforması qurmaq istəyənlər","lead":"PREMIUM paketi fərdi dizayn, repetitor seçim testi, repetitor profilləri və mərhələli qeydiyyatla premium saytdır.","inc":["PLUS-dakı hər şey","Fərdi dizayn: bu demodakı görünüş WordPress-də birə-bir","Repetitor seçim testi və aylıq plan hesablanması","Repetitor profilləri səhifəsi","Filtrlər: fənn, qiymət, auditoriya","Seçilmişlər və tez baxış","Mərhələli qeydiyyat forması","Qalereya","Tam ekran slayder və animasiyalar","Sürət optimizasiyası və genişləndirilmiş test"],"exc":[]}]},{"k":"smm","n":"SMM və digital","b":"Pulse Digital","needs":["Xidmətlər, paketlər və qiymətlər","Portfolio: işlərinizdən nümunələr (icazə ilə)","Komanda şəkilləri və rolları","Domen və hostinq varsa, giriş məlumatları (yoxdursa, birlikdə seçirik)","Loqo və əlaqə məlumatları"],"compare":[["Xidmət sayı","20","40","60"],["Dizayn","Brendə uyğun","Brendə uyğun","Fərdi"],["WhatsApp ilə müraciət",true,true,true],["Onlayn brif",false,true,true],["Audit zəngi təqvimi",false,true,true],["Paket qurucusu",false,false,true],["Portfolio qalereyası",false,false,true],["Komanda profilləri",false,"Qısa","Tam səhifə"],["Filtrlər və seçilmişlər",false,false,true],["Hədiyyə texniki xidmət",false,"1 ay","1 ay"]],"t":[{"price":299,"for":"Freelancer SMM mütəxəssisi və ya kiçik komanda","lead":"START paketi xidmətləri və qiymətləri göstərən, müraciəti hazır WhatsApp mesajı ilə qəbul edən saytdır.","inc":["Brendə uyğunlaşdırılmış dizayn","Ana səhifə və xidmətlər kataloqu (3–5 istiqamət)","20 xidmətə qədər: qiymət, həcm, təsvir","Hər xidmət üçün ayrıca səhifə","Xidmətləri seçib bir WhatsApp mesajı ilə müraciət","Haqqımızda və Əlaqə səhifələri","Mobil uyğunluq","WordPress admin paneli və təlim"],"exc":["Onlayn brif forması (PLUS paketində)"]},{"price":699,"for":"Saytdan brif və audit sorğusu alan agentlik","lead":"PLUS paketi biznes, məqsəd və büdcə məlumatları ilə onlayn brif və audit zəngi təqvimi olan saytdır.","inc":["START-dakı hər şey","Onlayn brif: biznes, Instagram, məqsəd, büdcə","Pulsuz audit zəngi üçün gün və saat","Müddət variantları (1, 3, 6 ay)","Komanda bölməsi","Brif bildirişi (e-poçt)","Promo kod","Axtarış","40 xidmətə qədər yerləşdirmə","İş qaydası səhifəsi və FAQ","1 ay Standart texniki xidmət hədiyyə"],"exc":["Müştəri kabineti və hesabat paneli (ayrıca qiymətləndirilir)"]},{"price":1199,"for":"Güclü imic istəyən agentlik","lead":"PREMIUM paketi fərdi dizayn, SMM paket qurucusu, portfolio qalereyası və komanda profilləri ilə premium agentlik saytıdır.","inc":["PLUS-dakı hər şey","Fərdi dizayn: bu demodakı görünüş WordPress-də birə-bir","SMM paket qurucusu: platforma, post, reels, reklam","Portfolio qalereyası","Komanda profilləri səhifəsi","Filtrlər: istiqamət, qiymət, tip","Seçilmişlər və tez baxış","Mərhələli brif forması","Tam ekran slayder və animasiyalar","Sürət optimizasiyası və genişləndirilmiş test"],"exc":[]}]}];
+  var TN=["Start","Plus","Premium"],T=["start","plus","premium"],GH="https://aze1411-cpu.github.io/demo-";
+  var COMMON=["Ödənişli WordPress temaları","Premium plugin və lisenziyalar","Ödəniş provayderinin komissiyaları","SMS və digər üçüncü tərəf xidmətləri"];
+  var $=function(i){return document.getElementById(i)};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+  var li=function(a,c){return '<ul class="'+c+'">'+a.map(function(x){return "<li>"+esc(x)+"</li>"}).join("")+"</ul>"};
+  $("burger").addEventListener("click",function(){var o=$("nav").classList.toggle("open");this.setAttribute("aria-expanded",o)});
+  $("tabs").innerHTML=D.map(function(x,i){return '<button class="tab" role="tab" data-i="'+i+'">'+esc(x.n)+'</button>'}).join("");
+  function show(i,scroll){var x=D[i];
+    [].forEach.call($("tabs").children,function(b,j){b.setAttribute("aria-selected",j===i);if(j===i&&b.scrollIntoView)b.scrollIntoView({block:"nearest",inline:"center"})});
+    var cmp=x.compare.length?'<div class="tblw"><table><thead><tr><th>Müqayisə</th><th>Start</th><th>Plus</th><th class="hl">Premium</th></tr></thead><tbody>'+x.compare.map(function(r){return "<tr><td>"+esc(r[0])+"</td>"+r.slice(1).map(function(v,k){var cls=(k===2?"hl ":"")+(v===true?"y":"");return '<td class="'+cls+'">'+(v===true?"✓":v===false?"—":esc(v))+"</td>"}).join("")+"</tr>"}).join("")+"</tbody></table></div>":"";
+    $("niche").innerHTML='<div class="head" style="margin-bottom:0"><h2>'+esc(x.n)+'</h2><p class="lead">Demo brend: '+esc(x.b)+'. Hər paketin canlı demosuna baxa bilərsiniz.</p></div>'+
+      '<div class="pkgs">'+x.t.map(function(p,j){return '<article class="pkg'+(j===1?" hot":"")+'"><div class="pk"><span>'+TN[j]+'</span>'+(j===1?"<em>Ən çox seçilən</em>":"")+'</div><div class="pr">'+p.price.toLocaleString("en-US")+' <small>₼ · bir dəfəlik</small></div><p class="for">'+esc(p.for)+'</p><p class="ld">'+esc(p.lead)+'</p><h4>Daxildir</h4>'+li(p.inc,"ok")+(p.exc.length?"<h4>Daxil deyil</h4>"+li(p.exc,"no"):"")+'<a class="btn'+(j===1?" pri":"")+'" href="'+GH+T[j]+"-"+x.k+'/" target="_blank" rel="noopener">'+TN[j]+' demosuna bax ↗</a></article>'}).join("")+'</div>'+
+      cmp+
+      '<div class="two"><div class="box"><h3>Bütün paketlərdə daxil deyil</h3>'+li(["Domen və hostinq (sizin seçiminiz, xərci provayderə)"].concat(COMMON),"no")+'</div><div class="box"><h3>Sizdən lazım olanlar</h3>'+li(x.needs,"ok")+'</div></div>';
+    try{history.replaceState(null,"","#"+x.k)}catch(e){}
+    if(scroll)window.scrollTo({top:$("niche").getBoundingClientRect().top+scrollY-150,behavior:"smooth"})}
+  $("tabs").addEventListener("click",function(e){var b=e.target.closest(".tab");if(b)show(+b.dataset.i,true)});
+  function fromHash(){var h=location.hash.slice(1),i=D.findIndex(function(x){return x.k===h});show(i<0?0:i,false)}
+  addEventListener("hashchange",fromHash);fromHash();
+})();
+</script>
+</body>
+</html>
