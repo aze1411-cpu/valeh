@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Valeh Nexus X — Marketplace yoxsa öz sayt?</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Marketplace komissiyası ilə öz saytın xərcini müqayisə edin: sayt neçə gündə özünü ödəyir?">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Konsepsiya: gecə rejimli "stüdiya monitoru" — neon mavi işıq, cihaz çərçivələrində canlı demo, video kimi keçidlər. Bilərəkdən tək tünd görünüş. */
+:root{
+  --bg:#050914;
+  --bg-2:#08101f;
+  --panel:#0c1628;
+  --line:#18294a;
+  --ink:#eaf4ff;
+  --muted:#8ea4c4;
+  --neon:#00c8ff;
+  --neon-2:#2f7bff;
+  --neon-ink:#021220;
+  --glow:0 0 0 1px rgba(0,200,255,.35),0 0 32px rgba(0,200,255,.25);
+  --fd:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fb:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:18px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--fb);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+h1,h2,h3{font-family:var(--fd);line-height:1.05;letter-spacing:-.025em;margin:0;text-wrap:balance}
+h2{font-size:clamp(32px,5.4vw,58px)}
+h3{font-size:21px;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+section{padding-block:96px;position:relative}
+.eyebrow{font:600 12px var(--fd);letter-spacing:.2em;text-transform:uppercase;color:var(--neon);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.lead{color:var(--muted);font-size:18px;max-width:60ch}
+.head{display:grid;gap:16px;margin-bottom:44px;max-width:780px}
+.grad{background:linear-gradient(90deg,var(--neon),var(--neon-2) 60%,#8be9ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font:600 15.5px var(--fd);text-decoration:none;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--neon)}
+.btn.pri{background:linear-gradient(90deg,var(--neon),var(--neon-2));color:var(--neon-ink);border:0;box-shadow:0 10px 30px rgba(0,200,255,.3)}
+.btn.pri:hover{box-shadow:0 14px 40px rgba(0,200,255,.45)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+.icb{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:border-color .2s,background .2s}
+.icb:hover{border-color:var(--neon);background:#10203a}
+.icb svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Başlıq */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(5,9,20,.72);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;height:70px}
+.logo{font:800 20px var(--fb);text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
+.photo:not(:has(img)){display:none}
+.gal3:not(:has(img)){display:none}
+.logo i{font-style:normal;color:var(--neon);text-shadow:0 0 12px var(--neon)}
+.nav{display:flex;gap:26px;font:500 15px var(--fd)}
+.nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
+.foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--neon)}
+.ateaser{display:grid;gap:32px;align-items:center}
+.ph-cut{background:radial-gradient(70% 55% at 50% 38%,rgba(0,200,255,.28),transparent 70%),linear-gradient(180deg,#0d1c38,#060c1a)!important}
+.ph-cut img{object-fit:cover;object-position:50% 20%}
+.tick{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.tick li{display:flex;gap:10px;font-weight:500}
+.tick li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-weight:700;font-size:13px}
+.ateaser .photo{aspect-ratio:4/5;max-width:380px;width:100%}
+@media(min-width:960px){.ateaser{grid-template-columns:.7fr 1.3fr}}
+.top .btn{min-height:42px;padding:0 18px;font-size:14px}
+.burger{display:none}
+@media(max-width:900px){.nav{display:none}.burger{display:grid}.top .btn{display:none}
+  .nav.open{display:flex;position:absolute;left:0;right:0;top:70px;flex-direction:column;gap:0;background:var(--bg-2);border-bottom:1px solid var(--line);padding:8px max(18px,env(safe-area-inset-right,0px)) 16px max(18px,env(safe-area-inset-left,0px))}
+  .nav.open a{padding:14px 0;border-bottom:1px solid var(--line);font-size:18px;color:var(--ink)}}
+
+/* Hero */
+.hero{padding-block:72px 40px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 380px at 78% 30%,rgba(0,200,255,.16),transparent 70%),
+  radial-gradient(500px 340px at 10% 90%,rgba(47,123,255,.14),transparent 70%),
+  linear-gradient(rgba(0,200,255,.06) 1px,transparent 1px) 0 0/48px 48px,
+  linear-gradient(90deg,rgba(0,200,255,.06) 1px,transparent 1px) 0 0/48px 48px;
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 40%,transparent 80%);mask-image:radial-gradient(ellipse at center,#000 40%,transparent 80%);pointer-events:none}
+.hgrid{display:grid;gap:56px;align-items:center;position:relative}
+.htxt{display:grid;gap:22px;min-width:0}
+.hero h1{font-size:clamp(40px,6.6vw,80px)}
+.rot{display:grid;overflow:hidden;height:1.18em;line-height:1.12}
+.rot span{grid-area:1/1;transform:translateY(105%);opacity:0;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .6s}
+.rot span.on{transform:none;opacity:1}
+.rot span.out{transform:translateY(-105%);opacity:0}
+.hero .row{display:flex;flex-wrap:wrap;gap:14px}
+.mini{display:flex;flex-wrap:wrap;gap:22px;margin-top:6px}
+.mini div{display:grid}
+.mini b{font:700 26px var(--fd);font-variant-numeric:tabular-nums}
+.mini span{font-size:13px;color:var(--muted)}
+
+/* Cihaz səhnəsi (video kimi) */
+.stage{position:relative;min-width:0;padding-bottom:30px}
+.laptop{position:relative;border-radius:16px;background:#0a1324;border:1px solid #1e3358;box-shadow:var(--glow),0 40px 80px rgba(0,0,0,.6);padding:10px 10px 14px;transform:perspective(1400px) rotateY(-8deg) rotateX(4deg);transition:transform .6s}
+.stage:hover .laptop{transform:perspective(1400px) rotateY(-3deg) rotateX(2deg)}
+.bar{display:flex;align-items:center;gap:6px;padding:2px 4px 9px}
+.bar i{width:9px;height:9px;border-radius:50%;background:#26406b}
+.bar i:first-child{background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.bar u{margin-left:10px;flex:1;text-decoration:none;font:500 11px var(--fb);color:var(--muted);background:#0f1d36;border-radius:6px;padding:3px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.screen{position:relative;aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:#0d1a30}
+.screen img,.pscreen img,.reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transform:scale(1.06);transition:opacity 1s ease,transform 6s ease-out}
+.screen img.on,.pscreen img.on,.reel img.on{opacity:1;transform:scale(1)}
+.phone{position:absolute;right:-6px;bottom:0;width:27%;min-width:96px;aspect-ratio:9/19;border-radius:22px;background:#0a1324;border:1px solid #1e3358;box-shadow:var(--glow),0 30px 60px rgba(0,0,0,.6);padding:6px;z-index:2}
+.pscreen{position:relative;width:100%;height:100%;border-radius:17px;overflow:hidden;background:#0d1a30}
+.ctrl{display:flex;align-items:center;gap:12px;margin-top:22px;padding-right:30%}
+.ctrl .icb{flex:none}
+.seg{display:flex;gap:4px;flex:1;min-width:0}
+.seg button{flex:1;height:4px;border:0;border-radius:4px;background:#1a2c4d;padding:0;cursor:pointer;position:relative;overflow:hidden}
+.seg button::after{content:"";position:absolute;inset:0;background:var(--neon);transform-origin:left;transform:scaleX(var(--p,0));box-shadow:0 0 8px var(--neon)}
+.now{font:600 13px var(--fd);color:var(--muted);white-space:nowrap}
+.now b{color:var(--ink)}
+
+/* Sonsuz zolaq */
+.marq{padding-block:28px;border-block:1px solid var(--line);background:var(--bg-2);overflow:hidden;display:grid;gap:14px}
+.track{display:flex;gap:14px;width:max-content;animation:mq 60s linear infinite}
+.track.rev{animation-direction:reverse;animation-duration:70s}
+.marq:hover .track{animation-play-state:paused}
+.track a{flex:none;width:230px;aspect-ratio:16/10;border-radius:12px;overflow:hidden;border:1px solid var(--line);position:relative;transition:border-color .2s,transform .2s}
+.track a:hover{border-color:var(--neon);transform:translateY(-3px)}
+.track img{width:100%;height:100%;object-fit:cover;object-position:top}
+.track span{position:absolute;left:8px;bottom:8px;font:600 11px var(--fd);background:rgba(5,9,20,.85);padding:3px 8px;border-radius:6px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* Rəqəmlər */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px}
+.stat{border:1px solid var(--line);border-radius:var(--r);padding:24px;background:linear-gradient(180deg,var(--panel),transparent)}
+.stat b{display:block;font:700 clamp(40px,6vw,60px)/1 var(--fd);font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:14.5px}
+
+/* Vitrin: sahə + slayder */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:26px;scrollbar-width:none;scroll-snap-type:x proximity}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;scroll-snap-align:start;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font:600 14.5px var(--fd);cursor:pointer;transition:all .2s}
+.tab:hover{color:var(--ink);border-color:#2a4776}
+.tab[aria-selected="true"]{background:var(--neon);color:var(--neon-ink);border-color:var(--neon);box-shadow:0 0 22px rgba(0,200,255,.4)}
+.slider{position:relative;overflow:hidden;border-radius:24px;border:1px solid var(--line);background:var(--bg-2);touch-action:pan-y}
+.strack{display:flex;transition:transform .7s cubic-bezier(.65,0,.25,1)}
+.slide{flex:0 0 100%;display:grid;gap:28px;padding:28px;align-items:center;min-width:0}
+.slide .frame{border-radius:14px;overflow:hidden;border:1px solid #1e3358;background:#0a1324;box-shadow:0 30px 60px rgba(0,0,0,.5);min-width:0}
+.slide .frame .bar{padding:9px 10px}
+.slide .frame img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.sinfo{display:grid;gap:14px;min-width:0}
+.sinfo .pk{font:700 13px var(--fd);letter-spacing:.16em;text-transform:uppercase;color:var(--neon)}
+.sinfo h3{font-size:clamp(26px,3vw,36px)}
+.sinfo .price{font:700 44px/1 var(--fd);font-variant-numeric:tabular-nums}
+.sinfo .price small{font-size:16px;color:var(--muted);font-weight:500}
+.sinfo ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;color:var(--muted)}
+.sinfo li{display:flex;gap:10px}
+.sinfo li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--neon);box-shadow:0 0 8px var(--neon)}
+.snav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:20px}
+.dots{display:flex;gap:8px}
+.dots button{width:42px;height:6px;border-radius:6px;border:0;background:#1a2c4d;cursor:pointer;padding:0;transition:background .3s,width .3s}
+.dots button[aria-current="true"]{background:var(--neon);width:64px;box-shadow:0 0 10px var(--neon)}
+.arrows{display:flex;gap:10px}
+.fade{animation:fd .5s ease}
+@keyframes fd{from{opacity:.2;transform:translateY(8px)}}
+
+/* Showreel */
+.reelbox{border-radius:26px;overflow:hidden;border:1px solid var(--line);position:relative;background:#000}
+.reel{position:relative;aspect-ratio:16/9;max-height:78vh;width:100%}
+.reel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(2,6,14,.85),transparent 45%),linear-gradient(90deg,rgba(2,6,14,.4),transparent 40%);pointer-events:none}
+.cap{position:absolute;left:24px;bottom:62px;z-index:2;display:grid;gap:4px;max-width:70%}
+.cap small{font:600 12px var(--fd);letter-spacing:.18em;text-transform:uppercase;color:var(--neon)}
+.cap b{font:700 clamp(22px,3.4vw,40px)/1.05 var(--fd)}
+.rctl{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;align-items:center;gap:14px;padding:14px 20px;background:rgba(2,6,14,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ticks{display:flex;gap:3px;flex:1;min-width:0;height:22px;align-items:center}
+.ticks button{flex:1;height:5px;border:0;border-radius:3px;background:#24395f;padding:0;cursor:pointer;transition:height .2s,background .2s}
+.ticks button:hover{height:12px}
+.ticks button.done{background:#3a76b8}
+.ticks button.on{background:var(--neon);height:12px;box-shadow:0 0 10px var(--neon)}
+.cnt{font:600 14px var(--fd);font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap}
+
+/* Kartlar */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{position:relative;border-radius:var(--r);padding:26px;background:var(--panel);border:1px solid var(--line);display:grid;gap:12px;align-content:start;overflow:hidden;min-width:0}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(0,200,255,.16),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover::before{opacity:1}
+.card:hover{border-color:#24406e}
+.card .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(0,200,255,.1);border:1px solid rgba(0,200,255,.3)}
+.card .ic svg{width:22px;height:22px;fill:none;stroke:var(--neon);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card p{color:var(--muted)}
+.card .pk{font:700 12px var(--fd);letter-spacing:.16em;text-transform:uppercase;color:var(--neon)}
+.card b.big{font:700 42px/1 var(--fd);font-variant-numeric:tabular-nums}
+.card b.big small{font-size:15px;color:var(--muted);font-weight:500}
+.card ul{margin:0;padding-left:18px;color:var(--muted);display:grid;gap:4px}
+.card.hot{border-color:var(--neon);box-shadow:var(--glow)}
+
+/* Domen və hostinq */
+.dh{border-radius:26px;padding:clamp(24px,4vw,48px);display:grid;gap:28px;position:relative;background:linear-gradient(var(--bg-2),var(--bg-2)) padding-box,linear-gradient(120deg,var(--neon),var(--neon-2),transparent 70%) border-box;border:1.5px solid transparent}
+.dh ul{margin:0;padding:0;list-style:none;display:grid;gap:14px}
+.dh li{display:flex;gap:12px;font-weight:500}
+.dh li::before{content:"✓";flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-weight:700;font-size:14px}
+
+/* Proses */
+.tl{list-style:none;margin:0;padding:0 0 0 34px;display:grid;gap:22px;position:relative;counter-reset:s}
+.tl::before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:2px;background:#1a2c4d}
+.tl::after{content:"";position:absolute;left:12px;top:6px;width:2px;height:calc(var(--prog,0) * (100% - 12px));background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.tl li{position:relative;counter-increment:s;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px;min-width:0}
+.tl li::before{content:counter(s);position:absolute;left:-34px;top:16px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:2px solid var(--neon);font:700 12px var(--fd);color:var(--neon);z-index:1}
+.tl b{display:block;font:600 18px var(--fd)}
+.tl span{color:var(--muted);font-size:15px}
+.pgrid{display:grid;gap:40px;align-items:start}
+
+/* Şəkillər */
+.photo{position:relative;border-radius:20px;overflow:hidden;border:1px solid #1e3358;background:repeating-linear-gradient(135deg,#0c1830 0 14px,#0a1426 14px 28px);display:grid;place-items:center;text-align:center;min-width:0;max-width:100%}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo span{font:600 14px var(--fd);background:rgba(5,9,20,.8);border:1px solid var(--line);padding:8px 14px;border-radius:10px}
+.photo small{display:block;font:400 12px var(--fb);color:var(--muted)}
+.about{display:grid;gap:40px;align-items:center}
+.agal{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;aspect-ratio:1;max-width:520px;width:100%}
+.agal .photo:first-child{grid-row:span 2}
+.atxt{display:grid;gap:16px;min-width:0}
+.atxt p{color:var(--muted);font-size:17px;max-width:60ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font:500 14px var(--fd);color:var(--muted)}
+
+.empty{border:1px dashed #2a4776;border-radius:var(--r);padding:28px;display:grid;gap:6px;max-width:780px}
+.empty b{font:600 19px var(--fd)}
+.empty span{color:var(--muted)}
+
+/* Əlaqə */
+.cta{border-radius:30px;padding:clamp(28px,6vw,72px);position:relative;overflow:hidden;background:radial-gradient(600px 300px at 80% 0%,rgba(0,200,255,.25),transparent 70%),radial-gradient(500px 300px at 0% 100%,rgba(47,123,255,.25),transparent 70%),var(--panel);border:1px solid #24406e;display:grid;gap:28px}
+.cgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.citem{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:rgba(5,9,20,.6);display:grid;gap:2px;min-width:0}
+.citem small{font:600 12px var(--fd);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.citem b{font:600 19px var(--fd);overflow-wrap:anywhere;user-select:all}
+.foot{border-top:1px solid var(--line);padding-block:26px;color:var(--muted);font-size:14px}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+/* Görünən hissədə yumşaq daxilolma (statik vəziyyət görünəndir) */
+@supports (animation-timeline:view()){
+  .rise{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+  @keyframes rise{from{opacity:.35;transform:translateY(26px)}to{opacity:1;transform:none}}
+}
+.hero .htxt>*{animation:hin .9s cubic-bezier(.2,.8,.2,1) both}
+.hero .htxt>*:nth-child(2){animation-delay:.08s}.hero .htxt>*:nth-child(3){animation-delay:.16s}.hero .htxt>*:nth-child(4){animation-delay:.24s}.hero .htxt>*:nth-child(5){animation-delay:.32s}
+@keyframes hin{from{opacity:0;transform:translateY(18px)}}
+
+@media(min-width:960px){
+  .hgrid{grid-template-columns:1fr 1.08fr}
+  .slide{grid-template-columns:1.5fr 1fr;padding:40px}
+  .dh{grid-template-columns:1fr 1fr;align-items:center}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .about{grid-template-columns:1fr 1.1fr}
+}
+@media(max-width:600px){
+  section{padding-block:72px}
+  .laptop{transform:none}.stage:hover .laptop{transform:none}
+  .ctrl{padding-right:31%}.now{padding-right:31%}
+  .cap{left:16px;bottom:58px;max-width:85%}
+  .rctl{padding:10px 12px;gap:10px}
+  .slide{padding:18px}
+  .dots button{width:28px}.dots button[aria-current="true"]{width:44px}
+}
+
+/* ===== Canlandırma: yavaş, kiçik, bir ekranda bir hərəkət ===== */
+/* 1. Hero arxasında axan neon işıq */
+.aur{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.aur i{position:absolute;width:min(60vw,680px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(0,200,255,.16),transparent 62%);left:45%;top:-10%;animation:aur 28s ease-in-out infinite alternate;will-change:transform}
+.aur i:nth-child(2){left:-12%;top:35%;background:radial-gradient(circle,rgba(47,123,255,.14),transparent 62%);animation-duration:34s;animation-direction:alternate-reverse}
+@keyframes aur{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-14%,12%) scale(1.12)}100%{transform:translate(10%,22%) scale(.94)}}
+/* 2. Başlıq sözləri bir-bir */
+.fx-on .head h2 .w{display:inline-block;opacity:0;transform:translateY(.45em);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i) * 70ms)}
+.fx-on .head h2.in .w{opacity:1;transform:none}
+/* 3. İkonların çəkilməsi */
+.fx-on .card .ic svg *{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.3s ease .15s}
+.fx-on .card.in .ic svg *{stroke-dashoffset:0}
+/* 4. Domen bölməsinin fırlanan çərçivəsi */
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+.dh{background:linear-gradient(var(--bg-2),var(--bg-2)) padding-box,conic-gradient(from var(--a),var(--neon),var(--neon-2) 18%,transparent 34%,transparent 66%,var(--neon-2) 82%,var(--neon)) border-box;animation:spin 12s linear infinite}
+@keyframes spin{to{--a:360deg}}
+/* 5. Bölmələr arasında dolan neon xətt */
+.sline{max-width:1200px;margin:0 auto;height:1px;background:var(--line);position:relative}
+.sline i{position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--neon) 50%,transparent);box-shadow:0 0 10px rgba(0,200,255,.6);transform:scaleX(var(--s,1));transition:transform .2s linear}
+/* 6. Instagram vs sayt */
+.vs{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/8;min-height:420px;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize;--x:50%}
+.vs .ly{position:absolute;inset:0}
+.vs .ig{background:radial-gradient(500px 300px at 20% 20%,rgba(225,48,108,.18),transparent 70%),radial-gradient(400px 300px at 80% 90%,rgba(253,186,51,.12),transparent 70%),#120a14;display:grid;place-items:center}
+.vs .web{clip-path:inset(0 0 0 var(--x));background:radial-gradient(600px 300px at 80% 10%,rgba(0,200,255,.2),transparent 70%),var(--bg-2);display:grid;place-items:center;padding:clamp(16px,4vw,48px)}
+.vs .web .frame{width:min(100%,720px);border-radius:14px;overflow:hidden;border:1px solid #1e3358;background:#0a1324;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.vs .web .frame .bar{padding:9px 10px}
+.vs .web img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top}
+.vs .web .ord{position:absolute;right:clamp(12px,3vw,36px);bottom:clamp(12px,3vw,36px);background:var(--panel);border:1px solid var(--neon);box-shadow:var(--glow);border-radius:14px;padding:12px 16px;display:grid;gap:2px;font-size:13px;max-width:260px}
+.vs .web .ord b{font:600 14px var(--fd);color:var(--neon)}
+.vs .web .ord span{color:var(--muted)}
+.bub{position:absolute;max-width:min(240px,42%);padding:10px 14px;border-radius:18px 18px 18px 6px;background:#2a1d2e;color:#f3e6f0;font-size:14px;line-height:1.35;box-shadow:0 10px 20px rgba(0,0,0,.35)}
+.bub small{display:block;color:#a68a9f;font-size:11px;margin-top:3px}
+.bub.me{border-radius:18px 18px 6px 18px;background:#3d2a6b}
+.dmhead{position:absolute;left:clamp(14px,3vw,30px);top:clamp(14px,3vw,26px);display:flex;align-items:center;gap:10px;font:600 14px var(--fd);color:#f3e6f0}
+.dmhead em{font-style:normal;background:#e1306c;color:#fff;border-radius:999px;padding:2px 9px;font-size:12px}
+.vtag{position:absolute;bottom:clamp(14px,3vw,22px);font:700 12px var(--fd);letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:999px;z-index:3;pointer-events:none}
+.vtag.l{left:auto;right:calc(100% - var(--x) + 12px);background:rgba(225,48,108,.18);color:#ff9cc0;border:1px solid rgba(225,48,108,.4);white-space:nowrap}
+.vtag.r{left:calc(var(--x) + 12px);background:rgba(0,200,255,.14);color:var(--neon);border:1px solid rgba(0,200,255,.4);white-space:nowrap}
+.vs .hd{position:absolute;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:var(--neon);box-shadow:0 0 14px var(--neon);z-index:4;pointer-events:none}
+.vs .hd button{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;border:2px solid var(--neon);background:var(--bg);color:var(--neon);display:grid;place-items:center;pointer-events:auto;cursor:ew-resize}
+.vs .hd svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.vsl{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:22px}
+.vsl ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.vsl li{display:flex;gap:10px;color:var(--muted)}
+.vsl .a li::before{content:"✕";flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(225,48,108,.14);color:#ff7aa8;font-size:11px;font-weight:700;margin-top:1px}
+.vsl .b li{color:var(--ink)}
+.vsl .b li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-size:12px;font-weight:700;margin-top:1px}
+.vsl h3{font-size:18px;margin-bottom:12px}
+@media(max-width:700px){.vs{aspect-ratio:auto;height:520px}.bub{font-size:13px;max-width:62%}.vs .web .ord{left:12px;right:12px;top:14px;bottom:auto;max-width:none}}
+
+/* ===== Ödəniş yolları (#odenis) ===== */
+.pway{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-bottom:22px}
+.pway button{display:grid;gap:4px;text-align:left;padding:18px 20px;border-radius:18px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;transition:border-color .25s,box-shadow .25s,transform .25s;min-width:0}
+.pway button:hover{border-color:#2a4776;transform:translateY(-2px)}
+.pway button[aria-pressed="true"]{border-color:var(--neon);box-shadow:var(--glow)}
+.pway b{font:600 18px var(--fd);display:flex;align-items:center;gap:10px}
+.pway b i{font-style:normal;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(0,200,255,.12);color:var(--neon);font-size:15px}
+.pway span{color:var(--muted);font-size:14.5px}
+.pbox{border-radius:26px;padding:clamp(20px,4vw,40px);background:radial-gradient(500px 260px at 90% 0%,rgba(0,200,255,.14),transparent 70%),var(--bg-2);border:1px solid var(--line);display:grid;gap:22px;min-width:0}
+.ptop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+.ptop h3{font-size:clamp(22px,2.6vw,28px)}
+.ptier{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--panel)}
+.ptier button{min-height:38px;padding:0 16px;border:0;border-radius:999px;background:none;color:var(--muted);font:600 14px var(--fd);cursor:pointer}
+.ptier button[aria-pressed="true"]{background:var(--neon);color:var(--neon-ink)}
+.ptrack{display:flex;gap:6px;align-items:stretch;min-width:0}
+.pseg{flex:var(--w) 1 0;min-width:0;display:grid;gap:8px}
+.pseg .bar2{height:14px;border-radius:8px;background:#13233f;overflow:hidden;position:relative}
+.pseg .bar2::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--neon-2),var(--neon));box-shadow:0 0 12px rgba(0,200,255,.5);transform-origin:left;transform:scaleX(0);animation:pfill .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--d) * 450ms)}
+@keyframes pfill{to{transform:scaleX(1)}}
+.pseg b{font:700 clamp(18px,2.4vw,24px)/1 var(--fd);font-variant-numeric:tabular-nums}
+.pseg small{display:block;color:var(--muted);font-size:13px;line-height:1.35}
+.pseg em{font-style:normal;color:var(--ink);font:600 13px var(--fd)}
+.pend{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px dashed #24406e;padding-top:18px}
+.pend .live{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--fd);background:rgba(0,200,255,.12);border:1px solid rgba(0,200,255,.4);color:var(--neon);padding:7px 14px;border-radius:999px}
+.pend .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.pend .zero{font:700 15px var(--fd)}
+.pend .zero span{color:var(--neon)}
+.pnote{color:var(--muted);font-size:15px;max-width:70ch}
+.pbank{display:grid;gap:10px;grid-template-columns:1fr auto 1fr;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+.pbank div{display:grid;gap:2px;min-width:0}
+.pbank small{color:var(--muted);font-size:13px}
+.pbank b{font:600 15px var(--fd)}
+.pbank .ar{color:var(--neon);font-size:20px}
+.stairs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:end;min-height:230px}
+.st{border-radius:16px 16px 8px 8px;padding:14px;display:grid;align-content:end;gap:4px;background:linear-gradient(180deg,rgba(0,200,255,.22),rgba(47,123,255,.08));border:1px solid #24406e;height:var(--h);transform-origin:bottom;animation:stup .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--d) * 300ms);min-width:0}
+@keyframes stup{from{transform:scaleY(0);opacity:0}}
+.st small{color:var(--muted);font-size:12.5px;line-height:1.3}
+.st b{font:700 clamp(18px,2.4vw,24px)/1 var(--fd)}
+.st em{font-style:normal;font:600 13px var(--fd);color:var(--neon)}
+@media(prefers-reduced-motion:reduce){.pseg .bar2::after{transform:none}}
+@media(max-width:600px){.ptrack{flex-direction:column}.pseg{flex:none}.pbank{grid-template-columns:1fr}.pbank .ar{transform:rotate(90deg);justify-self:start}}
+/* 7. Kursorun ardınca zəif işıq (yalnız siçan) */
+.glow{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,255,.07),transparent 60%);pointer-events:none;z-index:40;opacity:0;transition:opacity .6s}
+.glow.on{opacity:1}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style><style>
+.ph{padding-block:64px 24px;position:relative;overflow:hidden}
+.ph::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 80% 0%,rgba(0,200,255,.16),transparent 70%);pointer-events:none}
+.crumb{font:500 14px var(--fd);color:var(--muted);text-decoration:none;display:flex;width:fit-content;gap:8px;margin-bottom:18px}
+.crumb:hover{color:var(--neon)}
+.ph h1{font-size:clamp(38px,6vw,68px);margin-bottom:16px}
+.sticky-tabs{position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px);z-index:20;background:rgba(5,9,20,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-block:12px}
+.sticky-tabs .tabs{margin:0;padding:0}
+.box{background:var(--bg-2);border:1px solid var(--line);border-radius:22px;padding:26px;display:grid;gap:14px;min-width:0;align-content:start}
+.box h3{font-size:22px}
+.ok{margin:0;padding:0;list-style:none;display:grid;gap:9px;font-size:15px}
+.ok li{display:flex;gap:10px;align-items:flex-start}
+.ok li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(0,200,255,.14);color:var(--neon);font-weight:700;font-size:12px;margin-top:1px}
+.foot a{color:var(--muted);text-decoration:none}.foot a:hover{color:var(--neon)}
+</style><style>
+.calc{display:grid;gap:20px;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:start}
+@media (max-width:900px){.calc{grid-template-columns:1fr}}
+.pn{background:var(--bg-2);border:1px solid var(--line);border-radius:22px;padding:26px;display:grid;gap:22px;min-width:0}
+.pn h2{font-size:22px}
+.fld{display:grid;gap:10px}
+.fld label,.fld .lb{font:600 14px var(--fd);color:var(--ink);display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.fld small{color:var(--muted);font-size:13px}
+.fld output{font:700 18px var(--fd);color:var(--neon);white-space:nowrap}
+.fld input[type=range]{width:100%;accent-color:var(--neon);height:28px;cursor:pointer}
+.fld select,.fld input[type=number]{width:100%;min-height:48px;border-radius:14px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:500 15px var(--fb);padding:0 14px}
+.fld select:focus,.fld input:focus{outline:2px solid var(--neon);outline-offset:2px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:5px;border:1px solid var(--line);border-radius:999px;background:var(--panel)}
+.seg button{min-height:42px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:600 14.5px var(--fd);cursor:pointer}
+.seg button[aria-pressed=true]{background:linear-gradient(90deg,var(--neon),var(--neon-2));color:var(--neon-ink)}
+.hero{border-radius:18px;padding:22px;background:linear-gradient(135deg,rgba(0,200,255,.14),rgba(47,123,255,.08));border:1px solid rgba(0,200,255,.35);display:grid;gap:6px}
+.hero b{font:700 clamp(30px,4.6vw,46px)/1.05 var(--fd);letter-spacing:-.02em}
+.hero span{color:var(--muted);font-size:15px}
+.tiles{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:6px;min-width:0}
+.tile small{font:600 12px var(--fd);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tile b{font:700 24px var(--fd);white-space:nowrap}
+.tile s{color:var(--muted);font-size:14px;margin-right:6px}
+.tile em{font-style:normal;color:var(--muted);font-size:13px}
+.who{display:inline-flex;gap:8px;align-items:center;font:600 14px var(--fd);padding:8px 14px;border-radius:999px;border:1px solid rgba(0,200,255,.4);background:rgba(0,200,255,.08);margin-bottom:14px}
+.chartbox{position:relative}
+.chartbox svg{display:block;width:100%;height:auto;touch-action:pan-y}
+.lg{display:flex;flex-wrap:wrap;gap:18px;font-size:14px;color:var(--muted)}
+.lg span{display:inline-flex;align-items:center;gap:8px}
+.lg i{width:22px;height:3px;border-radius:2px;display:inline-block}
+.tt{position:absolute;pointer-events:none;background:#0b1730;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13.5px;min-width:190px;box-shadow:0 10px 30px rgba(0,0,0,.45);opacity:0;transition:opacity .12s;display:grid;gap:4px}
+.tt b{font:700 14px var(--fd)}
+.tt div{display:flex;justify-content:space-between;gap:16px}
+.tt i{display:inline-block;width:10px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+details.tv summary{cursor:pointer;color:var(--neon);font:600 14px var(--fd);margin-top:6px}
+details.tv table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+details.tv th,details.tv td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+details.tv th:first-child,details.tv td:first-child{text-align:left}
+details.tv th{color:var(--muted);font-weight:600}
+.notes{margin:0;padding:0;list-style:none;display:grid;gap:10px;color:var(--muted);font-size:14.5px}
+.notes li{display:flex;gap:10px}.notes li::before{content:"i";flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);font:700 11px var(--fd);color:var(--neon);margin-top:2px}
+.ctaw{display:flex;flex-wrap:wrap;gap:12px}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+</head>
+<body>
+<!--I18N-START--><script src="i18n.js?v=0498941c"></script><!--I18N-END-->
+
+<!--BF-START-->
+<style>
+.bfr{position:relative;z-index:60;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:9px 16px;background:linear-gradient(90deg,#00c8ff,#2f7bff,#00c8ff);background-size:200% 100%;animation:bfmove 6s linear infinite;color:#021220;font:700 14px/1.3 Inter,system-ui,sans-serif;text-align:center}
+.bfr b{font-weight:800;letter-spacing:.06em}.bfr a{color:#021220;text-decoration:underline;text-underline-offset:3px;font-weight:800}
+.bfr .bfc{font-variant-numeric:tabular-nums;background:rgba(2,18,32,.14);padding:2px 9px;border-radius:999px}
+@keyframes bfmove{to{background-position:-200% 0}}
+s.bfo{color:var(--muted,#8ea4c4);font-weight:500;font-size:.62em;margin-right:4px;text-decoration-thickness:2px}
+.bfn{color:var(--neon,#00c8ff);text-shadow:0 0 18px rgba(0,200,255,.45)}
+em.bft{font-style:normal;font:800 10px/1 Inter,sans-serif;letter-spacing:.1em;background:var(--neon,#00c8ff);color:#021220;border-radius:5px;padding:3px 6px;vertical-align:middle;margin-left:6px}
+.bfi{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#050914;overflow:hidden;color:#eaf4ff;font-family:Inter,system-ui,sans-serif;transition:opacity .5s,visibility .5s}
+.bfi.out{opacity:0;visibility:hidden}
+.bfi .g{position:absolute;left:-50%;right:-50%;bottom:-10%;height:70%;background-image:linear-gradient(rgba(0,200,255,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,255,.35) 1px,transparent 1px);background-size:60px 60px;transform:perspective(500px) rotateX(62deg);transform-origin:bottom;animation:bfgrid 2.4s linear infinite;-webkit-mask-image:linear-gradient(transparent,#000 70%)}
+@keyframes bfgrid{to{background-position:0 60px}}
+.bfi .glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,255,.28),transparent 60%);top:-35%;left:50%;transform:translateX(-50%);animation:bfpulse 3s ease-in-out infinite}
+@keyframes bfpulse{50%{opacity:.55}}
+.bfi .in{position:relative;text-align:center;padding:24px;max-width:960px}
+.bfi .k{display:inline-block;border:1.5px solid #00c8ff;color:#00c8ff;border-radius:999px;padding:7px 16px;font:700 12px/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:0;animation:bfup .6s .15s forwards}
+.bfi h2{margin:18px 0 0;font:800 clamp(54px,13vw,150px)/.9 "Space Grotesk",Inter,sans-serif;letter-spacing:-.03em}
+.bfi h2 span{display:block;opacity:0}
+.bfi h2 .l1{animation:bfl .8s .3s cubic-bezier(.2,.9,.2,1) forwards}
+.bfi h2 .l2{color:#00c8ff;text-shadow:0 0 50px rgba(0,200,255,.6);animation:bfr2 .8s .5s cubic-bezier(.2,.9,.2,1) forwards}
+@keyframes bfl{from{opacity:0;transform:translateX(-70px)}to{opacity:1;transform:none}}
+@keyframes bfr2{from{opacity:0;transform:translateX(70px)}to{opacity:1;transform:none}}
+@keyframes bfup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.bfi .pct{margin-top:10px;font:800 clamp(60px,14vw,140px)/1 "Space Grotesk",Inter,sans-serif;color:#00c8ff;text-shadow:0 0 60px rgba(0,200,255,.6);opacity:0;animation:bfup .6s .9s forwards;font-variant-numeric:tabular-nums}
+.bfi .pct small{font-size:.32em;color:#eaf4ff;text-shadow:none;margin-left:8px;letter-spacing:0}
+.bfi p{margin:8px 0 0;color:#b9cbe4;font-size:clamp(15px,2.2vw,19px);opacity:0;animation:bfup .6s 1.15s forwards}
+.bfi .cd{margin-top:16px;display:inline-flex;gap:10px;opacity:0;animation:bfup .6s 1.3s forwards}
+.bfi .cd div{min-width:64px;padding:10px 8px;border:1px solid #18294a;border-radius:12px;background:rgba(12,22,40,.8)}
+.bfi .cd b{display:block;font:800 26px/1 "Space Grotesk",Inter,sans-serif;font-variant-numeric:tabular-nums}.bfi .cd small{font-size:11px;color:#8ea4c4;text-transform:uppercase;letter-spacing:.08em}
+.bfi .bt{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;animation:bfup .6s 1.45s forwards}
+.bfi .bt a,.bfi .bt button{cursor:pointer;border-radius:999px;padding:14px 24px;font:700 15px Inter,sans-serif;text-decoration:none;border:1.5px solid #00c8ff}
+.bfi .bt .p{background:#00c8ff;color:#021220;box-shadow:0 0 34px rgba(0,200,255,.5)}.bfi .bt .s{background:transparent;color:#eaf4ff;border-color:#2a3f66}
+.bfi .x{position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid #2a3f66;background:rgba(12,22,40,.8);color:#eaf4ff;font-size:20px;cursor:pointer}
+.bfs{padding:72px 0 24px;scroll-margin-top:70px}
+.bfs .wrapx{max-width:1180px;margin:0 auto;padding:0 20px}
+.bfs .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.bfs .k{color:var(--neon,#00c8ff);font:700 12px Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.bfs h2{margin:10px 0 0;font:700 clamp(30px,4.4vw,48px)/1.05 "Space Grotesk",Inter,sans-serif}
+.bfs h2 em{font-style:normal;color:var(--neon,#00c8ff)}
+.bfs .sub{color:var(--muted,#8ea4c4);margin-top:10px;max-width:620px}
+.bfs .cd{display:flex;gap:8px}.bfs .cd div{min-width:62px;text-align:center;padding:10px 6px;border:1px solid var(--line,#18294a);border-radius:12px;background:var(--panel,#0c1628)}
+.bfs .cd b{display:block;font:700 24px/1 "Space Grotesk",Inter,sans-serif;font-variant-numeric:tabular-nums;color:var(--neon,#00c8ff)}.bfs .cd small{font-size:11px;color:var(--muted,#8ea4c4);text-transform:uppercase}
+.bfs .tw{margin-top:28px;overflow-x:auto;border:1px solid var(--line,#18294a);border-radius:18px;background:var(--panel,#0c1628)}
+.bfs table{width:100%;border-collapse:collapse;min-width:640px}
+.bfs th,.bfs td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line,#18294a);font-size:15px}
+.bfs th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted,#8ea4c4);font-weight:700}
+.bfs tr:last-child td{border-bottom:0}.bfs td:first-child a{color:inherit;text-decoration:none;font-weight:600}.bfs td:first-child a:hover{color:var(--neon,#00c8ff)}
+.bfs td b{font:700 18px "Space Grotesk",Inter,sans-serif;color:var(--neon,#00c8ff)}.bfs td s{color:var(--muted,#8ea4c4);font-size:13px;margin-right:6px}
+.bfs .ft{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.bfs .ft a.p{background:var(--neon,#00c8ff);color:#021220;border-radius:999px;padding:13px 22px;font-weight:800;text-decoration:none;box-shadow:0 0 30px rgba(0,200,255,.35)}
+.bfs .ft small{color:var(--muted,#8ea4c4)}
+@media (prefers-reduced-motion:reduce){.bfi *,.bfr{animation:none!important;opacity:1!important}}
+</style>
+<script>
+(function(){
+var END=Date.UTC(2026,10,30,20,0,0); /* 30.11.2026 24:00 Bakı */
+var ON=Date.now()<END;
+var M={299:219,399:249,449:249,699:499,899:649,1199:849,1499:1099};
+var L=(document.documentElement.lang||'az').slice(0,2);
+var T={
+ az:{off:'ENDİRİM',rib:'<b>BLACK FRIDAY</b> · Saytlara 45%-ə qədər endirim · 26–30 noyabr',see:'Qiymətlər',left:'Bitməsinə',d:'gün',h:'saat',m:'dəq',s:'san',
+  k:'26–30 noyabr',sub:'Saytlara <b>45%-ə qədər</b> endirim. Start paketi artıq <b>219 ₼</b>-dan.',b1:'Endirimli qiymətlər',b2:'Sayta keç',
+  sk:'Black Friday · 26–30 noyabr',sh:'Bütün paketlərə <em>endirim</em>',ss:'12 sahənin hamısında Start, Plus və Premium endirimdədir. Endirim 30 noyabra qədər sifariş verənlər üçündür. Domen və hostinq qiymətə daxil deyil.',
+  nh:'Sahə',wa:'WhatsApp-a “BF” yazın',fine:'Endirim 30.11.2026 saat 23:59-dək (Bakı vaxtı).',waT:'BF — Black Friday endirimi ilə sayt istəyirəm'},
+ en:{off:'OFF',rib:'<b>BLACK FRIDAY</b> · Up to 45% off websites · Nov 26–30',see:'Prices',left:'Ends in',d:'days',h:'hrs',m:'min',s:'sec',
+  k:'Nov 26–30',sub:'Up to <b>45% off</b> websites. The Start package now from <b>219 ₼</b>.',b1:'See sale prices',b2:'Go to site',
+  sk:'Black Friday · Nov 26–30',sh:'Every package is <em>on sale</em>',ss:'Start, Plus and Premium are discounted in all 12 industries. The discount applies to orders placed by Nov 30. Domain and hosting are not included.',
+  nh:'Industry',wa:'Send “BF” on WhatsApp',fine:'Offer valid until 30.11.2026, 23:59 (Baku time).',waT:'BF — I want a website with the Black Friday discount'},
+ ru:{off:'СКИДКА',rib:'<b>BLACK FRIDAY</b> · Скидка на сайты до 45% · 26–30 ноября',see:'Цены',left:'До конца',d:'дн',h:'ч',m:'мин',s:'сек',
+  k:'26–30 ноября',sub:'Скидка на сайты <b>до 45%</b>. Пакет Start теперь <b>от 219 ₼</b>.',b1:'Цены со скидкой',b2:'Перейти на сайт',
+  sk:'Black Friday · 26–30 ноября',sh:'Скидка на <em>все пакеты</em>',ss:'Start, Plus и Premium со скидкой во всех 12 сферах. Скидка действует для заказов до 30 ноября. Домен и хостинг не входят в цену.',
+  nh:'Сфера',wa:'Напишите «BF» в WhatsApp',fine:'Акция действует до 30.11.2026, 23:59 (по Баку).',waT:'BF — хочу сайт со скидкой Black Friday'}
+}[L]||null; if(!T)T={};
+var f=function(n){return n.toLocaleString('en-US')};
+window.BF_ON=ON;
+window.BFP=function(v){if(!ON||!M[v])return f(v);return '<s class="bfo">'+f(v)+'</s><span class="bfn">'+f(M[v])+'</span>'};
+if(!ON)return;
+var WA='https://wa.me/994709331108?text='+encodeURIComponent(T.waT);
+function left(){var s=Math.max(0,Math.floor((END-Date.now())/1000));return [Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60]}
+function pad(n){return n<10?'0'+n:''+n}
+function cdHTML(){var a=left();return '<div><b data-bfi="0">'+a[0]+'</b><small>'+T.d+'</small></div><div><b data-bfi="1">'+pad(a[1])+'</b><small>'+T.h+'</small></div><div><b data-bfi="2">'+pad(a[2])+'</b><small>'+T.m+'</small></div><div><b data-bfi="3">'+pad(a[3])+'</b><small>'+T.s+'</small></div>'}
+function tick(){var a=left();document.querySelectorAll('[data-bfi]').forEach(function(b){var i=+b.getAttribute("data-bfi");b.textContent=i?pad(a[i]):a[i]});var r=document.querySelector('.bfr .bfc');if(r)r.textContent=T.left+': '+a[0]+T.d.charAt(0)+' '+pad(a[1])+':'+pad(a[2])+':'+pad(a[3])}
+var NICHES=[['butik',{az:'Geyim butiki',en:'Clothing boutique',ru:'Бутик одежды'},[399,899,1499]],['biju',{az:'Aksesuar və bijuteriya',en:'Accessories & jewellery',ru:'Аксессуары и бижутерия'},[449,899,1499]],['gul',{az:'Gül və hədiyyə',en:'Flowers & gifts',ru:'Цветы и подарки'},[399,899,1499]],['kosmetika',{az:'Kosmetika və ətriyyat',en:'Cosmetics & perfume',ru:'Косметика и парфюмерия'},[399,899,1499]],['telefon',{az:'Telefon və aksesuarlar',en:'Phones & accessories',ru:'Телефоны и аксессуары'},[399,899,1499]],['restoran',{az:'Restoran və kafe',en:'Restaurant & café',ru:'Ресторан и кафе'},[399,899,1499]],['salon',{az:'Gözəllik salonu',en:'Beauty salon',ru:'Салон красоты'},[299,699,1199]],['kurs',{az:'Kurs mərkəzi',en:'Training centre',ru:'Учебный центр'},[299,699,1199]],['tur',{az:'Tur şirkəti',en:'Travel agency',ru:'Турфирма'},[299,699,1199]],['huquq',{az:'Hüquqşünas və mühasib',en:'Lawyer & accountant',ru:'Юрист и бухгалтер'},[299,699,1199]],['repetitor',{az:'Repetitor',en:'Private tutor',ru:'Репетитор'},[299,699,1199]],['smm',{az:'SMM və digital',en:'SMM & digital',ru:'SMM и digital'},[299,699,1199]]];
+document.addEventListener('DOMContentLoaded',function(){
+ var hd=document.querySelector('header');
+ var r=document.createElement('div');r.className='bfr';r.innerHTML='<span>'+T.rib+'</span><span class="bfc"></span><a href="'+(document.querySelector('section.hero')?'#bf':'index.html#bf')+'">'+T.see+' →</a>';
+ if(hd&&hd.parentNode)hd.parentNode.insertBefore(r,hd);else document.body.insertBefore(r,document.body.firstChild);
+ var hero=document.querySelector('section.hero');
+ if(hero){
+  var sec=document.createElement('section');sec.className='bfs';sec.id='bf';
+  sec.innerHTML='<div class="wrapx"><div class="hd"><div><div class="k">'+T.sk+'</div><h2>'+T.sh+'</h2><p class="sub">'+T.ss+'</p></div><div class="cd">'+cdHTML()+'</div></div>'+
+   '<div class="tw"><table><thead><tr><th>'+T.nh+'</th><th>Start</th><th>Plus</th><th>Premium</th></tr></thead><tbody>'+
+   NICHES.map(function(n){return '<tr><td><a href="paketler.html#'+n[0]+'">'+(n[1][L]||n[1].az)+'</a></td>'+n[2].map(function(p){return '<td><s>'+f(p)+'</s><b>'+f(M[p])+' ₼</b></td>'}).join('')+'</tr>'}).join('')+
+   '</tbody></table></div><div class="ft"><a class="p" href="'+WA+'" target="_blank" rel="noopener">'+T.wa+'</a><small>'+T.fine+'</small></div></div>';
+  hero.parentNode.insertBefore(sec,hero.nextSibling);
+  var seen=false;try{seen=sessionStorage.getItem('bfIntro')==='1'}catch(e){}
+  if(!seen&&!/[?&]nointro/.test(location.search)){
+   var o=document.createElement('div');o.className='bfi';o.setAttribute('role','dialog');o.setAttribute('aria-label','Black Friday');
+   o.innerHTML='<div class="g"></div><div class="glow"></div><button class="x" aria-label="Close">✕</button><div class="in"><div class="k">'+T.k+'</div><h2><span class="l1">BLACK</span><span class="l2">FRIDAY</span></h2><div class="pct"><span id="bfn">0</span>%<small>'+(T.off||'OFF')+'</small></div><p>'+T.sub+'</p><div class="cd">'+cdHTML()+'</div><div class="bt"><a class="p" href="#bf">'+T.b1+'</a><button class="s">'+T.b2+'</button></div></div>';
+   document.body.appendChild(o);document.documentElement.style.overflow='hidden';
+   var close=function(){o.classList.add('out');document.documentElement.style.overflow='';try{sessionStorage.setItem('bfIntro','1')}catch(e){}setTimeout(function(){o.remove()},600)};
+   o.querySelector('.x').onclick=close;o.querySelector('.s').onclick=close;o.querySelector('.p').onclick=function(){close()};
+   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+   var n=0,el=o.querySelector('#bfn');setTimeout(function(){var iv=setInterval(function(){n+=3;if(n>=45){n=45;clearInterval(iv)}el.textContent='-'+n},28)},900);
+  }
+ }
+ var hp=function(){document.querySelectorAll('section.hero b').forEach(function(b){if(/^\s*299\s*₼\s*$/.test(b.textContent))b.innerHTML='<span class="bfn">219 ₼</span>'})};hp();setTimeout(hp,2500);
+ tick();setInterval(tick,1000);
+});
+})();
+</script>
+<!--BF-END-->
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Valeh Nexus X">VALEH NEXUS <i>X</i></a>
+    <nav class="nav" id="nav" aria-label="Əsas menyu">
+      <a href="demolar.html">Demolar</a>
+      <a href="paketler.html">Paketlər</a>
+      <a href="temalar.html">Temalar</a>
+      <a href="index.html#xidmet">Xidmətlər</a>
+      <a href="haqqimda.html">Haqqımda</a>
+      <a href="elaqe.html">Əlaqə</a>
+    </nav>
+    <a class="btn pri" href="elaqe.html">Sayt sifariş et</a>
+    <button class="icb burger" id="burger" aria-label="Menyunu aç" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<main>
+  <section class="ph">
+    <div class="wrap" style="position:relative">
+      <a class="crumb" href="index.html">← Ana səhifə</a>
+      <div id="who"></div>
+      <span class="eyebrow">Marketplace yoxsa öz sayt?</span>
+      <h1 style="margin-top:12px">Hər satışdan komissiya ödəmək, yoxsa <span class="grad">öz saytına sahib olmaq?</span></h1>
+      <p class="lead">Rəqəmlərinizi daxil edin: marketplace-ə nə qədər komissiya ödədiyinizi və öz saytın neçə gündə özünü ödədiyini dərhal görəcəksiniz.</p>
+    </div>
+  </section>
+  <section style="padding-top:8px">
+    <div class="wrap calc">
+      <form class="pn" id="cf" onsubmit="return false">
+        <h2>Sizin rəqəmləriniz</h2>
+        <div class="fld"><label for="sat"><span>Marketplace üzərindən aylıq satış</span><output id="satO"></output></label><input type="range" id="sat" min="500" max="50000" step="500" value="5000"></div>
+        <div class="fld"><label for="k"><span>Komissiya faizi</span><output id="kO"></output></label><input type="range" id="k" min="1" max="30" step="0.5" value="15"><small>Birmarket-də kateqoriyaya görə təxminən 13–17%</small></div>
+        <div class="fld"><label for="s">Biznesin növü</label><select id="s"><option value="biju">Aksesuar və bijuteriya</option><option value="shop">Mağaza tipli (geyim, gül, kosmetika, telefon, restoran)</option><option value="svc">Xidmət (salon, kurs, tur, hüquq, repetitor, SMM)</option></select></div>
+        <div class="fld"><span class="lb">Paket</span><div class="seg" id="p" role="group" aria-label="Paket"><button type="button" data-p="0">Start</button><button type="button" data-p="1" aria-pressed="true">Plus</button><button type="button" data-p="2">Premium</button></div></div>
+        <div class="fld"><label for="h">Domen və hosting (illik, təxmini)</label><input type="number" id="h" min="0" max="2000" step="10" value="120" inputmode="numeric"><small>Provayderə ödənir, qiymətə daxil deyil</small></div>
+      </form>
+      <div class="pn" aria-live="polite">
+        <h2>Nəticə</h2>
+        <div class="hero" id="hero"></div>
+        <div class="tiles">
+          <div class="tile"><small>Marketplace-ə ayda</small><b id="tM"></b></div>
+          <div class="tile"><small>Marketplace-ə ildə</small><b id="tY"></b></div>
+          <div class="tile"><small>Öz saytın qiyməti</small><b id="tP"></b><em>birdəfəlik</em></div>
+          <div class="tile"><small>3 ildə qənaət</small><b id="tS"></b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="pn">
+        <div style="display:grid;gap:8px"><h2>36 ay ərzində ümumi xərc</h2><p style="color:var(--muted);font-size:14.5px;margin:0">Xətlər yığılmış xərci göstərir. Üzərinə gəlin və ya toxunun: hər ay üçün rəqəmlər görünəcək.</p></div>
+        <div class="lg"><span><i style="background:#e8613f"></i>Marketplace komissiyası</span><span><i style="background:#2b9fe0"></i>Öz sayt (qiymət + domen və hosting)</span></div>
+        <div class="chartbox" id="cb"><svg id="ch" role="img" aria-label="36 ay ərzində ümumi xərc"></svg><div class="tt" id="tt"></div></div>
+        <details class="tv"><summary>Cədvəl kimi bax</summary><table><thead><tr><th>Ay</th><th>Marketplace</th><th>Öz sayt</th><th>Fərq</th></tr></thead><tbody id="tb"></tbody></table></details>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="pn">
+        <h2>Dürüst qeydlər</h2>
+        <ul class="notes">
+          <li>Komissiya faizi təxminidir. Dəqiq faiz marketplace-in sizinlə müqaviləsində yazılır.</li>
+          <li>Hesablama yalnız öz saytınızdan keçən satışlara aiddir. Marketplace yeni müştəri gətirir, ondan imtina etmək şərt deyil: ikisini birlikdə istifadə etmək olar.</li>
+          <li>Reklam, çatdırılma və ödəniş xərcləri hər iki halda ayrıca hesablanır və bura daxil deyil.</li>
+          <li id="bfn">Black Friday qiymətləri 30 noyabr 2026, 23:59-a (Bakı vaxtı) qədər etibarlıdır.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap"><div class="cta">
+      <div style="display:grid;gap:14px;max-width:720px"><span class="eyebrow">Növbəti addım</span><h2>Rəqəmlər inandırdısa, gəlin danışaq</h2><p class="lead">Hesablamanızı WhatsApp-a göndərin. Biznesinizə uyğun paketi və dəqiq müddəti birlikdə müəyyən edək. İlk məsləhət pulsuzdur.</p></div>
+      <div class="ctaw"><a class="btn pri" id="wa" href="https://wa.me/994709331108" target="_blank" rel="noopener">Nəticəni WhatsApp-a göndər</a><a class="btn" href="paketler.html">Paketlərin tərkibi</a></div>
+    </div></div>
+  </section>
+</main>
+<footer class="foot"><div class="wrap"><span>© Valeh Nexus X · <b style="color:var(--ink);font-weight:600">We build. You grow.</b> · Bakı</span><span><a href="demolar.html">Demolar</a> · <a href="paketler.html">Paketlər</a> · <a href="haqqimda.html">Haqqımda</a> · <a href="elaqe.html">Əlaqə</a></span></div></footer>
+<script>
+(function(){
+  document.getElementById("burger").addEventListener("click",function(){var o=document.getElementById("nav").classList.toggle("open");this.setAttribute("aria-expanded",o)});
+  var L=document.documentElement.lang||"az";if(!/^(az|en|ru)$/.test(L))L="az";
+  var T={
+    hero:{az:"Sayt {d} gündə özünü ödəyir",en:"The website pays for itself in {d} days",ru:"Сайт окупается за {d} дн."},
+    heroM:{az:"Sayt {m} ayda özünü ödəyir",en:"The website pays for itself in {m} months",ru:"Сайт окупается за {m} мес."},
+    heroS:{az:"Bundan sonra hər ay təxminən {v} sizdə qalır.",en:"After that, about {v} stays with you every month.",ru:"Дальше примерно {v} в месяц остаётся у вас."},
+    heroN:{az:"Bu satış həcmində komissiya domen və hosting xərcindən azdır",en:"At this sales volume, the commission is lower than domain & hosting costs",ru:"При таком объёме продаж комиссия меньше расходов на домен и хостинг"},
+    heroN2:{az:"Satış artdıqca öz saytın üstünlüyü də artır.",en:"The more you sell, the bigger the advantage of your own website.",ru:"Чем больше продаж, тем выгоднее свой сайт."},
+    who:{az:"{n} üçün hesablama",en:"Calculation for {n}",ru:"Расчёт для {n}"},
+    mo:{az:"{m}-ci ay",en:"Month {m}",ru:"{m}-й месяц"},
+    m:{az:"ay",en:"mo",ru:"мес."},
+    be:{az:"Özünü ödəyir",en:"Break-even",ru:"Окупаемость"},
+    mp:{az:"Marketplace",en:"Marketplace",ru:"Маркетплейс"},
+    own:{az:"Öz sayt",en:"Own website",ru:"Свой сайт"},
+    diff:{az:"Fərq",en:"Difference",ru:"Разница"},
+    neg:{az:"—",en:"—",ru:"—"},
+    wa:{az:"Salam, Valeh! Müqayisə səhifəsində hesabladım:",en:"Hi Valeh! I used the comparison page:",ru:"Здравствуйте, Валех! Я посчитал на странице сравнения:"},
+    waS:{az:"Aylıq satış",en:"Monthly sales",ru:"Продажи в месяц"},
+    waK:{az:"Komissiya",en:"Commission",ru:"Комиссия"},
+    waP:{az:"Paket",en:"Package",ru:"Пакет"},
+    waY:{az:"İllik komissiya",en:"Yearly commission",ru:"Комиссия за год"},
+    waQ:{az:"Ətraflı danışmaq istəyirəm.",en:"I'd like to discuss the details.",ru:"Хочу обсудить подробнее."},
+    biz:{az:"Biznes",en:"Business",ru:"Бизнес"}
+  };
+  function t(k,o){var s=T[k][L];for(var x in o)s=s.replace("{"+x+"}",o[x]);return s}
+  var PR={biju:[449,899,1499],shop:[399,899,1499],svc:[299,699,1199]};
+  var BF={biju:[249,649,1099],shop:[249,649,1099],svc:[219,499,849]};
+  var bfOn=Date.now()<Date.UTC(2026,10,30,20,0,0);
+  if(!bfOn){var bn=document.getElementById("bfn");if(bn)bn.remove()}
+  var PN=["Start","Plus","Premium"];
+  var $=function(i){return document.getElementById(i)};
+  function fmt(v){return Math.round(v).toLocaleString("en-US").replace(/,/g," ")+" ₼"}
+  var q=new URLSearchParams(location.search),ad=(q.get("ad")||"").trim().slice(0,60);
+  if(ad){var w=document.createElement("span");w.className="who";w.textContent=t("who",{n:ad});$("who").appendChild(w);document.title=t("who",{n:ad})+" — Valeh Nexus X"}
+  function num(v,min,max,d){v=parseFloat(v);return isNaN(v)?d:Math.min(max,Math.max(min,v))}
+  $("sat").value=num(q.get("sat"),500,50000,5000);$("k").value=num(q.get("k"),1,30,15);
+  if(PR[q.get("s")])$("s").value=q.get("s");
+  var pk={start:0,plus:1,premium:2}[(q.get("p")||"").toLowerCase()];if(pk==null)pk=1;
+  var seg=$("p").querySelectorAll("button");
+  function setP(i){pk=i;seg.forEach(function(b){b.setAttribute("aria-pressed",String(+b.dataset.p===i))});calc()}
+  seg.forEach(function(b){b.addEventListener("click",function(){setP(+b.dataset.p)})});
+  ["sat","k","s","h"].forEach(function(i){$(i).addEventListener("input",calc)});
+  var st={};
+  function calc(){
+    var S=+$("sat").value,K=+$("k").value,s=$("s").value,H=num($("h").value,0,2000,0);
+    var old=PR[s][pk],price=bfOn?BF[s][pk]:old;
+    var C=S*K/100,Hm=H/12,net=C-Hm;
+    st={S:S,K:K,s:s,C:C,Hm:Hm,price:price,net:net};
+    $("satO").textContent=fmt(S);$("kO").textContent=(K%1?K.toFixed(1):K)+"%";
+    $("tM").textContent=fmt(C);$("tY").textContent=fmt(C*12);
+    $("tP").innerHTML=(bfOn&&old!==price?"<s>"+fmt(old)+"</s>":"")+fmt(price);
+    var sav=C*36-(price+Hm*36);$("tS").textContent=sav>0?fmt(sav):t("neg",{});
+    var hero=$("hero");hero.textContent="";var b=document.createElement("b"),sp=document.createElement("span");
+    if(net>0){var d=Math.ceil(price/net*30);b.textContent=d<=120?t("hero",{d:d}):t("heroM",{m:Math.ceil(price/net)});sp.textContent=t("heroS",{v:fmt(net)})}
+    else{b.textContent=t("heroN",{});b.style.fontSize="22px";sp.textContent=t("heroN2",{})}
+    hero.appendChild(b);hero.appendChild(sp);
+    var rows="";[1,3,6,12,24,36].forEach(function(m){var a=C*m,o=price+Hm*m;rows+="<tr><td>"+m+"</td><td>"+fmt(a)+"</td><td>"+fmt(o)+"</td><td>"+(a-o>0?"+":"")+fmt(a-o)+"</td></tr>"});$("tb").innerHTML=rows;
+    var msg=[t("wa",{})];if(ad)msg.push(t("biz",{})+": "+ad);msg.push(t("waS",{})+": "+fmt(S),t("waK",{})+": "+K+"% ("+fmt(C)+")",t("waY",{})+": "+fmt(C*12),t("waP",{})+": "+PN[pk]+" — "+fmt(price),t("waQ",{}));
+    $("wa").href="https://wa.me/994709331108?text="+encodeURIComponent(msg.join("\n"));
+    draw()
+  }
+  var NS="http://www.w3.org/2000/svg",svg=$("ch"),tt=$("tt"),CM="#e8613f",CO="#2b9fe0";
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
+  var G={};
+  function draw(){
+    var W=Math.max(320,$("cb").clientWidth),sm=W<560,H=sm?260:340,pl=sm?52:70,pr=sm?16:150,pt=18,pb=34;
+    svg.setAttribute("viewBox","0 0 "+W+" "+H);svg.textContent="";
+    var C=st.C,Hm=st.Hm,P=st.price,max=Math.max(C*36,P+Hm*36)*1.08||1;
+    var nice=Math.pow(10,Math.floor(Math.log10(max/4))),step=Math.ceil(max/4/nice)*nice;max=step*4;
+    var x=function(m){return pl+(W-pl-pr)*m/36},y=function(v){return pt+(H-pt-pb)*(1-v/max)};
+    G={x:x,y:y,W:W,H:H,pl:pl,pr:pr,pt:pt,pb:pb};
+    for(var i=0;i<=4;i++){var v=step*i;el("line",{x1:pl,x2:W-pr,y1:y(v),y2:y(v),stroke:"#18294a","stroke-width":1});var tx=el("text",{x:pl-8,y:y(v)+4,"text-anchor":"end",fill:"#8ea4c4","font-size":12});tx.textContent=v>=1000?(v/1000)+"k":v}
+    [0,6,12,18,24,30,36].forEach(function(m){var tx=el("text",{x:x(m),y:H-10,"text-anchor":"middle",fill:"#8ea4c4","font-size":12});tx.textContent=m+(m===36?" "+t("m",{}):"")});
+    if(st.net>0){var be=P/st.net;if(be<=36){el("line",{x1:x(be),x2:x(be),y1:pt,y2:H-pb,stroke:"#eaf4ff","stroke-opacity":.35,"stroke-dasharray":"4 4"});var bt=el("text",{x:x(be)+6,y:pt+12,fill:"#eaf4ff","font-size":12,"font-weight":600});bt.textContent=t("be",{})}}
+    var pm="",po="";for(var m=0;m<=36;m++){pm+=(m?"L":"M")+x(m).toFixed(1)+" "+y(C*m).toFixed(1);po+=(m?"L":"M")+x(m).toFixed(1)+" "+y(P+Hm*m).toFixed(1)}
+    el("path",{d:pm,fill:"none",stroke:CM,"stroke-width":2.5,"stroke-linejoin":"round"});
+    el("path",{d:po,fill:"none",stroke:CO,"stroke-width":2.5,"stroke-linejoin":"round"});
+    var e1=y(C*36),e2=y(P+Hm*36);
+    el("circle",{cx:x(36),cy:e1,r:4.5,fill:CM,stroke:"#08101f","stroke-width":2});el("circle",{cx:x(36),cy:e2,r:4.5,fill:CO,stroke:"#08101f","stroke-width":2});
+    if(!sm){var gap=Math.abs(e1-e2)<34?(e1<e2?-1:1)*17:0;
+      [[e1-gap,t("mp",{}),fmt(C*36)],[e2+gap,t("own",{}),fmt(P+Hm*36)]].forEach(function(r){var a=el("text",{x:x(36)+12,y:r[0]-2,fill:"#8ea4c4","font-size":12});a.textContent=r[1];var bb=el("text",{x:x(36)+12,y:r[0]+14,fill:"#eaf4ff","font-size":14,"font-weight":700});bb.textContent=r[2]})}
+    G.cl=el("line",{x1:0,x2:0,y1:pt,y2:H-pb,stroke:"#eaf4ff","stroke-opacity":.5,visibility:"hidden"});
+    G.d1=el("circle",{r:5,fill:CM,stroke:"#08101f","stroke-width":2,visibility:"hidden"});G.d2=el("circle",{r:5,fill:CO,stroke:"#08101f","stroke-width":2,visibility:"hidden"});
+    var hit=el("rect",{x:pl,y:0,width:W-pl-pr,height:H,fill:"transparent"});
+    hit.addEventListener("pointermove",hover);hit.addEventListener("pointerdown",hover);hit.addEventListener("pointerleave",hide);
+  }
+  function hover(ev){
+    var r=svg.getBoundingClientRect(),sc=G.W/r.width,px=(ev.clientX-r.left)*sc;
+    var m=Math.max(0,Math.min(36,Math.round((px-G.pl)/(G.W-G.pl-G.pr)*36))),X=G.x(m),a=st.C*m,o=st.price+st.Hm*m;
+    G.cl.setAttribute("x1",X);G.cl.setAttribute("x2",X);G.cl.setAttribute("visibility","visible");
+    G.d1.setAttribute("cx",X);G.d1.setAttribute("cy",G.y(a));G.d1.setAttribute("visibility","visible");
+    G.d2.setAttribute("cx",X);G.d2.setAttribute("cy",G.y(o));G.d2.setAttribute("visibility","visible");
+    tt.innerHTML="<b>"+t("mo",{m:m})+"</b><div><span><i style='background:"+CM+"'></i>"+t("mp",{})+"</span><span>"+fmt(a)+"</span></div><div><span><i style='background:"+CO+"'></i>"+t("own",{})+"</span><span>"+fmt(o)+"</span></div><div style='border-top:1px solid #18294a;padding-top:4px'><span>"+t("diff",{})+"</span><b>"+(a-o>0?"+":"")+fmt(a-o)+"</b></div>";
+    var cw=$("cb").clientWidth,left=X/sc+14;if(left+210>cw)left=X/sc-224;tt.style.left=Math.max(0,left)+"px";tt.style.top="10px";tt.style.opacity=1;
+  }
+  function hide(){tt.style.opacity=0;[G.cl,G.d1,G.d2].forEach(function(e){e&&e.setAttribute("visibility","hidden")})}
+  var rt;window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(draw,120)});
+  setP(pk);
+})();
+</script>
+</body>
+</html>
