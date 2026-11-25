@@ -618,8 +618,8 @@ document.addEventListener('DOMContentLoaded',function(){
   var icon={wa:"wa",email:"mail",instagram:"ig",tiktok:"tt",facebook:"fb",linkedin:"li"};
   var $=function(i){return document.getElementById(i)};
   $("side").innerHTML=CH.map(function(c){var v=C[c[0]],svg='<span class="ic"><svg viewBox="0 0 24 24">'+IC[icon[c[0]]]+'</svg></span>';
-    return v?'<a class="ch" href="'+c[2](v)+'" target="_blank" rel="noopener">'+svg+'<div><small>'+c[1]+'</small><b>'+c[3](v)+'</b></div></a>'
-            :'<div class="ch">'+svg+'<div><small>'+c[1]+'</small><b class="soon">tezliklə əlavə olunacaq</b></div></div>'}).join("");
+    return v?'<a class="ch" href="'+c[2](v)+'" target="_blank" rel="noopener">'+svg+'<div><small lang="en">'+c[1]+'</small><b>'+c[3](v)+'</b></div></a>'
+            :'<div class="ch">'+svg+'<div><small lang="en">'+c[1]+'</small><b class="soon">tezliklə əlavə olunacaq</b></div></div>'}).join("");
   function val(n){var e=document.querySelector('input[name="'+n+'"]:checked');return e?e.value:""}
   $("f").addEventListener("submit",function(e){e.preventDefault();
     var L=["Salam, Valeh! Sayt sifarişi ilə bağlı yazıram."];
