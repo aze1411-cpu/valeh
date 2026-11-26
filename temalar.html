@@ -456,15 +456,15 @@ var L=(document.documentElement.lang||'az').slice(0,2);
 var T={
  az:{off:'ENDİRİM',rib:'<b>BLACK FRIDAY</b> · Saytlara 45%-ə qədər endirim · 26–30 noyabr',see:'Qiymətlər',left:'Bitməsinə',d:'gün',h:'saat',m:'dəq',s:'san',
   k:'26–30 noyabr',sub:'Saytlara <b>45%-ə qədər</b> endirim. Start paketi artıq <b>219 ₼</b>-dan.',b1:'Endirimli qiymətlər',b2:'Sayta keç',
-  sk:'Black Friday · 26–30 noyabr',sh:'Bütün paketlərə <em>endirim</em>',ss:'12 sahənin hamısında Start, Plus və Premium endirimdədir. Endirim 30 noyabra qədər sifariş verənlər üçündür. Domen və hostinq qiymətə daxil deyil.',
+  sk:'Black Friday · 26–30 noyabr',sh:'Bütün paketlərə <em>endirim</em>',ss:'13 sahənin hamısında Start, Plus və Premium endirimdədir. Endirim 30 noyabra qədər sifariş verənlər üçündür. Domen və hostinq qiymətə daxil deyil.',
   nh:'Sahə',wa:'WhatsApp-a “BF” yazın',fine:'Endirim 30.11.2026 saat 23:59-dək (Bakı vaxtı).',waT:'BF — Black Friday endirimi ilə sayt istəyirəm'},
  en:{off:'OFF',rib:'<b>BLACK FRIDAY</b> · Up to 45% off websites · Nov 26–30',see:'Prices',left:'Ends in',d:'days',h:'hrs',m:'min',s:'sec',
   k:'Nov 26–30',sub:'Up to <b>45% off</b> websites. The Start package now from <b>219 ₼</b>.',b1:'See sale prices',b2:'Go to site',
-  sk:'Black Friday · Nov 26–30',sh:'Every package is <em>on sale</em>',ss:'Start, Plus and Premium are discounted in all 12 industries. The discount applies to orders placed by Nov 30. Domain and hosting are not included.',
+  sk:'Black Friday · Nov 26–30',sh:'Every package is <em>on sale</em>',ss:'Start, Plus and Premium are discounted in all 13 industries. The discount applies to orders placed by Nov 30. Domain and hosting are not included.',
   nh:'Industry',wa:'Send “BF” on WhatsApp',fine:'Offer valid until 30.11.2026, 23:59 (Baku time).',waT:'BF — I want a website with the Black Friday discount'},
  ru:{off:'СКИДКА',rib:'<b>BLACK FRIDAY</b> · Скидка на сайты до 45% · 26–30 ноября',see:'Цены',left:'До конца',d:'дн',h:'ч',m:'мин',s:'сек',
   k:'26–30 ноября',sub:'Скидка на сайты <b>до 45%</b>. Пакет Start теперь <b>от 219 ₼</b>.',b1:'Цены со скидкой',b2:'Перейти на сайт',
-  sk:'Black Friday · 26–30 ноября',sh:'Скидка на <em>все пакеты</em>',ss:'Start, Plus и Premium со скидкой во всех 12 сферах. Скидка действует для заказов до 30 ноября. Домен и хостинг не входят в цену.',
+  sk:'Black Friday · 26–30 ноября',sh:'Скидка на <em>все пакеты</em>',ss:'Start, Plus и Premium со скидкой во всех 13 сферах. Скидка действует для заказов до 30 ноября. Домен и хостинг не входят в цену.',
   nh:'Сфера',wa:'Напишите «BF» в WhatsApp',fine:'Акция действует до 30.11.2026, 23:59 (по Баку).',waT:'BF — хочу сайт со скидкой Black Friday'}
 }[L]||null; if(!T)T={};
 var f=function(n){return n.toLocaleString('en-US')};
@@ -476,7 +476,7 @@ function left(){var s=Math.max(0,Math.floor((END-Date.now())/1000));return [Math
 function pad(n){return n<10?'0'+n:''+n}
 function cdHTML(){var a=left();return '<div><b data-bfi="0">'+a[0]+'</b><small>'+T.d+'</small></div><div><b data-bfi="1">'+pad(a[1])+'</b><small>'+T.h+'</small></div><div><b data-bfi="2">'+pad(a[2])+'</b><small>'+T.m+'</small></div><div><b data-bfi="3">'+pad(a[3])+'</b><small>'+T.s+'</small></div>'}
 function tick(){var a=left();document.querySelectorAll('[data-bfi]').forEach(function(b){var i=+b.getAttribute("data-bfi");b.textContent=i?pad(a[i]):a[i]});var r=document.querySelector('.bfr .bfc');if(r)r.textContent=T.left+': '+a[0]+T.d.charAt(0)+' '+pad(a[1])+':'+pad(a[2])+':'+pad(a[3])}
-var NICHES=[['butik',{az:'Geyim butiki',en:'Clothing boutique',ru:'Бутик одежды'},[399,899,1499]],['biju',{az:'Aksesuar və bijuteriya',en:'Accessories & jewellery',ru:'Аксессуары и бижутерия'},[449,899,1499]],['gul',{az:'Gül və hədiyyə',en:'Flowers & gifts',ru:'Цветы и подарки'},[399,899,1499]],['kosmetika',{az:'Kosmetika və ətriyyat',en:'Cosmetics & perfume',ru:'Косметика и парфюмерия'},[399,899,1499]],['telefon',{az:'Telefon və aksesuarlar',en:'Phones & accessories',ru:'Телефоны и аксессуары'},[399,899,1499]],['restoran',{az:'Restoran və kafe',en:'Restaurant & café',ru:'Ресторан и кафе'},[399,899,1499]],['salon',{az:'Gözəllik salonu',en:'Beauty salon',ru:'Салон красоты'},[299,699,1199]],['kurs',{az:'Kurs mərkəzi',en:'Training centre',ru:'Учебный центр'},[299,699,1199]],['tur',{az:'Tur şirkəti',en:'Travel agency',ru:'Турфирма'},[299,699,1199]],['huquq',{az:'Hüquqşünas və mühasib',en:'Lawyer & accountant',ru:'Юрист и бухгалтер'},[299,699,1199]],['repetitor',{az:'Repetitor',en:'Private tutor',ru:'Репетитор'},[299,699,1199]],['smm',{az:'SMM və digital',en:'SMM & digital',ru:'SMM и digital'},[299,699,1199]]];
+var NICHES=[['butik',{az:'Geyim butiki',en:'Clothing boutique',ru:'Бутик одежды'},[399,899,1499]],['biju',{az:'Aksesuar və bijuteriya',en:'Accessories & jewellery',ru:'Аксессуары и бижутерия'},[449,899,1499]],['gul',{az:'Gül və hədiyyə',en:'Flowers & gifts',ru:'Цветы и подарки'},[399,899,1499]],['kosmetika',{az:'Kosmetika və baxım',en:'Cosmetics & skincare',ru:'Косметика и уход'},[399,899,1499]],['etir',{az:'Ətir və parfümeriya',en:'Perfume & fragrance',ru:'Парфюмерия'},[399,899,1499]],['telefon',{az:'Telefon və aksesuarlar',en:'Phones & accessories',ru:'Телефоны и аксессуары'},[399,899,1499]],['restoran',{az:'Restoran və kafe',en:'Restaurant & café',ru:'Ресторан и кафе'},[399,899,1499]],['salon',{az:'Gözəllik salonu',en:'Beauty salon',ru:'Салон красоты'},[299,699,1199]],['kurs',{az:'Kurs mərkəzi',en:'Training centre',ru:'Учебный центр'},[299,699,1199]],['tur',{az:'Tur şirkəti',en:'Travel agency',ru:'Турфирма'},[299,699,1199]],['huquq',{az:'Hüquqşünas və mühasib',en:'Lawyer & accountant',ru:'Юрист и бухгалтер'},[299,699,1199]],['repetitor',{az:'Repetitor',en:'Private tutor',ru:'Репетитор'},[299,699,1199]],['smm',{az:'SMM və digital',en:'SMM & digital',ru:'SMM и digital'},[299,699,1199]]];
 document.addEventListener('DOMContentLoaded',function(){
  var hd=document.querySelector('header');
  var r=document.createElement('div');r.className='bfr';r.innerHTML='<span>'+T.rib+'</span><span class="bfc"></span><a href="'+(document.querySelector('section.hero')?'#bf':'index.html#bf')+'">'+T.see+' →</a>';
@@ -550,7 +550,7 @@ document.addEventListener('DOMContentLoaded',function(){
   </section>
   <section style="padding-top:16px">
     <div class="wrap vs2">
-      <div class="box"><b class="k">Demolarım</b><h3>Sizə özəl dizayn</h3><ul class="ok"><li>Sahənizə görə hazırlanmış görünüş</li><li>Premium-da 1:1, tam fərdi qurulur</li><li>Rəqiblərinizdə eyni dizayn olmur</li></ul><a class="btn" href="demolar.html" style="justify-self:start">36 demoya bax →</a></div>
+      <div class="box"><b class="k">Demolarım</b><h3>Sizə özəl dizayn</h3><ul class="ok"><li>Sahənizə görə hazırlanmış görünüş</li><li>Premium-da 1:1, tam fərdi qurulur</li><li>Rəqiblərinizdə eyni dizayn olmur</li></ul><a class="btn" href="demolar.html" style="justify-self:start">39 demoya bax →</a></div>
       <div class="box"><b class="k">Hazır temalar</b><h3>Sürətli və sərfəli başlanğıc</h3><ul class="ok"><li>Dünyada çox sayda saytda sınanmış temalar</li><li>Start və Plus üçün uyğundur</li><li>Sonradan Premium-a keçmək olar, yalnız fərqi ödəyirsiniz</li></ul></div>
     </div>
   </section>
